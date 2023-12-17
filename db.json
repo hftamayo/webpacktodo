@@ -1,0 +1,88 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Sarah Johnson",
+      "username": "sarahjohnson",
+      "email": "sarahjohnson@example.com",
+      "address": {
+        "street": "321 Oak St",
+        "suite": "Apt 2B",
+        "city": "Seattle",
+        "zipcode": "98101"
+      },
+      "position": {
+        "lat": 47.6062,
+        "lng": -122.3321
+      },
+      "phoneNumber": "555-1234",
+      "company": {
+        "name": "ABC Company",
+        "address": "123 Main St, Seattle, WA 98101"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Michael Brown",
+      "username": "michaelbrown",
+      "email": "michaelbrown@example.com",
+      "address": {
+        "street": "789 Elm St",
+        "suite": "Apt 3C",
+        "city": "Boston",
+        "zipcode": "02101"
+      },
+      "position": {
+        "lat": 42.3601,
+        "lng": -71.0589
+      },
+      "phoneNumber": "555-5678",
+      "company": {
+        "name": "XYZ Corporation",
+        "address": "456 Oak St, Boston, MA 02101"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Jessica Wilson",
+      "username": "jessicawilson",
+      "email": "jessicawilson@example.com",
+      "address": {
+        "street": "987 Maple St",
+        "suite": "Apt 4D",
+        "city": "Austin",
+        "zipcode": "78701"
+      },
+      "position": {
+        "lat": 30.2672,
+        "lng": -97.7431
+      },
+      "phoneNumber": "555-9012",
+      "company": {
+        "name": "DEF Industries",
+        "address": "789 Elm St, Austin, TX 78701"
+      }
+    },
+    {
+      "id": 4,
+      "name": "David Lee",
+      "username": "davidlee",
+      "email": "davidlee@example.com",
+      "address": {
+        "street": "654 Pine St",
+        "suite": "Apt 1B",
+        "city": "Denver",
+        "zipcode": "80201"
+      },
+      "position": {
+        "lat": 39.7392,
+        "lng": -104.9903
+      },
+      "phoneNumber": "555-3456",
+      "company": {
+        "name": "GHI Corporation",
+        "address": "987 Maple St, Denver, CO 80201"
+      }
+    }
+  ]
+}
