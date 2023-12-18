@@ -8,6 +8,6 @@
 
 @layer components {
   body {
-    @apply overflow-x-hidden font-Montserrat;
+    @apply overflow-x-hidden font-sans;
   }
 }
