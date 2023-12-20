@@ -3,10 +3,7 @@ import DisplayDataTable from "./DisplayDataTable";
 
 function ViewStudents() {
   return (
-    <div>
-      <h1 className="text-black text-3xl font-semibold font-Montserrat">
-        Students Catalog
-      </h1>
+    <div className="w-full h-full flex flex-col px-10 py-8">
       <DisplayDataTable />
     </div>
   );
