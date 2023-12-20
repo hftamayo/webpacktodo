@@ -1,7 +1,7 @@
 import Navbar from "./Pages/Navbar";
 import Dashboard from "./Pages/Dashboard";
 import { Routes, Route } from "react-router-dom";
-import ViewStudents from "./components/entities/ViewStudents";
+import ViewStudents from "./components/entities/students/ViewStudents";
 
 function App() {
   return (
