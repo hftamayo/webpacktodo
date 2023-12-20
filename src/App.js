@@ -1,6 +1,7 @@
 import Navbar from "./Pages/Navbar";
 import Dashboard from "./Pages/Dashboard";
 import { Routes, Route } from "react-router-dom";
+import ViewStudents from "./components/entities/ViewStudents";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/students" element={<ViewStudents />} />        
       </Routes>
     </div>
   );
