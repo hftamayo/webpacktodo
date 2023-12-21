@@ -15,7 +15,7 @@ function DisplayDataTable() {
       <h1 className="text-black text-3xl font-semibold font-Montserrat">
         Students Catalog
       </h1>
-      <table className="w-[80%] text-center overflow-hidden overflow-y-scroll mt-8 border-2 border-b-2 border-black">
+      <table className="w-[95%] text-center overflow-hidden overflow-y-scroll mt-8 border-2 border-b-2 border-black">
         <thead className="border-b bg-gray-800">
           <tr>
             <th
