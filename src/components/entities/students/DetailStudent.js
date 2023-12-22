@@ -16,7 +16,7 @@ function DetailStudent() {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div>
-        <h1 className="text-blue-500 text-3xl font-semibold font-Montserrat">
+        <h1 className="text-blue-500 text-3xl font-semibold font-Montserrat mt-4">
           <Link to="/students">Go back</Link>
         </h1>
       </div>
