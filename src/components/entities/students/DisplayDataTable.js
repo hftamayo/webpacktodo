@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function DisplayDataTable() {
@@ -37,7 +38,7 @@ function DisplayDataTable() {
         </thead>
         <tbody>
           {users.map((data, index) => (
-            <tr key={index} className="bg-white border-b">
+            <tr key={data.id} className="bg-white border-b">
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                 {index + 1}
               </td>
@@ -54,7 +55,10 @@ function DisplayDataTable() {
                 {data.address.city}
               </td>
               <td className="flex justify-center items-center space-x-4 mt-1">
-                <Link className="px-6 py-2 font-normal text-white bg-black rounded-lg">
+                <Link
+                  to={`/student/${data.id}`}
+                  className="px-6 py-2 font-normal text-white bg-black rounded-lg"
+                >
                   View
                 </Link>
                 <Link className="px-6 py-2 font-normal text-white bg-blue-600 rounded-lg">
