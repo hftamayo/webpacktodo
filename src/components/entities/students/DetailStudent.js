@@ -21,7 +21,7 @@ function DetailStudent() {
         </h1>
       </div>
 
-      <div className="w-[750px] h-[425px] flex px-6 py-4 border border-black mt-16">
+      <div className="w-[750px] h-[425px] flex justify-center items-center px-6 py-4 border border-black mt-16">
         <div className="w-5/12 flex flex-col space-y-4">
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             Name
