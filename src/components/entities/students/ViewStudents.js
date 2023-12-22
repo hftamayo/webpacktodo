@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function ViewStudents() {
   return (
-    <div className="w-full h-full flex flex-col px-10 py-8">
+    <div className="w-full h-full flex flex-col px-10 py-8 justify-center items-start">
       <div>
         <Link
           to={`/newstudent`}
