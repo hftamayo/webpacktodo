@@ -7,7 +7,7 @@ function DisplayDataTable() {
 
   useEffect(() => {
     axios.get("http://localhost:3004/students").then((response) => {
-      setUsers(response.data);
+      setUsers(response.data.reverse());
     });
   }, [users]);
 
