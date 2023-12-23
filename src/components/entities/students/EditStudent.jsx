@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 function EditStudent() {
@@ -15,7 +15,7 @@ function EditStudent() {
     axios.get(`http://localhost:3004/students/${id}`).then((response) => {
       setName(response.data.name);
       setEmail(response.data.email);
-      setPhone(response.data.phone);
+      setPhone(response.data.phoneNumber);
     });
   };
 
@@ -29,10 +29,10 @@ function EditStudent() {
     phone: phone,
   };
 
-  const submit = (e) => {
+  const update = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3004/students", data)
+      .put(`http://localhost:3004/students/${id}`, data)
       .then(navigate("/students"));
   };
 
@@ -68,7 +68,7 @@ function EditStudent() {
         />
 
         <button
-          onClick={submit}
+          onClick={update}
           className="w-[80%] bg-blue-600 text-xl mt-4 text-white font-Montserrat font-normal py-4 pl-6"
         >
           Update
