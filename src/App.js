@@ -14,7 +14,8 @@ function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/students" element={<ViewStudents />} />        
         <Route path="/student/:id" element={<DetailStudent />} />     
-        <Route path="/newstudent/" element={<AddStudent />} />"          
+        <Route path="/newstudent/" element={<AddStudent />} />"       
+        <Route path="/editstudent/:id" element={<EditStudent />} />                
       </Routes>
     </div>
   );
