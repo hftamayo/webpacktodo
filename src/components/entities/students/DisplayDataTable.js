@@ -71,7 +71,10 @@ function DisplayDataTable() {
                 >
                   View
                 </Link>
-                <Link className="px-6 py-2 font-normal text-white bg-blue-600 rounded-lg">
+                <Link
+                  to={`/editstudent/${data.id}`}
+                  className="px-6 py-2 font-normal text-white bg-blue-600 rounded-lg"
+                >
                   Edit
                 </Link>
                 <Link
