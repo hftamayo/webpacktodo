@@ -5,11 +5,21 @@ import axios from "axios";
 function DisplayDataTable() {
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
+  const loadUsers = async () => {
     axios.get("http://localhost:3004/students").then((response) => {
       setUsers(response.data.reverse());
     });
-  }, [users]);
+  };
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
+
+  function deleteStudent(id) {
+    axios.delete(`http://localhost:3004/students/${id}`).then((response) => {
+      loadUsers();
+    });
+  }
 
   return (
     <div className="w-full flex flex-col min-h-[50vh] justify-center items-center">
@@ -64,7 +74,10 @@ function DisplayDataTable() {
                 <Link className="px-6 py-2 font-normal text-white bg-blue-600 rounded-lg">
                   Edit
                 </Link>
-                <Link className="px-6 py-2 font-normal text-white bg-red-600 rounded-lg">
+                <Link
+                  onClick={() => deleteStudent(data.id)}
+                  className="px-6 py-2 font-normal text-white bg-red-600 rounded-lg"
+                >
                   Delete
                 </Link>
               </td>
