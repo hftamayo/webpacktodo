@@ -3,16 +3,36 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function AddStudent() {
+  const [id, setId] = useState("");
   const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [street, setStreet] = useState("");
+  const [suite, setSuite] = useState("");
+  const [city, setCity] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [companyAddress, setCompanyAddress] = useState("");
 
   const navigate = useNavigate();
 
   const data = {
+    id: id,
     name: name,
+    username: username,
     email: email,
-    phone: phone,
+    street: street,
+    suite: suite,
+    city: city,
+    zipcode: zipcode,
+    latitude: latitude,
+    longitude: longitude,
+    phoneNumber: phoneNumber,
+    companyName: companyName,
+    companyAddress: companyAddress,
   };
 
   const submit = (e) => {
@@ -25,7 +45,7 @@ function AddStudent() {
   return (
     <div className="w-screen h-full flex flex-col justify-center items-center mt-16">
       <h1 className="text-black text-3xl font-semibold font-Montserrat">
-        AddStudent
+        New Student
       </h1>
 
       <form className="w-[80%] h-full flex flex-col justify-center items-center mt-4">
@@ -38,10 +58,26 @@ function AddStudent() {
         />
 
         <input
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          type="text"
+          placeholder="User name"
+          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+        />
+
+        <input
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setStreet(e.target.value)}
           type="email"
           placeholder="Email"
+          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+        />
+
+        <input
+          value={street}
+          onChange={(e) => setName(e.target.value)}
+          type="text"
+          placeholder="Street"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
