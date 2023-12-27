@@ -153,7 +153,7 @@ function AddStudent() {
             Add
           </button>
           <button
-            onClick={submit}
+            onClick={() => navigate("/students")}
             className="w-[25%] bg-yellow-600 text-xl text-white font-Montserrat font-normal py-4 pl-6  rounded-md"
           >
             Cancel
