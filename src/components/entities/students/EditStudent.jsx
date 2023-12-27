@@ -4,8 +4,17 @@ import axios from "axios";
 
 function EditStudent() {
   const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [street, setStreet] = useState("");
+  const [suite, setSuite] = useState("");
+  const [city, setCity] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [companyAddress, setCompanyAddress] = useState("");
 
   const navigate = useNavigate();
 
@@ -14,8 +23,17 @@ function EditStudent() {
   const loadUser = async () => {
     axios.get(`http://localhost:3004/students/${id}`).then((response) => {
       setName(response.data.name);
+      setUsername(response.data.username);
       setEmail(response.data.email);
-      setPhone(response.data.phoneNumber);
+      setStreet(response.data.street);
+      setSuite(response.data.suite);
+      setCity(response.data.city);
+      setZipcode(response.data.zipcode);
+      setLatitude(response.data.latitude);
+      setLongitude(response.data.longitude);
+      setPhoneNumber(response.data.phoneNumber);
+      setCompanyName(response.data.companyName);
+      setCompanyAddress(response.data.companyAddress);
     });
   };
 
@@ -25,8 +43,17 @@ function EditStudent() {
 
   const data = {
     name: name,
+    username: username,
     email: email,
-    phone: phone,
+    street: street,
+    suite: suite,
+    city: city,
+    zipcode: zipcode,
+    latitude: latitude,
+    longitude: longitude,
+    phoneNumber: phoneNumber,
+    companyName: companyName,
+    companyAddress: companyAddress,
   };
 
   const update = (e) => {
@@ -52,6 +79,14 @@ function EditStudent() {
         />
 
         <input
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          type="text"
+          placeholder="User name"
+          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+        />
+
+        <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
@@ -60,10 +95,74 @@ function EditStudent() {
         />
 
         <input
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          value={street}
+          onChange={(e) => setStreet(e.target.value)}
+          type="text"
+          placeholder="Street"
+          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+        />
+
+        <input
+          value={suite}
+          onChange={(e) => setSuite(e.target.value)}
+          type="text"
+          placeholder="Suite/Apt"
+          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+        />
+
+        <input
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          type="text"
+          placeholder="City"
+          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+        />
+
+        <input
+          value={zipcode}
+          onChange={(e) => setZipcode(e.target.value)}
+          type="text"
+          placeholder="Zipcode"
+          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+        />
+
+        <input
+          value={latitude}
+          onChange={(e) => setLatitude(e.target.value)}
+          type="text"
+          placeholder="Latitude"
+          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+        />
+
+        <input
+          value={longitude}
+          onChange={(e) => setLongitude(e.target.value)}
+          type="text"
+          placeholder="Longitude"
+          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+        />
+
+        <input
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
           type="phone"
           placeholder="Phone Number"
+          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+        />
+
+        <input
+          value={companyName}
+          onChange={(e) => setCompanyName(e.target.value)}
+          type="text"
+          placeholder="Company's name"
+          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+        />
+
+        <input
+          value={companyAddress}
+          onChange={(e) => setCompanyAddress(e.target.value)}
+          type="text"
+          placeholder="Company's address"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
