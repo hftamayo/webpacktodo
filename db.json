@@ -83,6 +83,21 @@
         "name": "GHI Corporation",
         "address": "987 Maple St, Denver, CO 80201"
       }
+    },
+    {
+      "id": 5,
+      "name": "chainel1",
+      "username": "chainel2",
+      "email": "chainel@chainel.com",
+      "street": "chainel3",
+      "suite": "chainel4",
+      "address": {"city": "chainel5"},
+      "zipcode": "chainel6",
+      "latitude": "chainel7",
+      "longitude": "chainel8",
+      "phoneNumber": "1111-11111",
+      "companyName": "chainel9",
+      "companyAddress": "chainel10"
     }
   ]
 }
