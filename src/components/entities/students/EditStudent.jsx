@@ -166,12 +166,20 @@ function EditStudent() {
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
-        <button
-          onClick={update}
-          className="w-[80%] bg-blue-600 text-xl mt-4 text-white font-Montserrat font-normal py-4 pl-6"
-        >
-          Update
-        </button>
+        <div className="w-screen h-full flex justify-center items-center space-x-4 mt-16">
+          <button
+            onClick={update}
+            className="w-[25%] bg-green-600 text-xl text-white font-Montserrat font-normal py-4 pl-6 rounded-md"
+          >
+            Update
+          </button>
+          <button
+            onClick={submit}
+            className="w-[25%] bg-yellow-600 text-xl text-white font-Montserrat font-normal py-4 pl-6  rounded-md"
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );
