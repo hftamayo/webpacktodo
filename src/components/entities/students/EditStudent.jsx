@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -20,8 +20,8 @@ function EditStudent() {
 
   const { id } = useParams();
 
-  const loadUser = async () => {
-    axios.get(`http://localhost:3004/students/${id}`).then((response) => {
+  const loadUser = useCallback(async () => {
+    await axios.get(`http://localhost:3004/students/${id}`).then((response) => {
       setName(response.data.name);
       setUsername(response.data.username);
       setEmail(response.data.email);
@@ -35,11 +35,11 @@ function EditStudent() {
       setCompanyName(response.data.companyName);
       setCompanyAddress(response.data.companyAddress);
     });
-  };
+  }, [id]);
 
   useEffect(() => {
     loadUser();
-  }, []);
+  }, [loadUser]);
 
   const data = {
     id: id,
