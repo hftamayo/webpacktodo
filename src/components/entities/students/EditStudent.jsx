@@ -25,15 +25,15 @@ function EditStudent() {
       setName(response.data.name);
       setUsername(response.data.username);
       setEmail(response.data.email);
-      setStreet(response.data.street);
-      setSuite(response.data.suite);
-      setCity(response.data.city);
-      setZipcode(response.data.zipcode);
-      setLatitude(response.data.latitude);
-      setLongitude(response.data.longitude);
+      setStreet(response.data.address.street);
+      setSuite(response.data.address.suite);
+      setCity(response.data.address.city);
+      setZipcode(response.data.address.zipcode);
+      setLatitude(response.data.position.lat);
+      setLongitude(response.data.position.lng);
       setPhoneNumber(response.data.phoneNumber);
-      setCompanyName(response.data.companyName);
-      setCompanyAddress(response.data.companyAddress);
+      setCompanyName(response.data.company.companyName);
+      setCompanyAddress(response.data.company.companyAddress);
     });
   }, [id]);
 
