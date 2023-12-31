@@ -42,18 +42,25 @@ function EditStudent() {
   }, []);
 
   const data = {
+    id: id,
     name: name,
     username: username,
     email: email,
-    street: street,
-    suite: suite,
-    city: city,
-    zipcode: zipcode,
-    latitude: latitude,
-    longitude: longitude,
+    address: {
+      street: street,
+      suite: suite,
+      city: city,
+      zipcode: zipcode,
+    },
+    position: {
+      lat: parseFloat(latitude),
+      lng: parseFloat(longitude),
+    },
     phoneNumber: phoneNumber,
-    companyName: companyName,
-    companyAddress: companyAddress,
+    company: {
+      companyName: companyName,
+      companyAddress: companyAddress,
+    },
   };
 
   const update = (e) => {
