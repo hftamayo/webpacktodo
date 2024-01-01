@@ -86,6 +86,7 @@ function EditStudent() {
           </label>
           <input
             value={name}
+            autoFocus={true}
             onChange={(e) => setName(e.target.value)}
             type="text"
             placeholder="Name"
@@ -157,116 +158,116 @@ function EditStudent() {
           />
         </div>
 
-        <div className="flex items-center space-x-4">        
-        <label
-          htmlFor="city"
-          className="text-black font-semibold font-Inter text-xl"
-        >
-          City
-        </label>
-        <input
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          type="text"
-          placeholder="City"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
+        <div className="flex items-center space-x-4">
+          <label
+            htmlFor="city"
+            className="text-black font-semibold font-Inter text-xl"
+          >
+            City
+          </label>
+          <input
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            type="text"
+            placeholder="City"
+            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+          />
         </div>
 
-        <div className="flex items-center space-x-4">        
-        <label
-          htmlFor="zipcode"
-          className="text-black font-semibold font-Inter text-xl"
-        >
-          ZIP Code
-        </label>
-        <input
-          value={zipcode}
-          onChange={(e) => setZipcode(e.target.value)}
-          type="text"
-          placeholder="Zipcode"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
+        <div className="flex items-center space-x-4">
+          <label
+            htmlFor="zipcode"
+            className="text-black font-semibold font-Inter text-xl"
+          >
+            ZIP Code
+          </label>
+          <input
+            value={zipcode}
+            onChange={(e) => setZipcode(e.target.value)}
+            type="text"
+            placeholder="Zipcode"
+            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+          />
         </div>
 
-        <div className="flex items-center space-x-4">        
-        <label
-          htmlFor="latitude"
-          className="text-black font-semibold font-Inter text-xl"
-        >
-          Latitude
-        </label>
-        <input
-          value={latitude}
-          onChange={(e) => setLatitude(e.target.value)}
-          type="text"
-          placeholder="Latitude"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
+        <div className="flex items-center space-x-4">
+          <label
+            htmlFor="latitude"
+            className="text-black font-semibold font-Inter text-xl"
+          >
+            Latitude
+          </label>
+          <input
+            value={latitude}
+            onChange={(e) => setLatitude(e.target.value)}
+            type="text"
+            placeholder="Latitude"
+            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+          />
         </div>
 
-        <div className="flex items-center space-x-4">        
-        <label
-          htmlFor="longitude"
-          className="text-black font-semibold font-Inter text-xl"
-        >
-          Longitude
-        </label>
-        <input
-          value={longitude}
-          onChange={(e) => setLongitude(e.target.value)}
-          type="text"
-          placeholder="Longitude"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
+        <div className="flex items-center space-x-4">
+          <label
+            htmlFor="longitude"
+            className="text-black font-semibold font-Inter text-xl"
+          >
+            Longitude
+          </label>
+          <input
+            value={longitude}
+            onChange={(e) => setLongitude(e.target.value)}
+            type="text"
+            placeholder="Longitude"
+            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+          />
         </div>
 
-        <div className="flex items-center space-x-4">        
-        <label
-          htmlFor="phoneNumber"
-          className="text-black font-semibold font-Inter text-xl"
-        >
-          Phone Number
-        </label>
-        <input
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-          type="phone"
-          placeholder="Phone Number"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
+        <div className="flex items-center space-x-4">
+          <label
+            htmlFor="phoneNumber"
+            className="text-black font-semibold font-Inter text-xl"
+          >
+            Phone Number
+          </label>
+          <input
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            type="phone"
+            placeholder="Phone Number"
+            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+          />
         </div>
 
-        <div className="flex items-center space-x-4">        
-        <label
-          htmlFor="companyName"
-          className="text-black font-semibold font-Inter text-xl"
-        >
-          Company's Name
-        </label>
-        <input
-          value={companyName}
-          onChange={(e) => setCompanyName(e.target.value)}
-          type="text"
-          placeholder="Company's name"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
+        <div className="flex items-center space-x-4">
+          <label
+            htmlFor="companyName"
+            className="text-black font-semibold font-Inter text-xl"
+          >
+            Company's Name
+          </label>
+          <input
+            value={companyName}
+            onChange={(e) => setCompanyName(e.target.value)}
+            type="text"
+            placeholder="Company's name"
+            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+          />
         </div>
 
-        <div className="flex items-center space-x-4">        
-        <label
-          htmlFor="companyAddress"
-          className="text-black font-semibold font-Inter text-xl"
-        >
-          Comapny's Address
-        </label>
-        <input
-          value={companyAddress}
-          onChange={(e) => setCompanyAddress(e.target.value)}
-          type="text"
-          placeholder="Company's address"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
+        <div className="flex items-center space-x-4">
+          <label
+            htmlFor="companyAddress"
+            className="text-black font-semibold font-Inter text-xl"
+          >
+            Comapny's Address
+          </label>
+          <input
+            value={companyAddress}
+            onChange={(e) => setCompanyAddress(e.target.value)}
+            type="text"
+            placeholder="Company's address"
+            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
+          />
         </div>
 
         <div className="w-screen h-full flex justify-center items-center space-x-4 mt-16">

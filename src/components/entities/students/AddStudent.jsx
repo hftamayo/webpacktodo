@@ -57,6 +57,7 @@ function AddStudent() {
       <form className="w-[80%] h-full flex flex-col justify-center items-center mt-4">
         <input
           value={name}
+          autoFocus={true}
           onChange={(e) => setName(e.target.value)}
           type="text"
           placeholder="Name"
