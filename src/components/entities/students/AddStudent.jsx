@@ -47,7 +47,10 @@ function AddStudent() {
     axios
       .post("http://localhost:3004/students", data)
       .then(() => {
-        toast.success("Data added successfully!");
+        toast.success("Data added successfully!", {
+          className: 'bg-black text-yellow-500',
+          progressClassName: 'bg-blue-600',
+        });
         navigate("/students");
       })
       .catch((error) => {
