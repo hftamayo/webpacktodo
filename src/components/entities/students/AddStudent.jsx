@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function AddStudent() {
   const [id, setId] = useState("");
@@ -45,7 +46,15 @@ function AddStudent() {
     e.preventDefault();
     axios
       .post("http://localhost:3004/students", data)
-      .then(navigate("/students"));
+      .then(() => {
+        toast.success("Data added successfully!");
+        navigate("/students");
+      })
+      .catch((error) => {
+        toast.error(
+          "An error occurred while trying to save the data, the event was reported. Please try again later."
+        );
+      });
   };
 
   return (
