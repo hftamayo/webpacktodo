@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function DisplayDataTable() {
   const [users, setUsers] = useState([]);
@@ -16,9 +17,20 @@ function DisplayDataTable() {
   }, []);
 
   function deleteStudent(id) {
-    axios.delete(`http://localhost:3004/students/${id}`).then((response) => {
-      loadUsers();
-    });
+    axios
+      .delete(`http://localhost:3004/students/${id}`)
+      .then((response) => {
+        toast.success("Data deleted permanently", {
+          className: "bg-black text-yellow-500",
+          progressClassName: "bg-blue-600",
+        });
+        loadUsers();
+      })
+      .catch((error) => {
+        toast.error(
+          "An error occurred while trying to delete the selected data, the event was reported. Please try again later."
+        );
+      });
   }
 
   return (
