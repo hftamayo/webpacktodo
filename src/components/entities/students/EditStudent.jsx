@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function EditStudent() {
   const [name, setName] = useState("");
@@ -67,7 +68,18 @@ function EditStudent() {
     e.preventDefault();
     axios
       .put(`http://localhost:3004/students/${id}`, data)
-      .then(navigate("/students"));
+      .then(() => {
+        toast.success("Data updated successfully!", {
+          className: "bg-black text-yellow-500",
+          progressClassName: "bg-blue-600",
+        });
+        navigate("/students");
+      })
+      .catch((error) => {
+        toast.error(
+          "An error occurred while trying to save the data, the event was reported. Please try again later."
+        );
+      });
   };
 
   return (
