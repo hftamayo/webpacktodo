@@ -13,7 +13,7 @@ function DisplayDataTable() {
 
   useEffect(() => {
     loadUsers();
-  }, [users]);
+  }, []);
 
   function deleteStudent(id) {
     axios.delete(`http://localhost:3004/students/${id}`).then((response) => {
