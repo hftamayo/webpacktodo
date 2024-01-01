@@ -1,6 +1,7 @@
 import React from "react";
 import DisplayDataTable from "./DisplayDataTable";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function ViewStudents() {
   return (
