@@ -77,7 +77,7 @@ function EditStudent() {
       })
       .catch((error) => {
         toast.error(
-          "An error occurred while trying to save the data, the event was reported. Please try again later."
+          "An error occurred while trying to update the selected data, the event was reported. Please try again later."
         );
       });
   };
