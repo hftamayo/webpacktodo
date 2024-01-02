@@ -105,14 +105,36 @@ function DisplayDataTable() {
                 >
                   <FaTrash />
                   <span className="ml-2">FaFa</span>
-                </Link>                
+                </Link>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       <DialogBox open={open} onClose={() => setOpen(false)}>
-        <FaTrash size={56} className="mx-auto text-red-500" />
+        <div className="text-center w-56">
+          <FaTrash size={56} className="mx-auto text-red-500" />
+          <div className="mx-auto my-4 w-48">
+            <h3 className="text-lg font-black text-gray-800">Confirm Delete</h3>
+            <p className="text-sm text-gray-500">
+              Are you sure you want to delete this data?
+            </p>
+          </div>
+          <div className="flex gap-4">
+            <button
+              onClick={() => setOpen(false)}
+              className="px-6 py-2 font-normal text-white bg-gray-600 rounded-lg"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={() => setOpen(false)}
+              className="px-6 py-2 font-normal text-white bg-red-600 rounded-lg"
+            >
+              Delete
+            </button>
+            </div>
+        </div>
       </DialogBox>
     </div>
   );
