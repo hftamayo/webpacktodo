@@ -7,7 +7,7 @@ import DialogBox from "../../ui/DialogBox";
 
 function DisplayDataTable() {
   const [users, setUsers] = useState([]);
-  const [open, setOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
 
   const loadUsers = async () => {
     axios.get("http://localhost:3004/students").then((response) => {
@@ -93,49 +93,50 @@ function DisplayDataTable() {
                   Edit
                 </Link>
                 <Link
-                  onClick={() => deleteStudent(data.id)}
+                  onClick={() => setSelectedId(data.id)}
                   className="flex items-center px-6 py-2 font-normal text-white bg-red-600 rounded-lg w-30"
                 >
                   <FaTrash />
                   <span className="ml-2">Delete</span>
                 </Link>
-                <Link
-                  onClick={() => setOpen(true)}
-                  className="flex items-center px-6 py-2 font-normal text-white bg-orange-400 rounded-lg w-30"
+                <DialogBox
+                  open={selectedId !== null}
+                  onClose={() => setSelectedId(null)}
                 >
-                  <FaTrash />
-                  <span className="ml-2">FaFa</span>
-                </Link>
+                  <div className="text-center w-56">
+                    <FaTrash size={56} className="mx-auto text-red-500" />
+                    <div className="mx-auto my-4 w-48">
+                      <h3 className="text-lg font-black text-gray-800">
+                        Confirm Delete
+                      </h3>
+                      <p className="text-sm text-gray-500">
+                        Are you sure you want to delete this data?
+                      </p>
+                    </div>
+                    <div className="flex gap-4">
+                      <button
+                        className="px-6 py-2 font-normal text-white bg-gray-600 rounded-lg"
+                        onClick={() => setSelectedId(null)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="px-6 py-2 font-normal text-white bg-red-600 rounded-lg"
+                        onClick={() => {
+                          deleteStudent(selectedId);
+                          setSelectedId(null);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </DialogBox>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <DialogBox open={open} onClose={() => setOpen(false)}>
-        <div className="text-center w-56">
-          <FaTrash size={56} className="mx-auto text-red-500" />
-          <div className="mx-auto my-4 w-48">
-            <h3 className="text-lg font-black text-gray-800">Confirm Delete</h3>
-            <p className="text-sm text-gray-500">
-              Are you sure you want to delete this data?
-            </p>
-          </div>
-          <div className="flex gap-4">
-            <button
-              onClick={() => setOpen(false)}
-              className="px-6 py-2 font-normal text-white bg-gray-600 rounded-lg"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={() => setOpen(false)}
-              className="px-6 py-2 font-normal text-white bg-red-600 rounded-lg"
-            >
-              Delete
-            </button>
-            </div>
-        </div>
-      </DialogBox>
     </div>
   );
 }
