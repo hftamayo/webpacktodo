@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FaTrash } from "react-icons/fa";
+import DialogBox from "../../ui/DialogBox";
 
 function DisplayDataTable() {
   const [users, setUsers] = useState([]);
+  const [open, setOpen] = useState(false);
 
   const loadUsers = async () => {
     axios.get("http://localhost:3004/students").then((response) => {
@@ -91,15 +94,26 @@ function DisplayDataTable() {
                 </Link>
                 <Link
                   onClick={() => deleteStudent(data.id)}
-                  className="px-6 py-2 font-normal text-white bg-red-600 rounded-lg"
+                  className="flex items-center px-6 py-2 font-normal text-white bg-red-600 rounded-lg w-30"
                 >
-                  Delete
+                  <FaTrash />
+                  <span className="ml-2">Delete</span>
                 </Link>
+                <Link
+                  onClick={() => setOpen(true)}
+                  className="flex items-center px-6 py-2 font-normal text-white bg-orange-400 rounded-lg w-30"
+                >
+                  <FaTrash />
+                  <span className="ml-2">FaFa</span>
+                </Link>                
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <DialogBox open={open} onClose={() => setOpen(false)}>
+        <FaTrash size={56} className="mx-auto text-red-500" />
+      </DialogBox>
     </div>
   );
 }
