@@ -8,6 +8,7 @@ import DialogBox from "../../ui/DialogBox";
 function DisplayDataTable() {
   const [users, setUsers] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
+  const [selectedStudentName, setSelectedStudentName] = useState(null);
 
   const loadUsers = async () => {
     axios.get("http://localhost:3004/students").then((response) => {
@@ -93,7 +94,10 @@ function DisplayDataTable() {
                   Edit
                 </Link>
                 <Link
-                  onClick={() => setSelectedId(data.id)}
+                  onClick={() => {
+                    setSelectedId(data.id);
+                    setSelectedStudentName(data.name);
+                  }}
                   className="flex items-center px-6 py-2 font-normal text-white bg-red-600 rounded-lg w-30"
                 >
                   <FaTrash />
@@ -101,7 +105,11 @@ function DisplayDataTable() {
                 </Link>
                 <DialogBox
                   open={selectedId !== null}
-                  onClose={() => setSelectedId(null)}
+                  onClose={() => {
+                    setSelectedId(null);
+                    setSelectedStudentName(null);
+                  }}
+                  studentName={selectedStudentName}
                 >
                   <div className="text-center w-56">
                     <FaTrash size={56} className="mx-auto text-red-500" />
@@ -110,13 +118,19 @@ function DisplayDataTable() {
                         Confirm Delete
                       </h3>
                       <p className="text-sm text-gray-500">
-                        Are you sure you want to delete this data?
+                        Are you sure you want to delete this data?{" "}
+                        <span className="font-bold text-red-500">
+                          {selectedStudentName}
+                        </span>
                       </p>
                     </div>
                     <div className="flex gap-4">
                       <button
                         className="px-6 py-2 font-normal text-white bg-gray-600 rounded-lg"
-                        onClick={() => setSelectedId(null)}
+                        onClick={() => {
+                          setSelectedId(null);
+                          setSelectedStudentName(null);
+                        }}
                       >
                         Cancel
                       </button>
@@ -125,6 +139,7 @@ function DisplayDataTable() {
                         onClick={() => {
                           deleteStudent(selectedId);
                           setSelectedId(null);
+                          setSelectedStudentName(null);
                         }}
                       >
                         Delete
