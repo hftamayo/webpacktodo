@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getStudent } from "../../store/studentSlice";
 import { toast } from "react-toastify";
 import { FaTrash } from "react-icons/fa";
 import DialogBox from "../../ui/DialogBox";
 
 function DisplayDataTable() {
-  const [users, setUsers] = useState([]);
+  const dispatch = useDispatch();
+  const students = useSelector((state) => state.students.students);
   const [selectedId, setSelectedId] = useState(null);
   const [selectedStudentName, setSelectedStudentName] = useState(null);
 
-  const loadUsers = async () => {
+  const loadStudents = () => {
     try {
-      await axios.get("http://localhost:3004/students").then((response) => {
-        setUsers(response.data.reverse());
-      });
+      dispatch(getStudent());
     } catch (error) {
       toast.error(
         "An error occurred while trying to load the data, the event was reported. Please try again later."
@@ -23,8 +24,8 @@ function DisplayDataTable() {
   };
 
   useEffect(() => {
-    loadUsers();
-  }, []);
+    loadStudents();
+  }, [dispatch]);
 
   function deleteStudent(id) {
     axios
@@ -34,7 +35,7 @@ function DisplayDataTable() {
           className: "bg-black text-yellow-500",
           progressClassName: "bg-blue-600",
         });
-        loadUsers();
+        loadStudents();
       })
       .catch((error) => {
         toast.error(
@@ -69,7 +70,7 @@ function DisplayDataTable() {
           </tr>
         </thead>
         <tbody>
-          {users.map((data, index) => (
+          {students.map((data, index) => (
             <tr key={data.id} className="bg-white border-b">
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                 {index + 1}
