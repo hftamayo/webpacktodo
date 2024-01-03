@@ -1,12 +1,35 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const studentSlice = createSlice({
-    name: "students",
-    initialState: {
-        students: []},
-    reducers: {
-    }
+export const getStudent = createAsyncThunk("students/getStudent", async () => {
+  const response = await axios.get("http://localhost:3004/students");
+  return response.data.reverse();
 });
 
-export const {} = studentSlice.actions;
+const initialState = {
+  students: [],
+  status: "idle",
+  error: null,
+};
+
+const studentSlice = createSlice({
+  name: "students",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(getStudent.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getStudent.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.students = state.students.concat(action.payload);
+      })
+      .addCase(getStudent.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
+  },
+});
+
 export default studentSlice.reducer;
