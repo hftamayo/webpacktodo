@@ -11,9 +11,15 @@ function DisplayDataTable() {
   const [selectedStudentName, setSelectedStudentName] = useState(null);
 
   const loadUsers = async () => {
-    axios.get("http://localhost:3004/students").then((response) => {
-      setUsers(response.data.reverse());
-    });
+    try {
+      await axios.get("http://localhost:3004/students").then((response) => {
+        setUsers(response.data.reverse());
+      });
+    } catch (error) {
+      toast.error(
+        "An error occurred while trying to load the data, the event was reported. Please try again later."
+      );
+    }
   };
 
   useEffect(() => {
