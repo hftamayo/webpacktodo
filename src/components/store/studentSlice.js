@@ -31,10 +31,14 @@ const studentSlice = createSlice({
     builder
       .addCase(getStudent.pending, (state) => {
         state.status = "loading";
+        state.error = null;
       })
       .addCase(getStudent.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.students = Array.isArray(action.payload) ? action.payload : [action.payload];
+        state.students = Array.isArray(action.payload)
+          ? action.payload
+          : [action.payload];
+        state.error = null;
       })
       .addCase(getStudent.rejected, (state, action) => {
         state.status = "failed";
@@ -42,10 +46,16 @@ const studentSlice = createSlice({
       })
       .addCase(addStudent.pending, (state) => {
         state.status = "loading";
+        state.error = null;
       })
       .addCase(addStudent.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.students.push(action.payload);
+        if (Array.isArray(action.payload)) {
+          state.students = state.students.concat(action.payload);
+        } else {
+          state.students.push(action.payload);
+        }
+        state.error = null;
       })
       .addCase(addStudent.rejected, (state, action) => {
         state.status = "failed";
