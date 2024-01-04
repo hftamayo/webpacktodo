@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { addStudent } from "../../store/studentSlice";
+import { useDispatch } from "react-redux";
 
 function AddStudent() {
   const [id, setId] = useState("");
@@ -18,6 +20,7 @@ function AddStudent() {
   const [companyName, setCompanyName] = useState("");
   const [companyAddress, setCompanyAddress] = useState("");
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const data = {
@@ -42,14 +45,15 @@ function AddStudent() {
     },
   };
 
-  const submit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:3004/students", data)
-      .then(() => {
+      .then((response) => {
+        dispatch(addStudent(response.data));
         toast.success("Data added successfully!", {
-          className: 'bg-black text-yellow-500',
-          progressClassName: 'bg-blue-600',
+          className: "bg-black text-yellow-500",
+          progressClassName: "bg-blue-600",
         });
         navigate("/students");
       })
@@ -166,7 +170,7 @@ function AddStudent() {
 
         <div className="w-screen h-full flex justify-center items-center space-x-4 mt-16">
           <button
-            onClick={submit}
+            onClick={handleSubmit}
             className="w-[25%] bg-green-600 text-xl text-white font-Montserrat font-normal py-4 pl-6 rounded-md"
           >
             Add
