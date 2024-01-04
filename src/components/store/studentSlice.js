@@ -34,7 +34,7 @@ const studentSlice = createSlice({
       })
       .addCase(getStudent.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.students = state.students.concat(action.payload);
+        state.students = Array.isArray(action.payload) ? action.payload : [action.payload];
       })
       .addCase(getStudent.rejected, (state, action) => {
         state.status = "failed";
@@ -45,7 +45,7 @@ const studentSlice = createSlice({
       })
       .addCase(addStudent.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.students = state.students.concat(action.payload);
+        state.students.push(action.payload);
       })
       .addCase(addStudent.rejected, (state, action) => {
         state.status = "failed";
