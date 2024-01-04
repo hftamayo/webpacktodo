@@ -15,7 +15,13 @@ function DisplayDataTable() {
 
   const loadStudents = () => {
     try {
-      dispatch(getStudent());
+      dispatch(getStudent()).then((action) => {
+        if (getStudent.fulfilled.match(action)) {
+          console.log("Status: succeeded"); // Log the status
+        } else if (getStudent.rejected.match(action)) {
+          console.log("Status: failed"); // Log the status
+        }
+      });
     } catch (error) {
       toast.error(
         "An error occurred while trying to load the data, the event was reported. Please try again later."
@@ -25,7 +31,7 @@ function DisplayDataTable() {
 
   useEffect(() => {
     loadStudents();
-  }, [dispatch]);
+  }, []);
 
   function deleteStudent(id) {
     axios
