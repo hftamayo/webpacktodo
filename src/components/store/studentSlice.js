@@ -6,6 +6,11 @@ export const getStudent = createAsyncThunk("students/getStudent", async () => {
   return response.data.reverse();
 });
 
+export const addStudent = createAsyncThunk("students/addStudent", async (student) => {
+  const response = await axios.post("http://localhost:3004/students", student);
+  return response.data;
+});
+
 const initialState = {
   students: [],
   status: "idle",
