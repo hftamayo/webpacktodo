@@ -47,21 +47,21 @@ function AddStudent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3004/students", data)
-      .then((response) => {
-        dispatch(addStudent(response.data));
+    dispatch(addStudent(data)).then((action) => {
+      if (addStudent.fulfilled.match(action)) {
         toast.success("Data added successfully!", {
           className: "bg-black text-yellow-500",
           progressClassName: "bg-blue-600",
         });
+        console.log("AddStudent Status: ", action.payload.status); // log the status
         navigate("/students");
-      })
-      .catch((error) => {
+      } else if (addStudent.rejected.match(action)) {
         toast.error(
           "An error occurred while trying to save the data, the event was reported. Please try again later."
         );
-      });
+        console.log("AddStudent Status: ", action.payload.status); // log the status
+      }
+    });
   };
 
   return (
