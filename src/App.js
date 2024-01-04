@@ -1,6 +1,7 @@
 import Navbar from "./Pages/Navbar";
 import Dashboard from "./Pages/Dashboard";
 import { Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import ViewStudents from "./components/entities/students/ViewStudents";
 import EditStudent from "./components/entities/students/EditStudent";
 import DetailStudent from "./components/entities/students/DetailStudent";
@@ -10,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <div className="app">
+      <BrowserRouter >
       <Navbar />
       <ToastContainer position="bottom-left" />
       <Routes>
@@ -19,6 +21,7 @@ function App() {
         <Route path="/newstudent/" element={<AddStudent />} />"
         <Route path="/editstudent/:id" element={<EditStudent />} />
       </Routes>
+      </BrowserRouter>
     </div>
   );
 }
