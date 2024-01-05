@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getStudent = createAsyncThunk("students/getStudent", async () => {
+export const getStudents = createAsyncThunk("students/getStudents", async () => {
   const response = await axios.get("http://localhost:3004/students");
   return response.data.reverse();
 });
@@ -28,6 +28,14 @@ export const updateStudent = createAsyncThunk(
   }
 );
 
+export const getStudent = createAsyncThunk(
+  "students/getStudent",
+  async (id) => {
+    const response = await axios.get(`http://localhost:3004/students/${id}`);
+    return response.data;
+  }
+);
+
 const initialState = {
   students: [],
   status: "idle",
@@ -40,18 +48,18 @@ const studentSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getStudent.pending, (state) => {
+      .addCase(getStudents.pending, (state) => {
         state.status = "loading";
         state.error = null;
       })
-      .addCase(getStudent.fulfilled, (state, action) => {
+      .addCase(getStudents.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.students = Array.isArray(action.payload)
           ? action.payload
           : [action.payload];
         state.error = null;
       })
-      .addCase(getStudent.rejected, (state, action) => {
+      .addCase(getStudents.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
@@ -91,6 +99,21 @@ const studentSlice = createSlice({
         state.error = null;
       })
       .addCase(updateStudent.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(getStudent.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(getStudent.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.students = Array.isArray(action.payload)
+          ? action.payload
+          : [action.payload];
+        state.error = null;
+      })
+      .addCase(getStudent.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
