@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getStudent } from "../../store/studentSlice";
 
 function DetailStudent() {
-  const [user, setUser] = useState();
+  const { id } = useParams();
+  const studentId = Number.parseInt(id);
+  const dispatch = useDispatch();
+  const student = useSelector((state) =>
+    state.students.students.find((student) => student.id === studentId)
+  );
 
   useEffect(() => {
-    axios.get(`http://localhost:3004/students/${id}`).then((response) => {
-      setUser(response.data);
-    });
-  }, [user]);
+    if (!student) {
+      dispatch(getStudent(id));
+    }
+  }, [dispatch, id, student]);
 
-  const { id } = useParams();
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div>
@@ -22,15 +27,15 @@ function DetailStudent() {
 
       <div className="w-[750px] h-[425px] flex justify-center items-center px-6 py-4 border border-black mt-16">
         <div className="w-5/12 flex flex-col space-y-4">
-        <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             Badge
-          </h2>          
+          </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             Full Name
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             User Name
-          </h2>          
+          </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             Email
           </h2>
@@ -39,7 +44,7 @@ function DetailStudent() {
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             Suite
-          </h2>          
+          </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             City
           </h2>
@@ -51,10 +56,10 @@ function DetailStudent() {
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             Y
-          </h2>                    
+          </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             Phone Number
-          </h2>          
+          </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             Company's Name
           </h2>
@@ -64,44 +69,44 @@ function DetailStudent() {
         </div>
 
         <div className="w-7/12 flex flex-col space-y-4">
-        <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.id}
-          </h2>          
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.name}
+            {student?.id}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.username}
-          </h2>          
-          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.email}
+            {student?.name}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.address.street}
+            {student?.username}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.address.suite}
-          </h2>          
-          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.address.city}
+            {student?.email}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.address.zipcode}
+            {student?.address.street}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.position.lat}
-          </h2>          
-          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.position.lng}
-          </h2>          
-          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.phoneNumber}
-          </h2>          
-          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.company.name}
+            {student?.address.suite}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.company.address}
+            {student?.address.city}
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            {student?.address.zipcode}
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            {student?.position.lat}
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            {student?.position.lng}
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            {student?.phoneNumber}
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            {student?.company.name}
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            {student?.company.address}
           </h2>
         </div>
       </div>
