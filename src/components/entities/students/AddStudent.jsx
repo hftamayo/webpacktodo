@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { addStudent } from "../../store/studentSlice";
 import { useDispatch } from "react-redux";
