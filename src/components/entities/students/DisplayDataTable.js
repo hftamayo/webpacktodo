@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getStudent } from "../../store/studentSlice";
+import { getStudents } from "../../store/studentSlice";
 import { toast } from "react-toastify";
 import { FaTrash } from "react-icons/fa";
 import DialogBox from "../../ui/DialogBox";
@@ -15,10 +15,10 @@ function DisplayDataTable() {
 
   const loadStudents = () => {
     try {
-      dispatch(getStudent()).then((action) => {
-        if (getStudent.fulfilled.match(action)) {
+      dispatch(getStudents()).then((action) => {
+        if (getStudents.fulfilled.match(action)) {
           console.log("Status: succeeded"); // Log the status
-        } else if (getStudent.rejected.match(action)) {
+        } else if (getStudents.rejected.match(action)) {
           console.log("Status: failed"); // Log the status
         }
       });
