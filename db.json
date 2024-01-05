@@ -91,13 +91,85 @@
       "email": "chainel@chainel.com",
       "street": "chainel3",
       "suite": "chainel4",
-      "address": {"city": "chainel5"},
-      "zipcode": "chainel6",
-      "latitude": "chainel7",
-      "longitude": "chainel8",
+      "address": {
+        "street": "pp1",
+        "suite": "pp2",
+        "city": "pp3",
+        "zipcode": "pp4"
+      },
+      "position": {
+        "lat": 1222,
+        "lng": 2344
+      },
+
       "phoneNumber": "1111-11111",
-      "companyName": "chainel9",
-      "companyAddress": "chainel10"
+      "company": {
+        "companyName": "fkk",
+        "companyAddress": "fr"
+      }
+    },
+    {
+      "id": 6,
+      "name": "bugs everywhere",
+      "username": "bugs",
+      "email": "bug@dev.com",
+      "address": {
+        "street": "pp1",
+        "suite": "pp2",
+        "city": "pp3",
+        "zipcode": "pp4"
+      },
+      "position": {
+        "lat": 1222,
+        "lng": 2344
+      },
+      "phoneNumber": "3494-4444",
+      "company": {
+        "companyName": "fkk",
+        "companyAddress": "fr"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Javier Milei",
+      "username": "javo",
+      "email": "javier@argentina.com",
+      "address": {
+        "street": "loco1",
+        "suite": "loco2",
+        "city": "loco3",
+        "zipcode": "loco4"
+      },
+      "position": {
+        "lat": 12222,
+        "lng": 34444
+      },
+      "phoneNumber": "5555-8888",
+      "company": {
+        "companyName": "loco5",
+        "companyAddress": "loco6"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Daniel el Travieso",
+      "username": "daniel",
+      "email": "daniel@eltravieso.com",
+      "address": {
+        "street": "d01",
+        "suite": "d02",
+        "city": "d03",
+        "zipcode": "d04"
+      },
+      "position": {
+        "lat": 55555,
+        "lng": 66777
+      },
+      "phoneNumber": "7788-7777",
+      "company": {
+        "companyName": "chivoee",
+        "companyAddress": "chivo344"
+      }
     }
   ]
 }
