@@ -17,6 +17,10 @@ function DetailStudent() {
     }
   }, [dispatch, id, student]);
 
+  if (!student) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div>
