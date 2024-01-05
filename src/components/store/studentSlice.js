@@ -17,6 +17,17 @@ export const addStudent = createAsyncThunk(
   }
 );
 
+export const updateStudent = createAsyncThunk(
+  "students/updateStudent",
+  async (student) => {
+    const response = await axios.put(
+      `http://localhost:3004/students/${student.id}`,
+      student
+    );
+    return response.data;
+  }
+);
+
 const initialState = {
   students: [],
   status: "idle",
@@ -58,6 +69,28 @@ const studentSlice = createSlice({
         state.error = null;
       })
       .addCase(addStudent.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(updateStudent.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(updateStudent.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        const { id, name, email, phone, address } = action.payload;
+        const existingStudent = state.students.find(
+          (student) => student.id === id
+        );
+        if (existingStudent) {
+          existingStudent.name = name;
+          existingStudent.email = email;
+          existingStudent.phone = phone;
+          existingStudent.address = address;
+        }
+        state.error = null;
+      })
+      .addCase(updateStudent.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
