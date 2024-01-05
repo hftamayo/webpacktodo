@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudent } from "../../store/studentSlice";
+import { toast } from "react-toastify";
 
 function DetailStudent() {
   const { id } = useParams();
@@ -13,7 +14,19 @@ function DetailStudent() {
 
   useEffect(() => {
     if (!student) {
-      dispatch(getStudent(id));
+      try {
+        dispatch(getStudent()).then((action) => {
+          if (getStudent.fulfilled.match(action)) {
+            console.log("Status: succeeded"); // Log the status
+          } else if (getStudent.rejected.match(action)) {
+            console.log("Status: failed"); // Log the status
+          }
+        });
+      } catch (error) {
+        toast.error(
+          "An error occurred while trying to load the data, the event was reported. Please try again later."
+        );
+      }
     }
   }, [dispatch, id, student]);
 
