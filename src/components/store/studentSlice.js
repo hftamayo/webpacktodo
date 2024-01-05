@@ -1,10 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getStudents = createAsyncThunk("students/getStudents", async () => {
-  const response = await axios.get("http://localhost:3004/students");
-  return response.data.reverse();
-});
+export const getStudents = createAsyncThunk(
+  "students/getStudents",
+  async () => {
+    const response = await axios.get("http://localhost:3004/students");
+    return response.data.reverse();
+  }
+);
 
 export const addStudent = createAsyncThunk(
   "students/addStudent",

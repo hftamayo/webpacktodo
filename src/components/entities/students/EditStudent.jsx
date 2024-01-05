@@ -1,7 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
+import { updateStudent, getStudent } from "../../store/studentSlice";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 function EditStudent() {
   const [name, setName] = useState("");
@@ -20,27 +22,47 @@ function EditStudent() {
   const navigate = useNavigate();
 
   const { id } = useParams();
+  const studentId = Number.parseInt(id);
+  const dispatch = useDispatch();
 
-  const loadUser = useCallback(async () => {
-    await axios.get(`http://localhost:3004/students/${id}`).then((response) => {
-      setName(response.data.name);
-      setUsername(response.data.username);
-      setEmail(response.data.email);
-      setStreet(response.data.address.street);
-      setSuite(response.data.address.suite);
-      setCity(response.data.address.city);
-      setZipcode(response.data.address.zipcode);
-      setLatitude(response.data.position.lat);
-      setLongitude(response.data.position.lng);
-      setPhoneNumber(response.data.phoneNumber);
-      setCompanyName(response.data.company.companyName);
-      setCompanyAddress(response.data.company.companyAddress);
-    });
-  }, [id]);
+  const student = useSelector((state) =>
+    state.students.students.find((student) => student.id === studentId)
+  );
 
   useEffect(() => {
-    loadUser();
-  }, [loadUser]);
+    if (!student) {
+      try {
+        dispatch(getStudent()).then((action) => {
+          if (getStudent.fulfilled.match(action)) {
+            console.log("Status: succeeded"); // Log the status
+          } else if (getStudent.rejected.match(action)) {
+            console.log("Status: failed"); // Log the status
+          }
+        });
+      } catch (error) {
+        toast.error(
+          "An error occurred while trying to load the data, the event was reported. Please try again later."
+        );
+      }
+    }
+  }, [dispatch, id, student]);
+
+  useEffect(() => {
+    if (student) {
+      setName(student.name);
+      setUsername(student.username);
+      setEmail(student.email);
+      setStreet(student.address.street);
+      setSuite(student.address.suite);
+      setCity(student.address.city);
+      setZipcode(student.address.zipcode);
+      setLatitude(student.position.lat);
+      setLongitude(student.position.lng);
+      setPhoneNumber(student.phoneNumber);
+      setCompanyName(student.company.companyName);
+      setCompanyAddress(student.company.companyAddress);
+    }
+  }, [student]);
 
   const data = {
     id: id,
@@ -66,20 +88,21 @@ function EditStudent() {
 
   const update = (e) => {
     e.preventDefault();
-    axios
-      .put(`http://localhost:3004/students/${id}`, data)
-      .then(() => {
+    dispatch(updateStudent(data)).then((action) => {
+      if (updateStudent.fulfilled.match(action)) {
         toast.success("Data updated successfully!", {
           className: "bg-black text-yellow-500",
           progressClassName: "bg-blue-600",
         });
+        console.log("UpdateStudent Status: ", action.payload.status); // log the status
         navigate("/students");
-      })
-      .catch((error) => {
+      } else if (updateStudent.rejected.match(action)) {
         toast.error(
-          "An error occurred while trying to update the selected data, the event was reported. Please try again later."
+          "An error occurred while trying to update the data, the event was reported. Please try again later."
         );
-      });
+        console.log("UpdateStudent Status: ", action.payload.status); // log the status
+      }
+    });
   };
 
   return (
