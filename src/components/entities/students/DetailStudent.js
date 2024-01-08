@@ -1,18 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getStudent } from "../../store/studentSlice";
+import { toast } from "react-toastify";
 
 function DetailStudent() {
-  const [user, setUser] = useState();
+  const { id } = useParams();
+  const studentId = Number.parseInt(id);
+  const dispatch = useDispatch();
+  const student = useSelector((state) =>
+    state.students.students.find((student) => student.id === studentId)
+  );
 
   useEffect(() => {
-    axios.get(`http://localhost:3004/students/${id}`).then((response) => {
-      setUser(response.data);
-    });
-  }, [user]);
+    if (!student) {
+      try {
+        dispatch(getStudent()).then((action) => {
+          if (getStudent.fulfilled.match(action)) {
+            console.log("Status: succeeded"); // Log the status
+          } else if (getStudent.rejected.match(action)) {
+            console.log("Status: failed"); // Log the status
+          }
+        });
+      } catch (error) {
+        toast.error(
+          "An error occurred while trying to load the data, the event was reported. Please try again later."
+        );
+      }
+    }
+  }, [dispatch, id, student]);
 
-  const { id } = useParams();
+  if (!student) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div>
@@ -24,16 +45,22 @@ function DetailStudent() {
       <div className="w-[750px] h-[425px] flex justify-center items-center px-6 py-4 border border-black mt-16">
         <div className="w-5/12 flex flex-col space-y-4">
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            Name
+            Badge
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            Full Name
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            User Name
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             Email
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            Phone Number
+            Street
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            Street
+            Suite
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             City
@@ -42,7 +69,16 @@ function DetailStudent() {
             Zip Code
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            Company
+            X
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            Y
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            Phone Number
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            Company's Name
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
             Address
@@ -51,28 +87,43 @@ function DetailStudent() {
 
         <div className="w-7/12 flex flex-col space-y-4">
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.name}
+            {student?.id}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.email}
+            {student?.name}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.phoneNumber}
+            {student?.username}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.address.street}
+            {student?.email}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.address.city}
+            {student?.address.street}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.address.zipcode}
+            {student?.address.suite}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.company.name}
+            {student?.address.city}
           </h2>
           <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
-            {user?.company.address}
+            {student?.address.zipcode}
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            {student?.position.lat}
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            {student?.position.lng}
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            {student?.phoneNumber}
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            {student?.company.name}
+          </h2>
+          <h2 className="text-black font-semibold font-Inter text-2xl border-b border-black">
+            {student?.company.address}
           </h2>
         </div>
       </div>

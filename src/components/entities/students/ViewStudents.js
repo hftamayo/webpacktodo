@@ -1,6 +1,7 @@
 import React from "react";
 import DisplayDataTable from "./DisplayDataTable";
 import { Link } from "react-router-dom";
+import { FaPlus } from "react-icons/fa";
 
 function ViewStudents() {
   return (
@@ -8,9 +9,10 @@ function ViewStudents() {
       <div>
         <Link
           to={`/newstudent`}
-          className="px-6 py-2 font-normal text-white bg-green-600 rounded-lg"
+          className="flex items-center px-6 py-2 font-normal text-white bg-green-600 rounded-lg w-30"
         >
-          Add
+          <FaPlus />
+          <span className="ml-2">New</span>
         </Link>
       </div>
 
