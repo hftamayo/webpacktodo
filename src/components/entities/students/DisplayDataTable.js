@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getStudents } from "../../store/studentSlice";
+import { getStudents, deleteStudent } from "../../store/studentSlice";
 import { toast } from "react-toastify";
 import { FaTrash } from "react-icons/fa";
 import DialogBox from "../../ui/DialogBox";
@@ -33,19 +32,23 @@ function DisplayDataTable() {
     loadStudents();
   }, []);
 
-  function deleteStudent(id) {
-    axios
-      .delete(`http://localhost:3004/students/${id}`)
-      .then((response) => {
-        toast.success("Data deleted permanently", {
-          className: "bg-black text-yellow-500",
-          progressClassName: "bg-blue-600",
-        });
-        loadStudents();
+  function deleteSelectedStudent(id) {
+    dispatch(deleteStudent(id))
+      .then((action) => {
+        if (deleteStudent.fulfilled.match(action)) {
+          toast.success("Data deleted permanently", {
+            className: "bg-black text-yellow-500",
+            progressClassName: "bg-blue-600",
+          });
+          loadStudents();
+        } else if (deleteStudent.rejected.match(action)) {
+          console.log("deleteStudent action rejected");
+        }
       })
       .catch((error) => {
+        console.log(error);
         toast.error(
-          "An error occurred while trying to delete the selected data, the event was reported. Please try again later."
+          "An error occurred while trying to delete the selected data, the event was reported. Please try again later. "
         );
       });
   }
@@ -150,7 +153,7 @@ function DisplayDataTable() {
                       <button
                         className="px-6 py-2 font-normal text-white bg-red-600 rounded-lg"
                         onClick={() => {
-                          deleteStudent(selectedId);
+                          deleteSelectedStudent(selectedId);
                           setSelectedId(null);
                           setSelectedStudentName(null);
                         }}
