@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudents, deleteStudent } from "../../store/studentSlice";
 import { toast } from "react-toastify";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaEye, FaEdit } from "react-icons/fa";
 import DialogBox from "../../ui/DialogBox";
 
 function DisplayDataTable() {
@@ -99,15 +99,17 @@ function DisplayDataTable() {
               <td className="flex justify-center items-center space-x-4 mt-1">
                 <Link
                   to={`/student/${data.id}`}
-                  className="px-6 py-2 font-normal text-white bg-black rounded-lg"
+                  className="flex items-center px-6 py-2 font-normal text-white bg-black rounded-lg w-30"
                 >
-                  View
+                  <FaEye />
+                  <span className="ml-2">Edit</span>
                 </Link>
                 <Link
                   to={`/editstudent/${data.id}`}
-                  className="px-6 py-2 font-normal text-white bg-blue-600 rounded-lg"
+                  className="flex items-center px-6 py-2 font-normal text-white bg-blue-600 rounded-lg w-30"
                 >
-                  Edit
+                  <FaEdit />
+                  <span className="ml-2">Edit</span>                  
                 </Link>
                 <Link
                   onClick={() => {
