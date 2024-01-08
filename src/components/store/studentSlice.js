@@ -39,6 +39,14 @@ export const getStudent = createAsyncThunk(
   }
 );
 
+export const deleteStudent = createAsyncThunk(
+  "students/deleteStudent",
+  async (id) => {
+    await axios.delete(`http://localhost:3004/students/${id}`);
+    return id;
+  }
+);
+
 const initialState = {
   students: [],
   status: "idle",
@@ -66,6 +74,7 @@ const studentSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+
       .addCase(addStudent.pending, (state) => {
         state.status = "loading";
         state.error = null;
@@ -83,6 +92,7 @@ const studentSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+
       .addCase(updateStudent.pending, (state) => {
         state.status = "loading";
         state.error = null;
@@ -105,6 +115,7 @@ const studentSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+
       .addCase(getStudent.pending, (state) => {
         state.status = "loading";
         state.error = null;
@@ -117,6 +128,22 @@ const studentSlice = createSlice({
         state.error = null;
       })
       .addCase(getStudent.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+
+      .addCase(deleteStudent.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(deleteStudent.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.students = state.students.filter(
+          (student) => student.id !== action.payload
+        );
+        state.error = null;
+      })
+      .addCase(deleteStudent.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
