@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getStudents, deleteStudent } from "../../store/studentSlice";
 import { toast } from "react-toastify";
 import { FaTrash, FaEye, FaEdit } from "react-icons/fa";
-import DialogBox from "../../ui/DialogBox";
+import ConfirmDialogBox from "../../ui/ConfirmDialogBox";
 
 function DisplayDataTable() {
   const dispatch = useDispatch();
   const students = useSelector((state) => state.students.students);
   const [selectedId, setSelectedId] = useState(null);
   const [selectedStudentName, setSelectedStudentName] = useState(null);
+  const [confirmDialogBoxOpen, setConfirmDialogBoxOpen] = useState(false);
 
   const loadStudents = () => {
     try {
@@ -31,6 +32,11 @@ function DisplayDataTable() {
   useEffect(() => {
     loadStudents();
   }, []);
+
+  function resetEntitySelection() {
+    setSelectedId(null);
+    setSelectedStudentName(null);
+  }
 
   function deleteSelectedStudent(id) {
     dispatch(deleteStudent(id))
@@ -109,62 +115,29 @@ function DisplayDataTable() {
                   className="flex items-center px-6 py-2 font-normal text-white bg-blue-600 rounded-lg w-30"
                 >
                   <FaEdit />
-                  <span className="ml-2">Edit</span>                  
+                  <span className="ml-2">Edit</span>
                 </Link>
                 <Link
                   onClick={() => {
                     setSelectedId(data.id);
                     setSelectedStudentName(data.name);
+                    setConfirmDialogBoxOpen(true);
                   }}
                   className="flex items-center px-6 py-2 font-normal text-white bg-red-600 rounded-lg w-30"
                 >
                   <FaTrash />
                   <span className="ml-2">Delete</span>
                 </Link>
-                <DialogBox
-                  open={selectedId !== null}
-                  onClose={() => {
-                    setSelectedId(null);
-                    setSelectedStudentName(null);
+                <ConfirmDialogBox
+                  isOpen={confirmDialogBoxOpen}
+                  onClose={resetEntitySelection}
+                  selectedEntityName={selectedStudentName}
+                  onDelete={() => {
+                    deleteSelectedStudent(selectedId);
+                    resetEntitySelection();
+                    setConfirmDialogBoxOpen(false);
                   }}
-                  studentName={selectedStudentName}
-                >
-                  <div className="text-center w-56">
-                    <FaTrash size={56} className="mx-auto text-red-500" />
-                    <div className="mx-auto my-4 w-48">
-                      <h3 className="text-lg font-black text-gray-800">
-                        Confirm Delete
-                      </h3>
-                      <p className="text-sm text-gray-500">
-                        Are you sure you want to delete this data?{" "}
-                        <span className="font-bold text-red-500">
-                          {selectedStudentName}
-                        </span>
-                      </p>
-                    </div>
-                    <div className="flex gap-4">
-                      <button
-                        className="px-6 py-2 font-normal text-white bg-gray-600 rounded-lg"
-                        onClick={() => {
-                          setSelectedId(null);
-                          setSelectedStudentName(null);
-                        }}
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        className="px-6 py-2 font-normal text-white bg-red-600 rounded-lg"
-                        onClick={() => {
-                          deleteSelectedStudent(selectedId);
-                          setSelectedId(null);
-                          setSelectedStudentName(null);
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                </DialogBox>
+                />
               </td>
             </tr>
           ))}
