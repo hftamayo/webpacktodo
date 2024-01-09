@@ -11,7 +11,7 @@ function ConfirmDialogBox({ isOpen, onClose, selectedEntityName, onDelete }) {
             <span className="font-semibold">{selectedEntityName}</span>?
           </p>
         </div>
-        <div className="flex gap-4 mt-6">
+        <div className="flex gap-4 mt-6 justify-center">
           <button
             className="px-6 py-2 font-normal text-white bg-gray-600 rounded-lg"
             onClick={onClose}
