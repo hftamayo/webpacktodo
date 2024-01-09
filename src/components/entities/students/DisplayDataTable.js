@@ -130,9 +130,14 @@ function DisplayDataTable() {
                 </Link>
                 <ConfirmDialogBox
                   isOpen={confirmDialogBoxOpen}
-                  onClose={resetEntitySelection}
+                  onClose={(event) => {
+                    event.stopPropagation();
+                    resetEntitySelection();
+                    setConfirmDialogBoxOpen(false);
+                  }}
                   selectedEntityName={selectedStudentName}
-                  onDelete={() => {
+                  onDelete={(event) => {
+                    event.stopPropagation();
                     deleteSelectedStudent(selectedId);
                     resetEntitySelection();
                     setConfirmDialogBoxOpen(false);
