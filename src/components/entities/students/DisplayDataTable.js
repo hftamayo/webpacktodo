@@ -13,6 +13,11 @@ function DisplayDataTable() {
   const [selectedStudentName, setSelectedStudentName] = useState(null);
   const [confirmDialogBoxOpen, setConfirmDialogBoxOpen] = useState(false);
 
+  const ENTITY_ROW_CLASSNAME = "bg-white border-b";
+  const ENTITY_HEADER_CLASSNAME = "text-sm font-medium text-white px-6 py-4";
+  const ENTITY_CELL_CLASSNAME =
+    "text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap";
+
   const loadStudents = () => {
     try {
       dispatch(getStudents()).then((action) => {
@@ -67,41 +72,26 @@ function DisplayDataTable() {
       <table className="w-[95%] text-center overflow-hidden overflow-y-scroll mt-8 border-2 border-b-2 border-black">
         <thead className="border-b bg-gray-800">
           <tr>
-            <th
-              scope="col"
-              className="text-sm font-medium text-white px-6 py-4"
-            >
-              ID
+            <th scope="col" className={ENTITY_HEADER_CLASSNAME}>
+              #
             </th>
-            <th className="text-sm font-medium text-white px-6 py-4">Name</th>
-            <th className="text-sm font-medium text-white px-6 py-4">Email</th>
-            <th className="text-sm font-medium text-white px-6 py-4">Phone</th>
-            <th className="text-sm font-medium text-white px-6 py-4">
-              Address
-            </th>
-            <th className="text-sm font-medium text-white px-6 py-4">
-              Actions
-            </th>
+            <th className={ENTITY_HEADER_CLASSNAME}>Name</th>
+            <th className={ENTITY_HEADER_CLASSNAME}>Email</th>
+            <th className={ENTITY_HEADER_CLASSNAME}>Phone</th>
+            <th className={ENTITY_HEADER_CLASSNAME}>Address</th>
+            <th className={ENTITY_HEADER_CLASSNAME}>Actions</th>
           </tr>
         </thead>
         <tbody>
           {students.map((data, index) => (
-            <tr key={data.id} className="bg-white border-b">
+            <tr key={data.id} className={ENTITY_ROW_CLASSNAME}>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                 {index + 1}
               </td>
-              <td className="text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                {data.name}
-              </td>
-              <td className="text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                {data.email}
-              </td>
-              <td className="text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                {data.phoneNumber}
-              </td>
-              <td className="text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                {data.address.city}
-              </td>
+              <td className={ENTITY_CELL_CLASSNAME}>{data.name}</td>
+              <td className={ENTITY_CELL_CLASSNAME}>{data.email}</td>
+              <td className={ENTITY_CELL_CLASSNAME}>{data.phoneNumber}</td>
+              <td className={ENTITY_CELL_CLASSNAME}>{data.address.city}</td>
               <td className="flex justify-center items-center space-x-4 mt-1">
                 <Link
                   to={`/student/${data.id}`}
