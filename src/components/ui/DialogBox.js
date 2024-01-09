@@ -8,16 +8,16 @@ function DialogBox({ isOpen, onClose, children }) {
   };
 
   return (
-    <button
+    <div
       onClick={onClose}
       onKeyDown={handleKeyDown}
       className={`fixed inset-0 flex justify-center items-center transition-colors ${
-        isOpen ? "visible bg-black/20" : "invisible"
+        isOpen ? "visible bg-black bg-opacity-20" : "invisible"
       }`}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`bg-white rounded-xl shadow p-6 transition-all ${
+        className={`bg-white rounded-xl shadow p-6 transition-all transform ${
           isOpen ? "scale-100 opacity-100" : "scale-125 opacity-0"
         }`}
       >
@@ -29,7 +29,7 @@ function DialogBox({ isOpen, onClose, children }) {
           X
         </button>
       </div>
-    </button>
+    </div>
   );
 }
 
