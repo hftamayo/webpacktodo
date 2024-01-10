@@ -48,7 +48,7 @@ function DisplayDataTable() {
   const handleResetEntitySelection = () => {
     setSelectedId(null);
     setSelectedStudentName(null);
-  }
+  };
 
   const handleDeleteSelectedStudent = (id) => {
     dispatch(deleteStudent(id))
@@ -69,7 +69,7 @@ function DisplayDataTable() {
           "An error occurred while trying to delete the selected data, the event was reported. Please try again later. "
         );
       });
-  }
+  };
 
   const handleOpenConfirmDialogBox = (id, name) => {
     setSelectedId(id);
@@ -82,6 +82,47 @@ function DisplayDataTable() {
     handleResetEntitySelection();
     setConfirmDialogBoxOpen(false);
   };
+
+  const EntityRow = ({ entity }) => (
+    <tr key={entity.id} className={ENTITY_ROW_CLASSNAME}>
+      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+        {entity.id + 1}
+      </td>
+      <td className={ENTITY_CELL_CLASSNAME}>{entity.name}</td>
+      <td className={ENTITY_CELL_CLASSNAME}>{entity.email}</td>
+      <td className={ENTITY_CELL_CLASSNAME}>{entity.phoneNumber}</td>
+      <td className={ENTITY_CELL_CLASSNAME}>{entity.address.city}</td>
+      <td className="flex justify-center items-center space-x-4 mt-1">
+        <Link
+          to={`/student/${entity.id}`}
+          className="flex items-center px-6 py-2 font-normal text-white bg-black rounded-lg w-30"
+        >
+          <FaEye />
+          <span className="ml-2">Edit</span>
+        </Link>
+        <Link
+          to={`/editstudent/${entity.id}`}
+          className="flex items-center px-6 py-2 font-normal text-white bg-blue-600 rounded-lg w-30"
+        >
+          <FaEdit />
+          <span className="ml-2">Edit</span>
+        </Link>
+        <Link
+          onClick={() => handleOpenConfirmDialogBox(entity.id, entity.name)}
+          className="flex items-center px-6 py-2 font-normal text-white bg-red-600 rounded-lg w-30"
+        >
+          <FaTrash />
+          <span className="ml-2">Delete</span>
+        </Link>
+        <ConfirmDialogBox
+          isOpen={confirmDialogBoxOpen}
+          onClose={handleCloseConfirmDialogBox}
+          selectedEntityName={selectedStudentName}
+          onDelete={handleDeleteStudent}
+        />
+      </td>
+    </tr>
+  );
 
   return (
     <div className="w-full flex flex-col min-h-[50vh] justify-center items-center">
@@ -102,58 +143,8 @@ function DisplayDataTable() {
           </tr>
         </thead>
         <tbody>
-          {students.map((data, index) => (
-            <tr key={data.id} className={ENTITY_ROW_CLASSNAME}>
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                {index + 1}
-              </td>
-              <td className={ENTITY_CELL_CLASSNAME}>{data.name}</td>
-              <td className={ENTITY_CELL_CLASSNAME}>{data.email}</td>
-              <td className={ENTITY_CELL_CLASSNAME}>{data.phoneNumber}</td>
-              <td className={ENTITY_CELL_CLASSNAME}>{data.address.city}</td>
-              <td className="flex justify-center items-center space-x-4 mt-1">
-                <Link
-                  to={`/student/${data.id}`}
-                  className="flex items-center px-6 py-2 font-normal text-white bg-black rounded-lg w-30"
-                >
-                  <FaEye />
-                  <span className="ml-2">Edit</span>
-                </Link>
-                <Link
-                  to={`/editstudent/${data.id}`}
-                  className="flex items-center px-6 py-2 font-normal text-white bg-blue-600 rounded-lg w-30"
-                >
-                  <FaEdit />
-                  <span className="ml-2">Edit</span>
-                </Link>
-                <Link
-                  onClick={() => {
-                    setSelectedId(data.id);
-                    setSelectedStudentName(data.name);
-                    setConfirmDialogBoxOpen(true);
-                  }}
-                  className="flex items-center px-6 py-2 font-normal text-white bg-red-600 rounded-lg w-30"
-                >
-                  <FaTrash />
-                  <span className="ml-2">Delete</span>
-                </Link>
-                <ConfirmDialogBox
-                  isOpen={confirmDialogBoxOpen}
-                  onClose={(event) => {
-                    event.stopPropagation();
-                    resetEntitySelection();
-                    setConfirmDialogBoxOpen(false);
-                  }}
-                  selectedEntityName={selectedStudentName}
-                  onDelete={(event) => {
-                    event.stopPropagation();
-                    deleteSelectedStudent(selectedId);
-                    resetEntitySelection();
-                    setConfirmDialogBoxOpen(false);
-                  }}
-                />
-              </td>
-            </tr>
+          {students.map((data) => (
+            <EntityRow entity={data} />
           ))}
         </tbody>
       </table>
