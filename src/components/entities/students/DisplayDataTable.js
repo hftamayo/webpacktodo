@@ -84,9 +84,9 @@ function DisplayDataTable() {
   };
 
   const EntityRow = ({ entity }) => (
-    <tr key={entity.id} className={ENTITY_ROW_CLASSNAME}>
+    <tr className={ENTITY_ROW_CLASSNAME}>
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-        {entity.id + 1}
+        {entity.id}
       </td>
       <td className={ENTITY_CELL_CLASSNAME}>{entity.name}</td>
       <td className={ENTITY_CELL_CLASSNAME}>{entity.email}</td>
@@ -98,7 +98,7 @@ function DisplayDataTable() {
           className="flex items-center px-6 py-2 font-normal text-white bg-black rounded-lg w-30"
         >
           <FaEye />
-          <span className="ml-2">Edit</span>
+          <span className="ml-2">View</span>
         </Link>
         <Link
           to={`/editstudent/${entity.id}`}
@@ -144,7 +144,7 @@ function DisplayDataTable() {
         </thead>
         <tbody>
           {students.map((data) => (
-            <EntityRow entity={data} />
+            <EntityRow key={data.id} entity={data} />
           ))}
         </tbody>
       </table>
