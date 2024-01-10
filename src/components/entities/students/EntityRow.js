@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaTrash, FaEye, FaEdit } from "react-icons/fa";
+import ConfirmDialogBox from "../../ui/ConfirmDialogBox";
 import PropTypes from "prop-types";
 
 const ENTITY_ROW_CLASSNAME = "bg-white border-b";
@@ -9,6 +10,8 @@ const ENTITY_CELL_CLASSNAME =
 
 const EntityRow = ({
   entity,
+  selectedStudentName,
+  confirmDialogBoxOpen,
   handleDeleteStudent,
   handleOpenConfirmDialogBox,
   handleCloseConfirmDialogBox,
@@ -63,6 +66,8 @@ EntityRow.propTypes = {
       city: PropTypes.string,
     }),
   }).isRequired,
+  selectedStudentName: PropTypes.string.isRequired,
+  confirmDialogBoxOpen: PropTypes.bool.isRequired,
   handleDeleteStudent: PropTypes.func.isRequired,
   handleOpenConfirmDialogBox: PropTypes.func.isRequired,
   handleCloseConfirmDialogBox: PropTypes.func.isRequired,
