@@ -38,12 +38,19 @@ function DisplayDataTable() {
     loadStudents();
   }, []);
 
-  function resetEntitySelection() {
+  const handleDeleteStudent = (event) => {
+    event.stopPropagation();
+    handleDeleteSelectedStudent(selectedId);
+    handleResetEntitySelection();
+    setConfirmDialogBoxOpen(false);
+  };
+
+  const handleResetEntitySelection = () => {
     setSelectedId(null);
     setSelectedStudentName(null);
   }
 
-  function deleteSelectedStudent(id) {
+  const handleDeleteSelectedStudent = (id) => {
     dispatch(deleteStudent(id))
       .then((action) => {
         if (deleteStudent.fulfilled.match(action)) {
@@ -63,6 +70,18 @@ function DisplayDataTable() {
         );
       });
   }
+
+  const handleOpenConfirmDialogBox = (id, name) => {
+    setSelectedId(id);
+    setSelectedStudentName(name);
+    setConfirmDialogBoxOpen(true);
+  };
+
+  const handleCloseConfirmDialogBox = (event) => {
+    event.stopPropagation();
+    handleResetEntitySelection();
+    setConfirmDialogBoxOpen(false);
+  };
 
   return (
     <div className="w-full flex flex-col min-h-[50vh] justify-center items-center">
