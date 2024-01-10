@@ -83,7 +83,7 @@ function DisplayDataTable() {
     setConfirmDialogBoxOpen(false);
   };
 
-  const EntityRow = (entity) => (
+  const EntityRow = ({entity}) => (
     <tr className={ENTITY_ROW_CLASSNAME}>
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
         {entity.id}
