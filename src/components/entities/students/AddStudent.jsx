@@ -84,7 +84,6 @@ function AddStudent() {
   }
 
   const data = {
-    id: id,
     name: values.name,
     username: values.username,
     email: values.email,
@@ -107,6 +106,12 @@ function AddStudent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const errors = validate(values);
+    if (Object.keys(errors).length !== 0) {
+      setErrors(errors);
+      return;
+    }
+
     dispatch(addStudent(data)).then((action) => {
       if (addStudent.fulfilled.match(action)) {
         toast.success("Data added successfully!", {
@@ -140,7 +145,7 @@ function AddStudent() {
           placeholder="Name"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
-        {errors.name && <p>{errors.name}</p>}
+        {errors.name && <p className="text-red-500 font-bold">{errors.name}</p>}
 
         <input
           value={values.username}
@@ -150,7 +155,9 @@ function AddStudent() {
           placeholder="User name"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
-        {errors.username && <p>{errors.username}</p>}
+        {errors.username && (
+          <p className="text-red-500 font-bold">{errors.username}</p>
+        )}
 
         <input
           value={values.email}
@@ -160,7 +167,9 @@ function AddStudent() {
           placeholder="Email"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
-        {errors.email && <p>{errors.email}</p>}
+        {errors.email && (
+          <p className="text-red-500 font-bold">{errors.email}</p>
+        )}
 
         <input
           value={values.street}
@@ -170,7 +179,9 @@ function AddStudent() {
           placeholder="Street"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
-        {errors.street && <p>{errors.street}</p>}
+        {errors.street && (
+          <p className="text-red-500 font-bold">{errors.street}</p>
+        )}
 
         <input
           value={values.suite}
@@ -180,7 +191,9 @@ function AddStudent() {
           placeholder="Suite/Apt"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
-        {errors.suite && <p>{errors.suite}</p>}
+        {errors.suite && (
+          <p className="text-red-500 font-bold">{errors.suite}</p>
+        )}
 
         <input
           value={values.city}
@@ -190,7 +203,7 @@ function AddStudent() {
           placeholder="City"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
-        {errors.city && <p>{errors.city}</p>}
+        {errors.city && <p className="text-red-500 font-bold">{errors.city}</p>}
 
         <input
           value={values.zipcode}
@@ -200,7 +213,9 @@ function AddStudent() {
           placeholder="Zipcode"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
-        {errors.zipcode && <p>{errors.zipcode}</p>}
+        {errors.zipcode && (
+          <p className="text-red-500 font-bold">{errors.zipcode}</p>
+        )}
 
         <input
           value={values.latitude}
@@ -210,7 +225,9 @@ function AddStudent() {
           placeholder="Latitude"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
-        {errors.latitude && <p>{errors.latitude}</p>}
+        {errors.latitude && (
+          <p className="text-red-500 font-bold">{errors.latitude}</p>
+        )}
 
         <input
           value={values.longitude}
@@ -220,7 +237,9 @@ function AddStudent() {
           placeholder="Longitude"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
-        {errors.longitude && <p>{errors.longitude}</p>}
+        {errors.longitude && (
+          <p className="text-red-500 font-bold">{errors.longitude}</p>
+        )}
 
         <input
           value={values.phoneNumber}
@@ -230,7 +249,9 @@ function AddStudent() {
           placeholder="Phone Number"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
-        {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
+        {errors.phoneNumber && (
+          <p className="text-red-500 font-bold">{errors.phoneNumber}</p>
+        )}
 
         <input
           value={values.companyName}
@@ -240,7 +261,9 @@ function AddStudent() {
           placeholder="Company's name"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
-        {errors.companyName && <p>{errors.companyName}</p>}
+        {errors.companyName && (
+          <p className="text-red-500 font-bold">{errors.companyName}</p>
+        )}
 
         <input
           value={values.companyAddress}
@@ -250,7 +273,9 @@ function AddStudent() {
           placeholder="Company's address"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
-        {errors.companyAddress && <p>{errors.companyAddress}</p>}
+        {errors.companyAddress && (
+          <p className="text-red-500 font-bold">{errors.companyAddress}</p>
+        )}
 
         <div className="w-screen h-full flex justify-center items-center space-x-4 mt-16">
           <button
