@@ -39,7 +39,7 @@ function AddStudent() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
+    setValues((prevValues) => ({ ...prevValues, [name]: value }));
   };
 
   function validate(values) {
@@ -146,89 +146,111 @@ function AddStudent() {
           value={values.username}
           onChange={handleChange}
           type="text"
+          name="username"
           placeholder="User name"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
+        {errors.username && <p>{errors.username}</p>}
 
         <input
           value={values.email}
           onChange={handleChange}
           type="email"
+          name="email"
           placeholder="Email"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
+        {errors.email && <p>{errors.email}</p>}
 
         <input
           value={values.street}
           onChange={handleChange}
           type="text"
+          name="street"
           placeholder="Street"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
+        {errors.street && <p>{errors.street}</p>}
 
         <input
           value={values.suite}
           onChange={handleChange}
           type="text"
+          name="suite"
           placeholder="Suite/Apt"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
+        {errors.suite && <p>{errors.suite}</p>}
 
         <input
           value={values.city}
           onChange={handleChange}
           type="text"
+          name="city"
           placeholder="City"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
+        {errors.city && <p>{errors.city}</p>}
 
         <input
           value={values.zipcode}
           onChange={handleChange}
           type="text"
+          name="zipcode"
           placeholder="Zipcode"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
+        {errors.zipcode && <p>{errors.zipcode}</p>}
 
         <input
           value={values.latitude}
           onChange={handleChange}
           type="text"
+          name="latitude"
           placeholder="Latitude"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
+        {errors.latitude && <p>{errors.latitude}</p>}
 
         <input
           value={values.longitude}
           onChange={handleChange}
           type="text"
+          name="longitude"
           placeholder="Longitude"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
+        {errors.longitude && <p>{errors.longitude}</p>}
 
         <input
           value={values.phoneNumber}
           onChange={handleChange}
           type="phone"
+          name="phoneNumber"
           placeholder="Phone Number"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
+        {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
 
         <input
           value={values.companyName}
           onChange={handleChange}
           type="text"
+          name="companyName"
           placeholder="Company's name"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
+        {errors.companyName && <p>{errors.companyName}</p>}
 
         <input
           value={values.companyAddress}
           onChange={handleChange}
           type="text"
+          name="companyAddress"
           placeholder="Company's address"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
+        {errors.companyAddress && <p>{errors.companyAddress}</p>}
 
         <div className="w-screen h-full flex justify-center items-center space-x-4 mt-16">
           <button
