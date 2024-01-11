@@ -182,6 +182,196 @@ function EditStudent() {
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
           </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <label
+              htmlFor="email"
+              className="block text-md font-medium text-gray-700"
+            >
+              Email
+            </label>
+          </div>
+          <div className="col-span-2">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+            />
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <label
+              htmlFor="street"
+              className="block text-md font-medium text-gray-700"
+            >
+              Street
+            </label>
+          </div>
+          <div className="col-span-2">
+            <input
+              type="text"
+              id="street"
+              name="street"
+              value={street}
+              onChange={handleChange}
+              className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+            />
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <label
+              htmlFor="suite"
+              className="block text-md font-medium text-gray-700"
+            >
+              Suite
+            </label>
+          </div>
+          <div className="col-span-2">
+            <input
+              type="text"
+              id="suite"
+              name="suite"
+              value={suite}
+              onChange={handleChange}
+              className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+            />
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <label
+              htmlFor="city"
+              className="block text-md font-medium text-gray-700"
+            >
+              City
+            </label>
+          </div>
+          <div className="col-span-2">
+            <input
+              type="text"
+              id="city"
+              name="city"
+              value={city}
+              onChange={handleChange}
+              className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+            />
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <label
+              htmlFor="zipcode"
+              className="block text-md font-medium text-gray-700"
+            >
+              Zip Code
+            </label>
+          </div>
+          <div className="col-span-2">
+            <input
+              type="text"
+              id="zipcode"
+              name="zipcode"
+              value={zipcode}
+              onChange={handleChange}
+              className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+            />
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <label
+              htmlFor="latitude"
+              className="block text-md font-medium text-gray-700"
+            >
+              Latitude
+            </label>
+          </div>
+          <div className="col-span-2">
+            <input
+              type="text"
+              id="latitude"
+              name="latitude"
+              value={latitude}
+              onChange={handleChange}
+              className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+            />
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <label
+              htmlFor="longitude"
+              className="block text-md font-medium text-gray-700"
+            >
+              Longitude
+            </label>
+          </div>
+          <div className="col-span-2">
+            <input
+              type="text"
+              id="longitude"
+              name="longitude"
+              value={longitude}
+              onChange={handleChange}
+              className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+            />
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <label
+              htmlFor="phoneNumber"
+              className="block text-md font-medium text-gray-700"
+            >
+              Phone Number
+            </label>
+          </div>
+          <div className="col-span-2">
+            <input
+              type="phone"
+              id="phoneNumber"
+              name="phoneNumber"
+              value={phoneNumber}
+              onChange={handleChange}
+              className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+            />
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <label
+              htmlFor="companyName"
+              className="block text-md font-medium text-gray-700"
+            >
+              Company Name
+            </label>
+          </div>
+          <div className="col-span-2">
+            <input
+              type="text"
+              id="companyName"
+              name="companyName"
+              value={companyName}
+              onChange={handleChange}
+              className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+            />
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <label
+              htmlFor="companyAddress"
+              className="block text-md font-medium text-gray-700"
+            >
+              Company Address
+            </label>
+          </div>
+          <div className="col-span-2">
+            <input
+              type="text"
+              id="companyAddress"
+              name="companyAddress"
+              value={companyAddress}
+              onChange={handleChange}
+              className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+            />
+          </div>
         </div>
 
         <div className="space-x-4 mt-6">
