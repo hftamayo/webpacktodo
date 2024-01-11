@@ -5,42 +5,103 @@ import { addStudent } from "../../store/studentSlice";
 import { useDispatch } from "react-redux";
 
 function AddStudent() {
-  const [id, setId] = useState("");
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [street, setStreet] = useState("");
-  const [suite, setSuite] = useState("");
-  const [city, setCity] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [companyAddress, setCompanyAddress] = useState("");
+  const [values, setValues] = useState({
+    name: "",
+    username: "",
+    email: "",
+    street: "",
+    suite: "",
+    city: "",
+    zipcode: "",
+    latitude: "",
+    longitude: "",
+    phoneNumber: "",
+    companyName: "",
+    companyAddress: "",
+  });
+  const [errors, setErrors] = useState({
+    name: "",
+    username: "",
+    email: "",
+    street: "",
+    suite: "",
+    city: "",
+    zipcode: "",
+    latitude: "",
+    longitude: "",
+    phoneNumber: "",
+    companyName: "",
+    companyAddress: "",
+  });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  function validate(values) {
+    let errors = {};
+    if (!values.name) {
+      errors.name = "Name is required";
+    }
+    if (!values.username) {
+      errors.username = "Username is required";
+    }
+    if (!values.email) {
+      errors.email = "Email is required";
+    }
+    if (!values.street) {
+      errors.street = "Street is required";
+    }
+    if (!values.suite) {
+      errors.suite = "Suite is required";
+    }
+    if (!values.city) {
+      errors.city = "City is required";
+    }
+    if (!values.zipcode) {
+      errors.zipcode = "Zipcode is required";
+    }
+    if (!values.latitude) {
+      errors.latitude = "Latitude is required";
+    }
+    if (!values.longitude) {
+      errors.longitude = "Longitude is required";
+    }
+    if (!values.phoneNumber) {
+      errors.phoneNumber = "Phone number is required";
+    }
+    if (!values.companyName) {
+      errors.companyName = "Company name is required";
+    }
+    if (!values.companyAddress) {
+      errors.companyAddress = "Company address is required";
+    }
+    return errors;
+  }
+
   const data = {
     id: id,
-    name: name,
-    username: username,
-    email: email,
+    name: values.name,
+    username: values.username,
+    email: values.email,
     address: {
-      street: street,
-      suite: suite,
-      city: city,
-      zipcode: zipcode,
+      street: values.street,
+      suite: values.suite,
+      city: values.city,
+      zipcode: values.zipcode,
     },
     position: {
-      lat: parseFloat(latitude),
-      lng: parseFloat(longitude),
+      lat: parseFloat(values.latitude),
+      lng: parseFloat(values.longitude),
     },
-    phoneNumber: phoneNumber,
+    phoneNumber: values.phoneNumber,
     company: {
-      companyName: companyName,
-      companyAddress: companyAddress,
+      companyName: values.companyName,
+      companyAddress: values.companyAddress,
     },
   };
 
@@ -71,97 +132,99 @@ function AddStudent() {
 
       <form className="w-[80%] h-full flex flex-col justify-center items-center mt-4">
         <input
-          value={name}
+          value={values.name}
           autoFocus={true}
-          onChange={(e) => setName(e.target.value)}
+          onChange={handleChange}
           type="text"
+          name="name"
           placeholder="Name"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
+        {errors.name && <p>{errors.name}</p>}
 
         <input
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={values.username}
+          onChange={handleChange}
           type="text"
           placeholder="User name"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
         <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={values.email}
+          onChange={handleChange}
           type="email"
           placeholder="Email"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
         <input
-          value={street}
-          onChange={(e) => setStreet(e.target.value)}
+          value={values.street}
+          onChange={handleChange}
           type="text"
           placeholder="Street"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
         <input
-          value={suite}
-          onChange={(e) => setSuite(e.target.value)}
+          value={values.suite}
+          onChange={handleChange}
           type="text"
           placeholder="Suite/Apt"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
         <input
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
+          value={values.city}
+          onChange={handleChange}
           type="text"
           placeholder="City"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
         <input
-          value={zipcode}
-          onChange={(e) => setZipcode(e.target.value)}
+          value={values.zipcode}
+          onChange={handleChange}
           type="text"
           placeholder="Zipcode"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
         <input
-          value={latitude}
-          onChange={(e) => setLatitude(e.target.value)}
+          value={values.latitude}
+          onChange={handleChange}
           type="text"
           placeholder="Latitude"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
         <input
-          value={longitude}
-          onChange={(e) => setLongitude(e.target.value)}
+          value={values.longitude}
+          onChange={handleChange}
           type="text"
           placeholder="Longitude"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
         <input
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
+          value={values.phoneNumber}
+          onChange={handleChange}
           type="phone"
           placeholder="Phone Number"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
         <input
-          value={companyName}
-          onChange={(e) => setCompanyName(e.target.value)}
+          value={values.companyName}
+          onChange={handleChange}
           type="text"
           placeholder="Company's name"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
         />
 
         <input
-          value={companyAddress}
-          onChange={(e) => setCompanyAddress(e.target.value)}
+          value={values.companyAddress}
+          onChange={handleChange}
           type="text"
           placeholder="Company's address"
           className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
