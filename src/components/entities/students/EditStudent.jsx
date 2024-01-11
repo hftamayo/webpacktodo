@@ -6,6 +6,35 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 function EditStudent() {
+  const [values, setValues] = useState({
+    name: "",
+    username: "",
+    email: "",
+    street: "",
+    suite: "",
+    city: "",
+    zipcode: "",
+    latitude: "",
+    longitude: "",
+    phoneNumber: "",
+    companyName: "",
+    companyAddress: "",
+  });
+  const [errors, setErrors] = useState({
+    name: "",
+    username: "",
+    email: "",
+    street: "",
+    suite: "",
+    city: "",
+    zipcode: "",
+    latitude: "",
+    longitude: "",
+    phoneNumber: "",
+    companyName: "",
+    companyAddress: "",
+  });
+
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -64,6 +93,11 @@ function EditStudent() {
     }
   }, [student]);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues((prevValues) => ({ ...prevValues, [name]: value }));
+  };
+
   const data = {
     id: id,
     name: name,
@@ -106,215 +140,60 @@ function EditStudent() {
   };
 
   return (
-    <div className="w-screen h-full flex flex-col justify-center items-center mt-16">
-      <h1 className="text-black text-3xl font-semibold font-Montserrat">
-        Edit Student
-      </h1>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <form className="flex flex-col items-center justify-center w-full max-w-2xl px-4 py-8 bg-white rounded-lg shadow-md">
+        <h2 className="text-2xl font-bold mb-6">Update Student Information</h2>
 
-      <form className="w-[80%] h-full flex flex-col justify-center items-center mt-4">
-        <div className="flex items-center space-x-4">
-          <label
-            htmlFor="name"
-            className="text-black font-semibold font-Inter text-xl"
-          >
-            Full Name
-          </label>
-          <input
-            value={name}
-            autoFocus={true}
-            onChange={(e) => setName(e.target.value)}
-            type="text"
-            placeholder="Name"
-            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-          />
+        <div className="grid grid-cols-3 gap-4">
+          <div className="col-span-1 flex items-center justify-center">
+            <label
+              htmlFor="name"
+              className="block text-md font-medium text-gray-700"
+            >
+              Full Name
+            </label>
+          </div>
+          <div className="col-span-2">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={name}
+              onChange={handleChange}
+              className="w-[100%] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+            />
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <label
+              htmlFor="username"
+              className="block text-md font-medium text-gray-700"
+            >
+              User Name
+            </label>
+          </div>
+          <div className="col-span-2">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={username}
+              onChange={handleChange}
+              className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+            />
+          </div>
         </div>
 
-        <div className="flex items-center space-x-4">
-          <label
-            htmlFor="username"
-            className="text-black font-semibold font-Inter text-xl"
-          >
-            User Name
-          </label>
-          <input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            type="text"
-            placeholder="User name"
-            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-          />
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <label
-            htmlFor="email"
-            className="text-black font-semibold font-Inter text-xl"
-          >
-            Email
-          </label>
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            placeholder="Email"
-            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-          />
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <label
-            htmlFor="street"
-            className="text-black font-semibold font-Inter text-xl"
-          >
-            Street
-          </label>
-          <input
-            value={street}
-            onChange={(e) => setStreet(e.target.value)}
-            type="text"
-            placeholder="Street"
-            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-          />
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <label
-            htmlFor="suite"
-            className="text-black font-semibold font-Inter text-xl"
-          >
-            Suite/Apartment
-          </label>
-          <input
-            value={suite}
-            onChange={(e) => setSuite(e.target.value)}
-            type="text"
-            placeholder="Suite/Apt"
-            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-          />
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <label
-            htmlFor="city"
-            className="text-black font-semibold font-Inter text-xl"
-          >
-            City
-          </label>
-          <input
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            type="text"
-            placeholder="City"
-            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-          />
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <label
-            htmlFor="zipcode"
-            className="text-black font-semibold font-Inter text-xl"
-          >
-            ZIP Code
-          </label>
-          <input
-            value={zipcode}
-            onChange={(e) => setZipcode(e.target.value)}
-            type="text"
-            placeholder="Zipcode"
-            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-          />
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <label
-            htmlFor="latitude"
-            className="text-black font-semibold font-Inter text-xl"
-          >
-            Latitude
-          </label>
-          <input
-            value={latitude}
-            onChange={(e) => setLatitude(e.target.value)}
-            type="text"
-            placeholder="Latitude"
-            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-          />
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <label
-            htmlFor="longitude"
-            className="text-black font-semibold font-Inter text-xl"
-          >
-            Longitude
-          </label>
-          <input
-            value={longitude}
-            onChange={(e) => setLongitude(e.target.value)}
-            type="text"
-            placeholder="Longitude"
-            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-          />
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <label
-            htmlFor="phoneNumber"
-            className="text-black font-semibold font-Inter text-xl"
-          >
-            Phone Number
-          </label>
-          <input
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            type="phone"
-            placeholder="Phone Number"
-            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-          />
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <label
-            htmlFor="companyName"
-            className="text-black font-semibold font-Inter text-xl"
-          >
-            Company's Name
-          </label>
-          <input
-            value={companyName}
-            onChange={(e) => setCompanyName(e.target.value)}
-            type="text"
-            placeholder="Company's name"
-            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-          />
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <label
-            htmlFor="companyAddress"
-            className="text-black font-semibold font-Inter text-xl"
-          >
-            Comapny's Address
-          </label>
-          <input
-            value={companyAddress}
-            onChange={(e) => setCompanyAddress(e.target.value)}
-            type="text"
-            placeholder="Company's address"
-            className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-          />
-        </div>
-
-        <div className="w-screen h-full flex justify-center items-center space-x-4 mt-16">
+        <div className="space-x-4 mt-6">
           <button
             onClick={update}
-            className="w-[25%] bg-green-600 text-xl text-white font-Montserrat font-normal py-4 pl-6 rounded-md"
+            className="px-4 py-2 text-base font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Update
           </button>
           <button
             onClick={() => navigate("/students")}
-            className="w-[25%] bg-yellow-600 text-xl text-white font-Montserrat font-normal py-4 pl-6  rounded-md"
+            className="px-4 py-2 text-base font-medium text-white bg-yellow-600 rounded-md hover:bg-yellow-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
           >
             Cancel
           </button>
