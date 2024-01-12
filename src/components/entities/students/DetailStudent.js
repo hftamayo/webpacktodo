@@ -42,18 +42,129 @@ function DetailStudent() {
 
         <div className="grid grid-cols-3 gap-4">
           <div className="col-span-1 flex items-center justify-center">
-            <p className="block text-md font-medium text-gray-700">Full Name:</p>
+            <p className="block text-md font-medium text-gray-700">
+              Full Name:
+            </p>
           </div>
           <div className="col-span-2">
             <p className="w-[100%] text-lg font-bold px-3 py-2 ">
               {student?.name}
             </p>
           </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <p className="block text-md font-medium text-gray-700">
+              User Name:
+            </p>
+          </div>
+          <div className="col-span-2">
+            <p className="w-[100%] text-lg font-bold px-3 py-2 ">
+              {student?.username}
+            </p>
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <p className="block text-md font-medium text-gray-700">Email:</p>
+          </div>
+          <div className="col-span-2">
+            <p className="w-[100%] text-lg font-bold px-3 py-2 ">
+              {student?.email}
+            </p>
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <p className="block text-md font-medium text-gray-700">Street:</p>
+          </div>
+          <div className="col-span-2">
+            <p className="w-[100%] text-lg font-bold px-3 py-2 ">
+              {student?.address.street}
+            </p>
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <p className="block text-md font-medium text-gray-700">Suite:</p>
+          </div>
+          <div className="col-span-2">
+            <p className="w-[100%] text-lg font-bold px-3 py-2 ">
+              {student?.address.suite}
+            </p>
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <p className="block text-md font-medium text-gray-700">City:</p>
+          </div>
+          <div className="col-span-2">
+            <p className="w-[100%] text-lg font-bold px-3 py-2 ">
+              {student?.address.city}
+            </p>
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <p className="block text-md font-medium text-gray-700">Zip Code:</p>
+          </div>
+          <div className="col-span-2">
+            <p className="w-[100%] text-lg font-bold px-3 py-2 ">
+              {student?.address.zipcode}
+            </p>
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <p className="block text-md font-medium text-gray-700">Latitude:</p>
+          </div>
+          <div className="col-span-2">
+            <p className="w-[100%] text-lg font-bold px-3 py-2 ">
+              {student?.position.lat}
+            </p>
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <p className="block text-md font-medium text-gray-700">
+              Longitude:
+            </p>
+          </div>
+          <div className="col-span-2">
+            <p className="w-[100%] text-lg font-bold px-3 py-2 ">
+              {student?.position.lng}
+            </p>
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <p className="block text-md font-medium text-gray-700">
+              Phone Number:
+            </p>
+          </div>
+          <div className="col-span-2">
+            <p className="w-[100%] text-lg font-bold px-3 py-2 ">
+              {student?.phoneNumber}
+            </p>
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <p className="block text-md font-medium text-gray-700">
+              Company Name:
+            </p>
+          </div>
+          <div className="col-span-2">
+            <p className="w-[100%] text-lg font-bold px-3 py-2 ">
+              {student?.company.companyName}
+            </p>
+          </div>
+
+          <div className="col-span-1 flex items-center justify-center">
+            <p className="block text-md font-medium text-gray-700">
+              Company Address:
+            </p>
+          </div>
+          <div className="col-span-2">
+            <p className="w-[100%] text-lg font-bold px-3 py-2 ">
+              {student?.company.companyAddress}
+            </p>
+          </div>
         </div>
 
         <div className="space-x-4 mt-6">
           <button
-            onClick={() => navigate(`/students/${studentId}/edit`)}
+            onClick={() => navigate(`/editstudent/${studentId}`)}
             className="px-4 py-2 text-base font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Edit
