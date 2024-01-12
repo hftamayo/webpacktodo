@@ -130,169 +130,294 @@ function AddStudent() {
   };
 
   return (
-    <div className="w-screen h-full flex flex-col justify-center items-center mt-16">
-      <h1 className="text-black text-3xl font-semibold font-Montserrat">
-        New Student
-      </h1>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <form className="flex flex-col items-center justify-center w-full max-w-2xl px-4 py-8 bg-white rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-6">Add a Student</h2>
 
-      <form className="w-[80%] h-full flex flex-col justify-center items-center mt-4">
-        <input
-          value={values.name}
-          autoFocus={true}
-          onChange={handleChange}
-          type="text"
-          name="name"
-          placeholder="Name"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
-        {errors.name && <p className="text-red-500 font-bold">{errors.name}</p>}
-
-        <input
-          value={values.username}
-          onChange={handleChange}
-          type="text"
-          name="username"
-          placeholder="User name"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
-        {errors.username && (
-          <p className="text-red-500 font-bold">{errors.username}</p>
-        )}
-
-        <input
-          value={values.email}
-          onChange={handleChange}
-          type="email"
-          name="email"
-          placeholder="Email"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
-        {errors.email && (
-          <p className="text-red-500 font-bold">{errors.email}</p>
-        )}
-
-        <input
-          value={values.street}
-          onChange={handleChange}
-          type="text"
-          name="street"
-          placeholder="Street"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
-        {errors.street && (
-          <p className="text-red-500 font-bold">{errors.street}</p>
-        )}
-
-        <input
-          value={values.suite}
-          onChange={handleChange}
-          type="text"
-          name="suite"
-          placeholder="Suite/Apt"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
-        {errors.suite && (
-          <p className="text-red-500 font-bold">{errors.suite}</p>
-        )}
-
-        <input
-          value={values.city}
-          onChange={handleChange}
-          type="text"
-          name="city"
-          placeholder="City"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
-        {errors.city && <p className="text-red-500 font-bold">{errors.city}</p>}
-
-        <input
-          value={values.zipcode}
-          onChange={handleChange}
-          type="text"
-          name="zipcode"
-          placeholder="Zipcode"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
-        {errors.zipcode && (
-          <p className="text-red-500 font-bold">{errors.zipcode}</p>
-        )}
-
-        <input
-          value={values.latitude}
-          onChange={handleChange}
-          type="text"
-          name="latitude"
-          placeholder="Latitude"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
-        {errors.latitude && (
-          <p className="text-red-500 font-bold">{errors.latitude}</p>
-        )}
-
-        <input
-          value={values.longitude}
-          onChange={handleChange}
-          type="text"
-          name="longitude"
-          placeholder="Longitude"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
-        {errors.longitude && (
-          <p className="text-red-500 font-bold">{errors.longitude}</p>
-        )}
-
-        <input
-          value={values.phoneNumber}
-          onChange={handleChange}
-          type="phone"
-          name="phoneNumber"
-          placeholder="Phone Number"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
-        {errors.phoneNumber && (
-          <p className="text-red-500 font-bold">{errors.phoneNumber}</p>
-        )}
-
-        <input
-          value={values.companyName}
-          onChange={handleChange}
-          type="text"
-          name="companyName"
-          placeholder="Company's name"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
-        {errors.companyName && (
-          <p className="text-red-500 font-bold">{errors.companyName}</p>
-        )}
-
-        <input
-          value={values.companyAddress}
-          onChange={handleChange}
-          type="text"
-          name="companyAddress"
-          placeholder="Company's address"
-          className="w-[80%] bg-white/10 text-xl mt-4 font-Montserrat font-normal outline-none py-4 pl-6 border border-zinc-400"
-        />
-        {errors.companyAddress && (
-          <p className="text-red-500 font-bold">{errors.companyAddress}</p>
-        )}
-
-        <div className="w-screen h-full flex justify-center items-center space-x-4 mt-16">
-          <button
-            onClick={handleSubmit}
-            className="w-[25%] bg-green-600 text-xl text-white font-Montserrat font-normal py-4 pl-6 rounded-md"
+      <div className="grid grid-cols-3 gap-4">
+        <div className="col-span-1 flex items-center justify-center">
+          <label
+            htmlFor="name"
+            className="block text-md font-medium text-gray-700"
           >
-            Add
-          </button>
-          <button
-            onClick={() => navigate("/students")}
-            className="w-[25%] bg-yellow-600 text-xl text-white font-Montserrat font-normal py-4 pl-6  rounded-md"
-          >
-            Cancel
-          </button>
+            Full Name
+          </label>
         </div>
-      </form>
-    </div>
+        <div className="col-span-2">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={values.name}
+            autoFocus={true}
+            onChange={handleChange}
+            className="w-[100%] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+          {errors.name && (
+            <p className="text-red-500 font-bold">{errors.name}</p>
+          )}
+        </div>
+
+        <div className="col-span-1 flex items-center justify-center">
+          <label
+            htmlFor="username"
+            className="block text-md font-medium text-gray-700"
+          >
+            User Name
+          </label>
+        </div>
+        <div className="col-span-2">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={values.username}
+            onChange={handleChange}
+            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+          {errors.username && (
+            <p className="text-red-500 font-bold">{errors.username}</p>
+          )}
+        </div>
+
+        <div className="col-span-1 flex items-center justify-center">
+          <label
+            htmlFor="email"
+            className="block text-md font-medium text-gray-700"
+          >
+            Email
+          </label>
+        </div>
+        <div className="col-span-2">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+          {errors.email && (
+            <p className="text-red-500 font-bold">{errors.email}</p>
+          )}
+        </div>
+
+        <div className="col-span-1 flex items-center justify-center">
+          <label
+            htmlFor="street"
+            className="block text-md font-medium text-gray-700"
+          >
+            Street
+          </label>
+        </div>
+        <div className="col-span-2">
+          <input
+            type="text"
+            id="street"
+            name="street"
+            value={values.street}
+            onChange={handleChange}
+            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+          {errors.street && (
+            <p className="text-red-500 font-bold">{errors.street}</p>
+          )}
+        </div>
+
+        <div className="col-span-1 flex items-center justify-center">
+          <label
+            htmlFor="suite"
+            className="block text-md font-medium text-gray-700"
+          >
+            Suite
+          </label>
+        </div>
+        <div className="col-span-2">
+          <input
+            type="text"
+            id="suite"
+            name="suite"
+            value={values.suite}
+            onChange={handleChange}
+            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+          {errors.suite && (
+            <p className="text-red-500 font-bold">{errors.suite}</p>
+          )}
+        </div>
+
+        <div className="col-span-1 flex items-center justify-center">
+          <label
+            htmlFor="city"
+            className="block text-md font-medium text-gray-700"
+          >
+            City
+          </label>
+        </div>
+        <div className="col-span-2">
+          <input
+            type="text"
+            id="city"
+            name="city"
+            value={values.city}
+            onChange={handleChange}
+            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+          {errors.city && (
+            <p className="text-red-500 font-bold">{errors.city}</p>
+          )}
+        </div>
+
+        <div className="col-span-1 flex items-center justify-center">
+          <label
+            htmlFor="zipcode"
+            className="block text-md font-medium text-gray-700"
+          >
+            Zip Code
+          </label>
+        </div>
+        <div className="col-span-2">
+          <input
+            type="text"
+            id="zipcode"
+            name="zipcode"
+            value={values.zipcode}
+            onChange={handleChange}
+            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+          {errors.zipcode && (
+            <p className="text-red-500 font-bold">{errors.zipcode}</p>
+          )}
+        </div>
+
+        <div className="col-span-1 flex items-center justify-center">
+          <label
+            htmlFor="latitude"
+            className="block text-md font-medium text-gray-700"
+          >
+            Latitude
+          </label>
+        </div>
+        <div className="col-span-2">
+          <input
+            type="text"
+            id="latitude"
+            name="latitude"
+            value={values.latitude}
+            onChange={handleChange}
+            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+          {errors.latitude && (
+            <p className="text-red-500 font-bold">{errors.latitude}</p>
+          )}
+        </div>
+
+        <div className="col-span-1 flex items-center justify-center">
+          <label
+            htmlFor="longitude"
+            className="block text-md font-medium text-gray-700"
+          >
+            Longitude
+          </label>
+        </div>
+        <div className="col-span-2">
+          <input
+            type="text"
+            id="longitude"
+            name="longitude"
+            value={values.longitude}
+            onChange={handleChange}
+            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+          {errors.longitude && (
+            <p className="text-red-500 font-bold">{errors.longitude}</p>
+          )}
+        </div>
+
+        <div className="col-span-1 flex items-center justify-center">
+          <label
+            htmlFor="phoneNumber"
+            className="block text-md font-medium text-gray-700"
+          >
+            Phone Number
+          </label>
+        </div>
+        <div className="col-span-2">
+          <input
+            type="phone"
+            id="phoneNumber"
+            name="phoneNumber"
+            value={values.phoneNumber}
+            onChange={handleChange}
+            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+          {errors.phoneNumber && (
+            <p className="text-red-500 font-bold">{errors.phoneNumber}</p>
+          )}
+        </div>
+
+        <div className="col-span-1 flex items-center justify-center">
+          <label
+            htmlFor="companyName"
+            className="block text-md font-medium text-gray-700"
+          >
+            Company Name
+          </label>
+        </div>
+        <div className="col-span-2">
+          <input
+            type="text"
+            id="companyName"
+            name="companyName"
+            value={values.companyName}
+            onChange={handleChange}
+            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+          {errors.companyName && (
+            <p className="text-red-500 font-bold">{errors.companyName}</p>
+          )}
+        </div>
+
+        <div className="col-span-1 flex items-center justify-center">
+          <label
+            htmlFor="companyAddress"
+            className="block text-md font-medium text-gray-700"
+          >
+            Company Address
+          </label>
+        </div>
+        <div className="col-span-2">
+          <input
+            type="text"
+            id="companyAddress"
+            name="companyAddress"
+            value={values.companyAddress}
+            onChange={handleChange}
+            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+          {errors.companyAddress && (
+            <p className="text-red-500 font-bold">{errors.companyAddress}</p>
+          )}
+        </div>
+      </div>
+
+      <div className="space-x-4 mt-6">
+        <button
+          onClick={handleSubmit}
+          className="px-4 py-2 text-base font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Update
+        </button>
+        <button
+          onClick={() => navigate("/students")}
+          className="px-4 py-2 text-base font-medium text-white bg-yellow-600 rounded-md hover:bg-yellow-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+    
   );
 }
 
