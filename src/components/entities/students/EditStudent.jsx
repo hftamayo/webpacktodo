@@ -64,20 +64,22 @@ function EditStudent() {
 
   useEffect(() => {
     if (student) {
-      setName(student.name);
-      setUsername(student.username);
-      setEmail(student.email);
-      setStreet(student.address.street);
-      setSuite(student.address.suite);
-      setCity(student.address.city);
-      setZipcode(student.address.zipcode);
-      setLatitude(student.position.lat);
-      setLongitude(student.position.lng);
-      setPhoneNumber(student.phoneNumber);
-      setCompanyName(student.company.companyName);
-      setCompanyAddress(student.company.companyAddress);
+      setValues({
+        name: student.name,
+        username: student.username,
+        email: student.email,
+        street: student.address.street,
+        suite: student.address.suite,
+        city: student.address.city,
+        zipcode: student.address.zipcode,
+        latitude: student.position.lat,
+        longitude: student.position.lng,
+        phoneNumber: student.phoneNumber,
+        companyName: student.company.companyName,
+        companyAddress: student.company.companyAddress,
+      });
     }
-  }, [student]);
+  }, [student, setValues]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
