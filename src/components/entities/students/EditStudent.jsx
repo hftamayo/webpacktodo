@@ -162,13 +162,19 @@ function EditStudent() {
           className: "bg-black text-yellow-500",
           progressClassName: "bg-blue-600",
         });
-        console.log("UpdateStudent Status: ", action.payload.status); // log the status
+        console.log(
+          "UpdateStudent Status: ",
+          action.payload ? action.payload.status : "No payload"
+        );
         navigate("/students");
       } else if (updateStudent.rejected.match(action)) {
         toast.error(
           "An error occurred while trying to update the data, the event was reported. Please try again later."
         );
-        console.log("UpdateStudent Status: ", action.payload.status); // log the status
+        console.log(
+          "UpdateStudent Status: ",
+          action.payload ? action.payload.status : "No payload"
+        );
       }
     });
   };
