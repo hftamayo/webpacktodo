@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { updateStudent, getStudent } from "../../store/studentSlice";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 
 function EditStudent() {
   const [values, setValues] = useState({
@@ -162,6 +161,9 @@ function EditStudent() {
               onChange={handleChange}
               className="w-[100%] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
+            {errors.name && (
+              <p className="text-red-500 font-bold">{errors.name}</p>
+            )}
           </div>
 
           <div className="col-span-1 flex items-center justify-center">
@@ -181,6 +183,9 @@ function EditStudent() {
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
+            {errors.username && (
+              <p className="text-red-500 font-bold">{errors.username}</p>
+            )}
           </div>
 
           <div className="col-span-1 flex items-center justify-center">
@@ -200,6 +205,9 @@ function EditStudent() {
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
+            {errors.email && (
+              <p className="text-red-500 font-bold">{errors.email}</p>
+            )}
           </div>
 
           <div className="col-span-1 flex items-center justify-center">
@@ -219,6 +227,9 @@ function EditStudent() {
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
+            {errors.street && (
+              <p className="text-red-500 font-bold">{errors.street}</p>
+            )}
           </div>
 
           <div className="col-span-1 flex items-center justify-center">
@@ -238,6 +249,9 @@ function EditStudent() {
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
+            {errors.suite && (
+              <p className="text-red-500 font-bold">{errors.suite}</p>
+            )}
           </div>
 
           <div className="col-span-1 flex items-center justify-center">
@@ -257,6 +271,9 @@ function EditStudent() {
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
+            {errors.city && (
+              <p className="text-red-500 font-bold">{errors.city}</p>
+            )}
           </div>
 
           <div className="col-span-1 flex items-center justify-center">
@@ -276,6 +293,9 @@ function EditStudent() {
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
+            {errors.zipcode && (
+              <p className="text-red-500 font-bold">{errors.zipcode}</p>
+            )}
           </div>
 
           <div className="col-span-1 flex items-center justify-center">
@@ -295,6 +315,9 @@ function EditStudent() {
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
+            {errors.latitude && (
+              <p className="text-red-500 font-bold">{errors.latitude}</p>
+            )}
           </div>
 
           <div className="col-span-1 flex items-center justify-center">
@@ -314,6 +337,9 @@ function EditStudent() {
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
+            {errors.longitude && (
+              <p className="text-red-500 font-bold">{errors.longitude}</p>
+            )}
           </div>
 
           <div className="col-span-1 flex items-center justify-center">
@@ -333,6 +359,9 @@ function EditStudent() {
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
+            {errors.phoneNumber && (
+              <p className="text-red-500 font-bold">{errors.phoneNumber}</p>
+            )}
           </div>
 
           <div className="col-span-1 flex items-center justify-center">
@@ -352,6 +381,9 @@ function EditStudent() {
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
+            {errors.companyName && (
+              <p className="text-red-500 font-bold">{errors.companyName}</p>
+            )}
           </div>
 
           <div className="col-span-1 flex items-center justify-center">
@@ -371,6 +403,9 @@ function EditStudent() {
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
+            {errors.companyAddress && (
+              <p className="text-red-500 font-bold">{errors.companyAddress}</p>
+            )}
           </div>
         </div>
 
