@@ -192,7 +192,7 @@ function EditStudent() {
               type="text"
               id="name"
               name="name"
-              value={name}
+              value={values.name}
               onChange={handleChange}
               className="w-[100%] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
@@ -214,7 +214,7 @@ function EditStudent() {
               type="text"
               id="username"
               name="username"
-              value={username}
+              value={values.username}
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
@@ -236,7 +236,7 @@ function EditStudent() {
               type="email"
               id="email"
               name="email"
-              value={email}
+              value={values.email}
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
@@ -258,7 +258,7 @@ function EditStudent() {
               type="text"
               id="street"
               name="street"
-              value={street}
+              value={values.street}
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
@@ -280,7 +280,7 @@ function EditStudent() {
               type="text"
               id="suite"
               name="suite"
-              value={suite}
+              value={values.suite}
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
@@ -302,7 +302,7 @@ function EditStudent() {
               type="text"
               id="city"
               name="city"
-              value={city}
+              value={values.city}
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
@@ -324,7 +324,7 @@ function EditStudent() {
               type="text"
               id="zipcode"
               name="zipcode"
-              value={zipcode}
+              value={values.zipcode}
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
@@ -346,7 +346,7 @@ function EditStudent() {
               type="text"
               id="latitude"
               name="latitude"
-              value={latitude}
+              value={values.latitude}
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
@@ -368,7 +368,7 @@ function EditStudent() {
               type="text"
               id="longitude"
               name="longitude"
-              value={longitude}
+              value={values.longitude}
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
@@ -390,7 +390,7 @@ function EditStudent() {
               type="phone"
               id="phoneNumber"
               name="phoneNumber"
-              value={phoneNumber}
+              value={values.phoneNumber}
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
@@ -412,7 +412,7 @@ function EditStudent() {
               type="text"
               id="companyName"
               name="companyName"
-              value={companyName}
+              value={values.companyName}
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
@@ -434,7 +434,7 @@ function EditStudent() {
               type="text"
               id="companyAddress"
               name="companyAddress"
-              value={companyAddress}
+              value={values.companyAddress}
               onChange={handleChange}
               className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
             />
