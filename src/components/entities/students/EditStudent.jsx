@@ -34,19 +34,6 @@ function EditStudent() {
     companyAddress: "",
   });
 
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [street, setStreet] = useState("");
-  const [suite, setSuite] = useState("");
-  const [city, setCity] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [companyAddress, setCompanyAddress] = useState("");
-
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -97,30 +84,76 @@ function EditStudent() {
     setValues((prevValues) => ({ ...prevValues, [name]: value }));
   };
 
+  function validate(values) {
+    let errors = {};
+    if (!values.name) {
+      errors.name = "Name is required";
+    }
+    if (!values.username) {
+      errors.username = "Username is required";
+    }
+    if (!values.email) {
+      errors.email = "Email is required";
+    }
+    if (!values.street) {
+      errors.street = "Street is required";
+    }
+    if (!values.suite) {
+      errors.suite = "Suite is required";
+    }
+    if (!values.city) {
+      errors.city = "City is required";
+    }
+    if (!values.zipcode) {
+      errors.zipcode = "Zipcode is required";
+    }
+    if (!values.latitude) {
+      errors.latitude = "Latitude is required";
+    }
+    if (!values.longitude) {
+      errors.longitude = "Longitude is required";
+    }
+    if (!values.phoneNumber) {
+      errors.phoneNumber = "Phone number is required";
+    }
+    if (!values.companyName) {
+      errors.companyName = "Company name is required";
+    }
+    if (!values.companyAddress) {
+      errors.companyAddress = "Company address is required";
+    }
+    return errors;
+  }
+
   const data = {
-    id: id,
-    name: name,
-    username: username,
-    email: email,
+    name: values.name,
+    username: values.username,
+    email: values.email,
     address: {
-      street: street,
-      suite: suite,
-      city: city,
-      zipcode: zipcode,
+      street: values.street,
+      suite: values.suite,
+      city: values.city,
+      zipcode: values.zipcode,
     },
     position: {
-      lat: parseFloat(latitude),
-      lng: parseFloat(longitude),
+      lat: parseFloat(values.latitude),
+      lng: parseFloat(values.longitude),
     },
-    phoneNumber: phoneNumber,
+    phoneNumber: values.phoneNumber,
     company: {
-      companyName: companyName,
-      companyAddress: companyAddress,
+      companyName: values.companyName,
+      companyAddress: values.companyAddress,
     },
   };
 
   const update = (e) => {
     e.preventDefault();
+    const errors = validate(values);
+    if (Object.keys(errors).length !== 0) {
+      setErrors(errors);
+      return;
+    }
+
     dispatch(updateStudent(data)).then((action) => {
       if (updateStudent.fulfilled.match(action)) {
         toast.success("Data updated successfully!", {
