@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudents, deleteStudent } from "../../store/studentSlice";
 import { toast } from "react-toastify";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import EntityRow from "./EntityRow";
 
@@ -13,7 +14,8 @@ function DisplayDataTable() {
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const currentRecords = students.slice(firstIndex, lastIndex);
-
+  const totalPages = Math.ceil(students.length / recordsPerPage);
+  const numberOfPages = [...Array(totalPages + 1).keys()].slice(1);
 
   const [selectedId, setSelectedId] = useState(null);
   const [selectedStudentName, setSelectedStudentName] = useState(null);
@@ -118,6 +120,52 @@ function DisplayDataTable() {
           ))}
         </tbody>
       </table>
+      <nav className="flex items-center justify-between pt-4">
+        <div className="flex items-center justify-center">
+          <button
+            className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage(currentPage - 1)}
+          >
+            <FaChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage(currentPage + 1)}
+          >
+            <FaChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+      </nav>
+      <div>
+        <div>
+          Go to page:
+          <select
+            className="px-3 py-1 bg-gray-800 text-white rounded-md"
+            value={currentPage}
+            onChange={(event) => setCurrentPage(event.target.value)}
+          >
+            {numberOfPages.map((number) => (
+              <option key={number} value={number}>
+                {number}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          Records per page:
+          <select
+            className="px-3 py-1 bg-gray-800 text-white rounded-md"
+            value={recordsPerPage}
+            onChange={(event) => setRecordsPerPage(event.target.value)}
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">20</option>
+          </select>
+        </div>
+      </div>
     </div>
   );
 }
