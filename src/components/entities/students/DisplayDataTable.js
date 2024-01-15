@@ -8,6 +8,13 @@ import EntityRow from "./EntityRow";
 function DisplayDataTable() {
   const dispatch = useDispatch();
   const students = useSelector((state) => state.students.students);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage, setRecordsPerPage] = useState(5);
+  const lastIndex = currentPage * recordsPerPage;
+  const firstIndex = lastIndex - recordsPerPage;
+  const currentRecords = students.slice(firstIndex, lastIndex);
+
+
   const [selectedId, setSelectedId] = useState(null);
   const [selectedStudentName, setSelectedStudentName] = useState(null);
   const [confirmDialogBoxOpen, setConfirmDialogBoxOpen] = useState(false);
