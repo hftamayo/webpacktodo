@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+export const getTotalStudents = (state) => state.students.students.length;
+
 export const getStudents = createAsyncThunk(
   "students/getStudents",
   async () => {
