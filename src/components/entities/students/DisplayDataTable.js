@@ -159,7 +159,7 @@ function DisplayDataTable() {
           </tr>
         </thead>
         <tbody>
-          {students.map((data) => (
+          {currentPageRecords.map((data) => (
             <EntityRow
               key={data.id}
               entity={data}
