@@ -176,8 +176,8 @@ function DisplayDataTable() {
         <div className="flex items-center justify-center">
           <button
             className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage(1)}
           >
             <FaAngleDoubleLeft className="h-5 w-5" />
           </button>
@@ -203,7 +203,9 @@ function DisplayDataTable() {
           <button
             className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
             disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((old) => Math.min(old + 1, totalPages))}
+            onClick={() =>
+              setCurrentPage((old) => Math.min(old + 1, totalPages))
+            }
           >
             <FaAngleRight className="h-5 w-5" />
           </button>
@@ -211,7 +213,7 @@ function DisplayDataTable() {
           <button
             className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
             disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(currentPage + 1)}
+            onClick={() => setCurrentPage(totalPages)}
           >
             <FaAngleDoubleRight className="h-5 w-5" />
           </button>
