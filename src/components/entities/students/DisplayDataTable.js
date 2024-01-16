@@ -104,8 +104,9 @@ function DisplayDataTable() {
             htmlFor="searchCriteria"
             className="mr-2 block text-md font-medium text-gray-700"
           >
-            Search Criteria
+            Search Criteria:
           </label>
+          <div className="border-gray-200 my-4 px-1"></div>
           <input
             type="text"
             id="searchCriteria"
@@ -114,11 +115,12 @@ function DisplayDataTable() {
             className="flex-grow text-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
           />
         </div>
-
+        <div className="border-gray-100 my-4 px-24"></div>
         <div className="flex-grow text-center">
           Total records:{" "}
           <span className="font-semibold">{students.length}</span>
         </div>
+        <div className="border-gray-100 my-4 px-24"></div>
 
         <div className="flex-shrink-0">
           Records visible:
