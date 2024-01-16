@@ -182,6 +182,7 @@ function DisplayDataTable() {
           </button>
           <div className="border-t border-gray-200 my-4 px-1"></div>
           Page:
+          <div className="border-t border-gray-200 my-4 px-1"></div>
           <span className="px-3 py-1 bg-gray-800 text-white rounded-md">
             <select
               className="px-3 py-1 bg-gray-800 text-white rounded-md"
