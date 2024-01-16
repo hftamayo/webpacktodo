@@ -185,7 +185,7 @@ function DisplayDataTable() {
           <button
             className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
             disabled={currentPage === 1}
-            onClick={() => setCurrentPage(currentPage - 1)}
+            onClick={() => setCurrentPage((old) => Math.max(old - 1, 1))}
           >
             <FaAngleLeft className="h-5 w-5" />
           </button>
@@ -193,23 +193,17 @@ function DisplayDataTable() {
           Page:
           <div className="border-t border-gray-200 my-4 px-1"></div>
           <span className="px-3 py-1 bg-gray-800 text-white rounded-md">
-            <select
-              className="px-3 py-1 bg-gray-800 text-white rounded-md"
-              value={currentPage}
-              onChange={(event) => setCurrentPage(event.target.value)}
-            >
-              {numberOfPages.map((number) => (
-                <option key={number} value={number}>
-                  {number}
-                </option>
-              ))}
-            </select>
+            {numberOfPages.map((number) => (
+              <button key={number} onClick={() => setCurrentPage(number)}>
+                {number}
+              </button>
+            ))}
           </span>
           <div className="border-t border-gray-200 my-4 px-1"></div>
           <button
             className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
             disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(currentPage + 1)}
+            onClick={() => setCurrentPage((old) => Math.min(old + 1, totalPages))}
           >
             <FaAngleRight className="h-5 w-5" />
           </button>
