@@ -16,9 +16,8 @@ function DisplayDataTable() {
   const students = useSelector((state) => state.students.students);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
-  const lastIndex = currentPage * recordsPerPage;
-  const firstIndex = lastIndex - recordsPerPage;
-  const currentRecords = students.slice(firstIndex, lastIndex);
+  const [currentPageRecords, setCurrentPageRecords] = useState([]); // [
+
   const totalPages = Math.ceil(students.length / recordsPerPage);
   const numberOfPages = [...Array(totalPages + 1).keys()].slice(1);
 
@@ -47,6 +46,12 @@ function DisplayDataTable() {
   useEffect(() => {
     loadStudents();
   }, []);
+
+  useEffect(() => {
+    const lastIndex = currentPage * recordsPerPage;
+    const firstIndex = lastIndex - recordsPerPage;
+    setCurrentPageRecords(students.slice(firstIndex, lastIndex));
+  }, [students, currentPage, recordsPerPage]);
 
   const handleDeleteStudent = (event) => {
     event.stopPropagation();
@@ -115,12 +120,9 @@ function DisplayDataTable() {
             className="flex-grow text-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
           />
           <div className="border-gray-200 my-4 px-1"></div>
-                  <button
-          className="px-4 py-2 text-base font-medium text-white bg-sky-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Search
-        </button>
-
+          <button className="px-4 py-2 text-base font-medium text-white bg-sky-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Search
+          </button>
         </div>
         <div className="border-gray-100 my-4 px-24"></div>
         <div className="flex-grow text-center">
