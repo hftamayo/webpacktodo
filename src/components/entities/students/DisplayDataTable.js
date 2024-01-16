@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudents, deleteStudent } from "../../store/studentSlice";
 import { toast } from "react-toastify";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import {
+  FaAngleLeft,
+  FaAngleRight,
+  FaAngleDoubleLeft,
+  FaAngleDoubleRight,
+} from "react-icons/fa";
 
 import EntityRow from "./EntityRow";
 
@@ -93,6 +98,42 @@ function DisplayDataTable() {
       <h1 className="text-black text-3xl font-semibold font-Montserrat">
         Students Catalog
       </h1>
+      <div className="flex items-center justify-between p-4">
+        <div className="flex items-center">
+          <label
+            htmlFor="searchCriteria"
+            className="mr-2 block text-md font-medium text-gray-700"
+          >
+            Search Criteria
+          </label>
+          <input
+            type="text"
+            id="searchCriteria"
+            name="searchCriteria"
+            onChange={(event) => console.log(event.target.value)}
+            className="flex-grow text-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
+          />
+        </div>
+
+        <div className="flex-grow text-center">
+          Total records:{" "}
+          <span className="font-semibold">{students.length}</span>
+        </div>
+
+        <div className="flex-shrink-0">
+          Records visible:
+          <select
+            className="px-3 py-1 bg-gray-800 text-white rounded-md"
+            value={recordsPerPage}
+            onChange={(event) => setRecordsPerPage(event.target.value)}
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">20</option>
+          </select>
+        </div>
+      </div>
+
       <table className="w-[95%] text-center overflow-hidden overflow-y-scroll mt-8 border-2 border-b-2 border-black">
         <thead className="border-b bg-gray-800">
           <tr>
@@ -124,48 +165,52 @@ function DisplayDataTable() {
         <div className="flex items-center justify-center">
           <button
             className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage(currentPage - 1)}
+          >
+            <FaAngleDoubleLeft className="h-5 w-5" />
+          </button>
+          <div className="border-t border-gray-200 my-4 px-1"></div>
+          <button
+            className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
             disabled={currentPage === 1}
             onClick={() => setCurrentPage(currentPage - 1)}
           >
-            <FaChevronLeft className="h-5 w-5" />
+            <FaAngleLeft className="h-5 w-5" />
           </button>
+          <div className="border-t border-gray-200 my-4 px-1"></div>
+          Page:
+          <span className="px-3 py-1 bg-gray-800 text-white rounded-md">
+            <select
+              className="px-3 py-1 bg-gray-800 text-white rounded-md"
+              value={currentPage}
+              onChange={(event) => setCurrentPage(event.target.value)}
+            >
+              {numberOfPages.map((number) => (
+                <option key={number} value={number}>
+                  {number}
+                </option>
+              ))}
+            </select>
+          </span>
+          <div className="border-t border-gray-200 my-4 px-1"></div>
           <button
             className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage(currentPage + 1)}
           >
-            <FaChevronRight className="h-5 w-5" />
+            <FaAngleRight className="h-5 w-5" />
+          </button>
+          <div className="border-t border-gray-200 my-4 px-1"></div>
+          <button
+            className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage(currentPage + 1)}
+          >
+            <FaAngleDoubleRight className="h-5 w-5" />
           </button>
         </div>
       </nav>
-      <div>
-        <div>
-          Go to page:
-          <select
-            className="px-3 py-1 bg-gray-800 text-white rounded-md"
-            value={currentPage}
-            onChange={(event) => setCurrentPage(event.target.value)}
-          >
-            {numberOfPages.map((number) => (
-              <option key={number} value={number}>
-                {number}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          Records per page:
-          <select
-            className="px-3 py-1 bg-gray-800 text-white rounded-md"
-            value={recordsPerPage}
-            onChange={(event) => setRecordsPerPage(event.target.value)}
-          >
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">20</option>
-          </select>
-        </div>
-      </div>
     </div>
   );
 }
