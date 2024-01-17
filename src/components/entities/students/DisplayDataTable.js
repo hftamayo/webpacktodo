@@ -16,10 +16,11 @@ function DisplayDataTable() {
   const students = useSelector((state) => state.students.students);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
-  const [currentPageRecords, setCurrentPageRecords] = useState([]); // [
+  const [currentPageRecords, setCurrentPageRecords] = useState([]); 
+  const [numberOfPages, setNumberOfPages] = useState([]); // [1, 2, 3, 4, 5]
 
   const totalPages = Math.ceil(students.length / recordsPerPage);
-  const numberOfPages = [...Array(totalPages + 1).keys()].slice(1);
+  const pageNumbers = Array.from({ length: numberOfPages }, (_, i) => i + 1);
 
   const [selectedId, setSelectedId] = useState(null);
   const [selectedStudentName, setSelectedStudentName] = useState(null);
@@ -48,9 +49,21 @@ function DisplayDataTable() {
   }, []);
 
   useEffect(() => {
-    const lastIndex = currentPage * recordsPerPage;
-    const firstIndex = lastIndex - recordsPerPage;
-    setCurrentPageRecords(students.slice(firstIndex, lastIndex));
+    let pages;
+    let currentPageRecords;
+
+    if (recordsPerPage === -1) {
+      pages = 1;
+      currentPageRecords = students;
+    } else {
+      pages = Math.ceil(students.length / recordsPerPage);
+      currentPageRecords = students.slice(
+        (currentPage - 1) * recordsPerPage,
+        currentPage * recordsPerPage
+      );
+    }
+    setNumberOfPages(pages);
+    setCurrentPageRecords(pages === 0 ? [] : currentPageRecords);
   }, [students, currentPage, recordsPerPage]);
 
   const handleDeleteStudent = (event) => {
@@ -132,7 +145,7 @@ function DisplayDataTable() {
         <div className="border-gray-100 my-4 px-24"></div>
 
         <div className="flex-shrink-0">
-          Records visible:
+          Records Per Page:
           <select
             className="px-3 py-1 bg-gray-800 text-white rounded-md"
             value={recordsPerPage}
@@ -140,7 +153,8 @@ function DisplayDataTable() {
           >
             <option value="5">5</option>
             <option value="10">10</option>
-            <option value="15">20</option>
+            <option value="15">15</option>
+            <option value="-1">All</option>
           </select>
         </div>
       </div>
@@ -212,7 +226,7 @@ function DisplayDataTable() {
           Go To Page:
           <div className="border-gray-200 my-4 px-1"></div>
           <span className="px-3 py-0 bg-gray-800 text-white rounded-md flex items-center justify-center align-middle">
-            {numberOfPages.map((number) => (
+            {pageNumbers.map((number) => (
               <button key={number} onClick={() => setCurrentPage(number)}>
                 {number}
               </button>
