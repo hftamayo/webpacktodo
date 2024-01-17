@@ -190,7 +190,7 @@ function DisplayDataTable() {
         <div className="flex items-center justify-center">
           <button
             className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
-            disabled={currentPage === 1}
+            disabled={currentPage === 1 || recordsPerPage === -1}
             onClick={() => setCurrentPage(1)}
           >
             <FaAngleDoubleLeft className="h-5 w-5" />
@@ -198,7 +198,7 @@ function DisplayDataTable() {
           <div className="border-t border-gray-200 my-4 px-1"></div>
           <button
             className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
-            disabled={currentPage === 1}
+            disabled={currentPage === 1 || recordsPerPage === -1}
             onClick={() => setCurrentPage((old) => Math.max(old - 1, 1))}
           >
             <FaAngleLeft className="h-5 w-5" />
@@ -206,7 +206,7 @@ function DisplayDataTable() {
           <div className="border-gray-200 my-4 px-1"></div>
           <button
             className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
-            disabled={currentPage === totalPages}
+            disabled={currentPage === totalPages || recordsPerPage === -1}
             onClick={() =>
               setCurrentPage((old) => Math.min(old + 1, totalPages))
             }
@@ -216,7 +216,7 @@ function DisplayDataTable() {
           <div className="border-t border-gray-200 my-4 px-1"></div>
           <button
             className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
-            disabled={currentPage === totalPages}
+            disabled={currentPage === totalPages || recordsPerPage === -1}
             onClick={() => setCurrentPage(totalPages)}
           >
             <FaAngleDoubleRight className="h-5 w-5" />
@@ -228,7 +228,11 @@ function DisplayDataTable() {
           <div className="border-gray-200 my-4 px-1"></div>
           <span className="px-3 py-0 bg-gray-800 text-white rounded-md flex items-center justify-center align-middle">
             {pageNumbers.map((number) => (
-              <button key={number} onClick={() => setCurrentPage(number)}>
+              <button
+                key={number}
+                disabled={recordsPerPage === -1}
+                onClick={() => setCurrentPage(number)}
+              >
                 {number}
               </button>
             ))}
