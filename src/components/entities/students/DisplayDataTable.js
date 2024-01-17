@@ -16,7 +16,7 @@ function DisplayDataTable() {
   const students = useSelector((state) => state.students.students);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
-  const [currentPageRecords, setCurrentPageRecords] = useState([]); 
+  const [currentPageRecords, setCurrentPageRecords] = useState([]);
   const [numberOfPages, setNumberOfPages] = useState([]); // [1, 2, 3, 4, 5]
 
   const totalPages = Math.ceil(students.length / recordsPerPage);
@@ -223,6 +223,7 @@ function DisplayDataTable() {
           </button>
         </div>
         <div className="flex items-center">
+          <div className="border-gray-200 my-4 px-1"></div>
           Go To Page:
           <div className="border-gray-200 my-4 px-1"></div>
           <span className="px-3 py-0 bg-gray-800 text-white rounded-md flex items-center justify-center align-middle">
