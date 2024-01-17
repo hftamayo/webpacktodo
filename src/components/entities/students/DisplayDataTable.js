@@ -189,17 +189,7 @@ function DisplayDataTable() {
           >
             <FaAngleLeft className="h-5 w-5" />
           </button>
-          <div className="border-t border-gray-200 my-4 px-1"></div>
-          Page:
-          <div className="border-t border-gray-200 my-4 px-1"></div>
-          <span className="px-3 py-1 bg-gray-800 text-white rounded-md">
-            {numberOfPages.map((number) => (
-              <button key={number} onClick={() => setCurrentPage(number)}>
-                {number}
-              </button>
-            ))}
-          </span>
-          <div className="border-t border-gray-200 my-4 px-1"></div>
+          <div className="border-gray-200 my-4 px-1"></div>
           <button
             className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
             disabled={currentPage === totalPages}
@@ -217,6 +207,18 @@ function DisplayDataTable() {
           >
             <FaAngleDoubleRight className="h-5 w-5" />
           </button>
+        </div>
+        <div className="flex items-center">
+          Go To Page:
+          <div className="border-gray-200 my-4 px-1"></div>
+          <span className="px-3 py-0 bg-gray-800 text-white rounded-md flex items-center justify-center align-middle">
+            {numberOfPages.map((number) => (
+              <button key={number} onClick={() => setCurrentPage(number)}>
+                {number}
+              </button>
+            ))}
+          </span>
+          <div className="border-gray-200 my-4 px-1"></div>
         </div>
       </nav>
     </div>
