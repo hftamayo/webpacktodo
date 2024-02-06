@@ -27,6 +27,11 @@ function DisplayDataTable() {
   const [confirmDialogBoxOpen, setConfirmDialogBoxOpen] = useState(false);
 
   const ENTITY_HEADER_CLASSNAME = "text-sm font-medium text-white px-6 py-4";
+  const NAVIGATION_BUTTON_CLASSNAME = `p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md ${
+    students.length === 0 || currentPage === 1 || recordsPerPage === -1
+      ? "cursor-not-allowed"
+      : ""
+  }`;
 
   const loadStudents = () => {
     try {
@@ -130,10 +135,11 @@ function DisplayDataTable() {
             id="searchCriteria"
             name="searchCriteria"
             onChange={(event) => console.log(event.target.value)}
+            disabled={students.length === 0}
             className="flex-grow text-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
           />
           <div className="border-gray-200 my-4 px-1"></div>
-          <button className="px-4 py-2 text-base font-medium text-white bg-sky-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button disabled={students.length === 0}  className="px-4 py-2 text-base font-medium text-white bg-sky-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Search
           </button>
         </div>
@@ -150,6 +156,7 @@ function DisplayDataTable() {
             className="px-3 py-1 bg-gray-800 text-white rounded-md"
             value={recordsPerPage}
             onChange={(event) => setRecordsPerPage(event.target.value)}
+            disabled={students.length === 0}
           >
             <option value="5">5</option>
             <option value="10">10</option>
@@ -173,40 +180,58 @@ function DisplayDataTable() {
           </tr>
         </thead>
         <tbody>
-          {currentPageRecords.map((data) => (
-            <EntityRow
-              key={data.id}
-              entity={data}
-              selectedStudentName={selectedStudentName}
-              confirmDialogBoxOpen={confirmDialogBoxOpen}
-              handleDeleteStudent={handleDeleteStudent}
-              handleOpenConfirmDialogBox={handleOpenConfirmDialogBox}
-              handleCloseConfirmDialogBox={handleCloseConfirmDialogBox}
-            />
-          ))}
+          {currentPageRecords.length > 0 ? (
+            currentPageRecords.map((data) => (
+              <EntityRow
+                key={data.id}
+                entity={data}
+                selectedStudentName={selectedStudentName}
+                confirmDialogBoxOpen={confirmDialogBoxOpen}
+                handleDeleteStudent={handleDeleteStudent}
+                handleOpenConfirmDialogBox={handleOpenConfirmDialogBox}
+                handleCloseConfirmDialogBox={handleCloseConfirmDialogBox}
+              />
+            ))
+          ) : (
+            <tr>
+              <td colSpan="6">No data found</td>
+            </tr>
+          )}
         </tbody>
       </table>
       <nav className="flex items-center justify-between pt-4">
         <div className="flex items-center justify-center">
           <button
-            className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
-            disabled={currentPage === 1 || recordsPerPage === -1}
+            className={NAVIGATION_BUTTON_CLASSNAME}
+            disabled={
+              students.length === 0 ||
+              currentPage === 1 ||
+              recordsPerPage === -1
+            }
             onClick={() => setCurrentPage(1)}
           >
             <FaAngleDoubleLeft className="h-5 w-5" />
           </button>
           <div className="border-t border-gray-200 my-4 px-1"></div>
           <button
-            className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
-            disabled={currentPage === 1 || recordsPerPage === -1}
+            className={NAVIGATION_BUTTON_CLASSNAME}
+            disabled={
+              students.length === 0 ||
+              currentPage === 1 ||
+              recordsPerPage === -1
+            }
             onClick={() => setCurrentPage((old) => Math.max(old - 1, 1))}
           >
             <FaAngleLeft className="h-5 w-5" />
           </button>
           <div className="border-gray-200 my-4 px-1"></div>
           <button
-            className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
-            disabled={currentPage === totalPages || recordsPerPage === -1}
+            className={NAVIGATION_BUTTON_CLASSNAME}
+            disabled={
+              students.length === 0 ||
+              currentPage === totalPages ||
+              recordsPerPage === -1
+            }
             onClick={() =>
               setCurrentPage((old) => Math.min(old + 1, totalPages))
             }
@@ -215,8 +240,12 @@ function DisplayDataTable() {
           </button>
           <div className="border-t border-gray-200 my-4 px-1"></div>
           <button
-            className="p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
-            disabled={currentPage === totalPages || recordsPerPage === -1}
+            className={NAVIGATION_BUTTON_CLASSNAME}
+            disabled={
+              students.length === 0 ||
+              currentPage === totalPages ||
+              recordsPerPage === -1
+            }
             onClick={() => setCurrentPage(totalPages)}
           >
             <FaAngleDoubleRight className="h-5 w-5" />
