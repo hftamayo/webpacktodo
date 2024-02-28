@@ -128,7 +128,7 @@ function DisplayDataTable() {
     setSortField(field);
     setSortDirection(direction);
 
-    students.sort((a, b) => {
+    const sortedStudents = [...students].sort((a, b) => {
       if (a[field] < b[field]) {
         return direction === "asc" ? -1 : 1;
       }
@@ -137,6 +137,13 @@ function DisplayDataTable() {
       }
       return 0;
     });
+    //dispatch(getStudents(sortedStudents));
+    setCurrentPageRecords(
+      sortedStudents.slice(
+        (currentPage - 1) * recordsPerPage,
+        currentPage * recordsPerPage
+      )
+    );
   };
 
   return (
