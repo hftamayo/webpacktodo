@@ -28,23 +28,23 @@ const EntityRow = ({
       <Link
         to={`/student/${entity.id}`}
         className="flex items-center px-6 py-2 font-normal text-white bg-black rounded-lg w-30"
+        title="View details"
       >
         <FaEye />
-        <span className="ml-2">View</span>
       </Link>
       <Link
         to={`/editstudent/${entity.id}`}
         className="flex items-center px-6 py-2 font-normal text-white bg-blue-600 rounded-lg w-30"
+        title="Edit information"
       >
         <FaEdit />
-        <span className="ml-2">Edit</span>
       </Link>
       <Link
         onClick={() => handleOpenConfirmDialogBox(entity.id, entity.name)}
         className="flex items-center px-6 py-2 font-normal text-white bg-red-600 rounded-lg w-30"
+        title="Delete this record"
       >
         <FaTrash />
-        <span className="ml-2">Delete</span>
       </Link>
       <ConfirmDialogBox
         isOpen={confirmDialogBoxOpen}
