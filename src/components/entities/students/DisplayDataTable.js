@@ -139,14 +139,19 @@ function DisplayDataTable() {
             className="flex-grow text-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
           />
           <div className="border-gray-200 my-4 px-1"></div>
-          <button disabled={students.length === 0}  className="px-4 py-2 text-base font-medium text-white bg-sky-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button
+            disabled={students.length === 0}
+            className="px-4 py-2 text-base font-medium text-white bg-sky-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
             Search
           </button>
         </div>
         <div className="border-gray-100 my-4 px-24"></div>
         <div className="flex-grow text-center">
-          Total records:{" "}
-          <span className="font-semibold">{students.length}</span>
+          Displaying:{" "}
+          <span className="font-semibold">
+            {currentPageRecords.length} of {students.length}
+          </span>
         </div>
         <div className="border-gray-100 my-4 px-24"></div>
 
