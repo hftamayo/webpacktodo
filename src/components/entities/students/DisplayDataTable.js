@@ -7,6 +7,7 @@ import {
   FaAngleRight,
   FaAngleDoubleLeft,
   FaAngleDoubleRight,
+  FaSort,
 } from "react-icons/fa";
 
 import EntityRow from "./EntityRow";
@@ -25,6 +26,9 @@ function DisplayDataTable() {
   const [selectedId, setSelectedId] = useState(null);
   const [selectedStudentName, setSelectedStudentName] = useState(null);
   const [confirmDialogBoxOpen, setConfirmDialogBoxOpen] = useState(false);
+
+  const [sortField, setSortField] = useState("id");
+  const [sortDirection, setSortDirection] = useState("asc");
 
   const ENTITY_HEADER_CLASSNAME = "text-sm font-medium text-white px-6 py-4";
   const NAVIGATION_BUTTON_CLASSNAME = `p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md ${
@@ -116,6 +120,25 @@ function DisplayDataTable() {
     setConfirmDialogBoxOpen(false);
   };
 
+  const handleSort = (field) => {
+    let direction = "asc";
+    if (field === sortField) {
+      direction = sortDirection === "asc" ? "desc" : "asc";
+    }
+    setSortField(field);
+    setSortDirection(direction);
+
+    students.sort((a, b) => {
+      if (a[field] < b[field]) {
+        return direction === "asc" ? -1 : 1;
+      }
+      if (a[field] > b[field]) {
+        return direction === "asc" ? 1 : -1;
+      }
+      return 0;
+    });
+  };
+
   return (
     <div className="w-full flex flex-col min-h-[50vh] justify-center items-center">
       <h1 className="text-black text-3xl font-semibold font-Montserrat">
@@ -174,10 +197,29 @@ function DisplayDataTable() {
       <table className="w-[95%] text-center overflow-hidden overflow-y-scroll mt-8 border-2 border-b-2 border-black">
         <thead className="border-b bg-gray-800">
           <tr>
-            <th scope="col" className={ENTITY_HEADER_CLASSNAME}>
-              #
+            <th
+              scope="col"
+              className={`${ENTITY_HEADER_CLASSNAME} flex items-center`}
+            >
+              ID
+              <button
+                onClick={() => handleSort("id")}
+                className="px-2"
+                title="Sort by ID"
+              >
+                <FaSort />
+              </button>
             </th>
-            <th className={ENTITY_HEADER_CLASSNAME}>Name</th>
+            <th scope="col" className={ENTITY_HEADER_CLASSNAME}>
+              Name
+              <button
+                onClick={() => handleSort("name")}
+                className="px-2"
+                title="Sort by Name"
+              >
+                <FaSort />
+              </button>
+            </th>
             <th className={ENTITY_HEADER_CLASSNAME}>Email</th>
             <th className={ENTITY_HEADER_CLASSNAME}>Phone</th>
             <th className={ENTITY_HEADER_CLASSNAME}>Address</th>
