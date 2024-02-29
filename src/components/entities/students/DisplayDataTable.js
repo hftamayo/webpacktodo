@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudents, deleteStudent } from "../../store/studentSlice";
 import { toast } from "react-toastify";
@@ -37,7 +37,7 @@ function DisplayDataTable() {
       : ""
   }`;
 
-  const loadStudents = () => {
+  const loadStudents = useCallback(() => {
     try {
       dispatch(getStudents()).then((action) => {
         if (getStudents.fulfilled.match(action)) {
@@ -51,11 +51,11 @@ function DisplayDataTable() {
         "An error occurred while trying to load the data, the event was reported. Please try again later."
       );
     }
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     loadStudents();
-  }, []);
+  }, [loadStudents]);
 
   useEffect(() => {
     let pages;
@@ -149,7 +149,7 @@ function DisplayDataTable() {
   const handleSearch = (searchCriteria) => {
     const lowerCaseSearchCriteria = searchCriteria.toLowerCase();
 
-    const filteredStudents = students.filter((studentt) =>
+    const filteredStudents = students.filter((student) =>
       Object.values(student).some((value) =>
         value.toString().toLowerCase().includes(lowerCaseSearchCriteria)
       )
@@ -181,7 +181,7 @@ function DisplayDataTable() {
             type="text"
             id="searchCriteria"
             name="searchCriteria"
-            onChange={(event) => console.log(event.target.value)}
+            onChange={(event) => handleSearch(event.target.value)}
             disabled={students.length === 0}
             className="flex-grow text-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
           />
