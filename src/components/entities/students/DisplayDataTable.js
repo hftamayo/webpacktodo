@@ -327,9 +327,9 @@ function DisplayDataTable() {
           Go To Page:
           <div className="border-gray-200 my-4 px-1"></div>
           <select
-          value={currentPage}
-          onChange={(e) => setCurrentPage(Number(e.target.value))}
-          className="px-3 py-0 bg-gray-800 text-white rounded-md" 
+            value={currentPage}
+            onChange={(e) => setCurrentPage(Number(e.target.value))}
+            className="px-3 py-0 bg-gray-800 text-white rounded-md"
           >
             {pageNumbers.map((number) => (
               <option
