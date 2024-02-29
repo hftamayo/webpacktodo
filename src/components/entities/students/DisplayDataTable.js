@@ -146,6 +146,23 @@ function DisplayDataTable() {
     );
   };
 
+  const handleSearch = (searchCriteria) => {
+    const lowerCaseSearchCriteria = searchCriteria.toLowerCase();
+
+    const filteredStudents = students.filter((studentt) =>
+      Object.values(student).some((value) =>
+        value.toString().toLowerCase().includes(lowerCaseSearchCriteria)
+      )
+    );
+
+    setCurrentPageRecords(
+      filteredStudents.slice(
+        (currentPage - 1) * recordsPerPage,
+        currentPage * recordsPerPage
+      )
+    );
+  };
+
   return (
     <div className="w-full flex flex-col min-h-[50vh] justify-center items-center">
       <h1 className="text-black text-3xl font-semibold font-Montserrat">

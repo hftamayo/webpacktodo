@@ -85,51 +85,6 @@
       }
     },
     {
-      "id": 5,
-      "name": "chainel1",
-      "username": "chainel2",
-      "email": "chainel@chainel.com",
-      "street": "chainel3",
-      "suite": "chainel4",
-      "address": {
-        "street": "pp1",
-        "suite": "pp2",
-        "city": "pp3",
-        "zipcode": "pp4"
-      },
-      "position": {
-        "lat": 1222,
-        "lng": 2344
-      },
-
-      "phoneNumber": "1111-11111",
-      "company": {
-        "companyName": "fkk",
-        "companyAddress": "fr"
-      }
-    },
-    {
-      "id": 6,
-      "name": "bugs everywhere",
-      "username": "bugs",
-      "email": "bug@dev.com",
-      "address": {
-        "street": "pp1",
-        "suite": "pp2",
-        "city": "pp3",
-        "zipcode": "pp4"
-      },
-      "position": {
-        "lat": 1222,
-        "lng": 2344
-      },
-      "phoneNumber": "3494-4444",
-      "company": {
-        "companyName": "fkk",
-        "companyAddress": "fr"
-      }
-    },
-    {
       "id": 7,
       "name": "Javier Milei",
       "username": "javo",
@@ -151,25 +106,152 @@
       }
     },
     {
-      "id": 8,
-      "name": "Daniel el Travieso",
-      "username": "daniel",
-      "email": "daniel@eltravieso.com",
+      "name": "Mark Rial",
+      "username": "rial",
+      "email": "chivo@rial.com",
       "address": {
-        "street": "d01",
-        "suite": "d02",
-        "city": "d03",
-        "zipcode": "d04"
+        "street": "rial1",
+        "suite": "rial2",
+        "city": "rial3",
+        "zipcode": "rial4"
       },
       "position": {
-        "lat": 55555,
-        "lng": 66777
+        "lat": 1222,
+        "lng": 1222
       },
-      "phoneNumber": "7788-7777",
+      "phoneNumber": "5555-5555",
       "company": {
-        "companyName": "chivoee",
-        "companyAddress": "chivo344"
-      }
+        "companyName": "rial5",
+        "companyAddress": "rial6"
+      },
+      "id": 6
+    },
+    {
+      "name": "Steve Rial",
+      "username": "rial",
+      "email": "javier@argentina.com",
+      "address": {
+        "street": "rial1",
+        "suite": "rial2",
+        "city": "rial3",
+        "zipcode": "rial4"
+      },
+      "position": {
+        "lat": 1222,
+        "lng": 1222
+      },
+      "phoneNumber": "5555-5555",
+      "company": {
+        "companyName": "rial5",
+        "companyAddress": "rial6"
+      },
+      "id": 5
+    },
+    {
+      "name": "Mirco Rial",
+      "username": "rial",
+      "email": "luis@ok.com",
+      "address": {
+        "street": "rial1",
+        "suite": "rial2",
+        "city": "rial3",
+        "zipcode": "rial4"
+      },
+      "position": {
+        "lat": 1222,
+        "lng": 1222
+      },
+      "phoneNumber": "5555-5555",
+      "company": {
+        "companyName": "rial5",
+        "companyAddress": "rial6"
+      },
+      "id": 11
+    },
+    {
+      "name": "Boom Rial",
+      "username": "rial",
+      "email": "laugh@ok.com",
+      "address": {
+        "street": "rial1",
+        "suite": "rial2",
+        "city": "rial3",
+        "zipcode": "rial4"
+      },
+      "position": {
+        "lat": 1222,
+        "lng": 1222
+      },
+      "phoneNumber": "5555-5555",
+      "company": {
+        "companyName": "rial5",
+        "companyAddress": "rial6"
+      },
+      "id": 12
+    },
+    {
+      "name": "chivo1",
+      "username": "chivo2",
+      "email": "chivo@ok.com",
+      "address": {
+        "street": "chivo3",
+        "suite": "chivo4",
+        "city": "chivo5",
+        "zipcode": "chivo6"
+      },
+      "position": {
+        "lat": 1222,
+        "lng": 1222
+      },
+      "phoneNumber": "2222-2222",
+      "company": {
+        "companyName": "buena onda",
+        "companyAddress": "calo"
+      },
+      "id": 8
+    },
+    {
+      "name": "Melissa Lopez",
+      "username": "melisa",
+      "email": "mel@jns.com",
+      "address": {
+        "street": "jeans1",
+        "suite": "jeans2",
+        "city": "jeans3",
+        "zipcode": "111111"
+      },
+      "position": {
+        "lat": 111122,
+        "lng": 111133
+      },
+      "phoneNumber": "5555-5555",
+      "company": {
+        "companyName": "jeans4",
+        "companyAddress": "jeans5"
+      },
+      "id": 9
+    },
+    {
+      "name": "Maria Fernanda",
+      "username": "fey",
+      "email": "fey@azucar.com",
+      "address": {
+        "street": "azucar1",
+        "suite": "azucar2",
+        "city": "azucar3",
+        "zipcode": "887766"
+      },
+      "position": {
+        "lat": 886655,
+        "lng": 886644
+      },
+      "phoneNumber": "2444-4444",
+      "company": {
+        "companyName": "azucar4",
+        "companyAddress": "azucar5"
+      },
+      "id": 10
     }
+    
   ]
 }
