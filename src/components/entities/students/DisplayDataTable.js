@@ -326,17 +326,21 @@ function DisplayDataTable() {
           <div className="border-gray-200 my-4 px-1"></div>
           Go To Page:
           <div className="border-gray-200 my-4 px-1"></div>
-          <span className="px-3 py-0 bg-gray-800 text-white rounded-md flex items-center justify-center align-middle">
+          <select
+          value={currentPage}
+          onChange={(e) => setCurrentPage(Number(e.target.value))}
+          className="px-3 py-0 bg-gray-800 text-white rounded-md" 
+          >
             {pageNumbers.map((number) => (
-              <button
+              <option
                 key={number}
+                value={number}
                 disabled={recordsPerPage === -1}
-                onClick={() => setCurrentPage(number)}
               >
                 {number}
-              </button>
+              </option>
             ))}
-          </span>
+          </select>
           <div className="border-gray-200 my-4 px-1"></div>
         </div>
       </nav>
