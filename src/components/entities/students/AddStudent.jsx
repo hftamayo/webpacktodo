@@ -152,10 +152,14 @@ function AddStudent() {
                   value={values.name}
                   autoFocus={true}
                   onChange={handleChange}
-                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${errors.username ? 'border-red-500' : ''}`}
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
+                    errors.username ? "border-red-500" : ""
+                  }`}
                 ></input>
                 {errors.name && (
-                  <p className="text-red-500 text-sm italic font-bold bottom-0">{errors.name}</p>
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">
+                    {errors.name}
+                  </p>
                 )}
               </div>
               <div className="w-full md:w-1/2 px-3">
@@ -171,10 +175,14 @@ function AddStudent() {
                   name="username"
                   value={values.username}
                   onChange={handleChange}
-                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${errors.username ? 'border-red-500' : ''}`}
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
+                    errors.username ? "border-red-500" : ""
+                  }`}
                 ></input>
                 {errors.username && (
-                  <p className="text-red-500 text-sm italic font-bold bottom-0">{errors.username}</p>
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">
+                    {errors.username}
+                  </p>
                 )}
               </div>
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -190,10 +198,14 @@ function AddStudent() {
                   name="email"
                   value={values.email}
                   onChange={handleChange}
-                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${errors.username ? 'border-red-500' : ''}`}
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
+                    errors.email ? "border-red-500" : ""
+                  }`}
                 ></input>
                 {errors.email && (
-                  <p className="text-red-500 text-sm italic font-bold bottom-0">{errors.email}</p>
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">
+                    {errors.email}
+                  </p>
                 )}
               </div>
               <div className="w-full md:w-1/2 px-3">
@@ -209,10 +221,198 @@ function AddStudent() {
                   name="street"
                   value={values.street}
                   onChange={handleChange}
-                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${errors.username ? 'border-red-500' : ''}`}
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
+                    errors.street ? "border-red-500" : ""
+                  }`}
                 ></input>
                 {errors.street && (
-                  <p className="text-red-500 text-sm italic font-bold bottom-0">{errors.street}</p>
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">
+                    {errors.street}
+                  </p>
+                )}
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label
+                  htmlFor="suite"
+                  className="block text-md font-medium text-gray-700"
+                >
+                  Suite <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="suite"
+                  name="suite"
+                  value={values.suite}
+                  onChange={handleChange}
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
+                    errors.suite ? "border-red-500" : ""
+                  }`}
+                ></input>
+                {errors.suite && (
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">
+                    {errors.suite}
+                  </p>
+                )}
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label
+                  htmlFor="city"
+                  className="block text-md font-medium text-gray-700"
+                >
+                  City <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  value={values.city}
+                  onChange={handleChange}
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
+                    errors.city ? "border-red-500" : ""
+                  }`}
+                ></input>
+                {errors.city && (
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">
+                    {errors.city}
+                  </p>
+                )}
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label
+                  htmlFor="zipcode"
+                  className="block text-md font-medium text-gray-700"
+                >
+                  Zipcode <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="zipcode"
+                  name="zipcode"
+                  value={values.zipcode}
+                  onChange={handleChange}
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
+                    errors.zipcode ? "border-red-500" : ""
+                  }`}
+                ></input>
+                {errors.zipcode && (
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">
+                    {errors.zipcode}
+                  </p>
+                )}
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label
+                  htmlFor="latitude"
+                  className="block text-md font-medium text-gray-700"
+                >
+                  Latitude <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="latitude"
+                  name="latitude"
+                  value={values.latitude}
+                  onChange={handleChange}
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
+                    errors.latitude ? "border-red-500" : ""
+                  }`}
+                ></input>
+                {errors.latitude && (
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">
+                    {errors.latitude}
+                  </p>
+                )}
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label
+                  htmlFor="longitude"
+                  className="block text-md font-medium text-gray-700"
+                >
+                  Longitude <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="longitude"
+                  name="longitude"
+                  value={values.longitude}
+                  onChange={handleChange}
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
+                    errors.longitude ? "border-red-500" : ""
+                  }`}
+                ></input>
+                {errors.longitude && (
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">
+                    {errors.longitude}
+                  </p>
+                )}
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label
+                  htmlFor="phoneNumber"
+                  className="block text-md font-medium text-gray-700"
+                >
+                  Phone Number<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={values.phoneNumber}
+                  onChange={handleChange}
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
+                    errors.phoneNumber ? "border-red-500" : ""
+                  }`}
+                ></input>
+                {errors.phoneNumber && (
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">
+                    {errors.phoneNumber}
+                  </p>
+                )}
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label
+                  htmlFor="companyName"
+                  className="block text-md font-medium text-gray-700"
+                >
+                  Company Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="companyName"
+                  name="companyName"
+                  value={values.companyName}
+                  onChange={handleChange}
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
+                    errors.companyName ? "border-red-500" : ""
+                  }`}
+                ></input>
+                {errors.companyName && (
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">
+                    {errors.companyName}
+                  </p>
+                )}
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label
+                  htmlFor="companyAddress"
+                  className="block text-md font-medium text-gray-700"
+                >
+                  Company Address <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="companyAddress"
+                  name="companyAddress"
+                  value={values.companyAddress}
+                  onChange={handleChange}
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${
+                    errors.companyAddress ? "border-red-500" : ""
+                  }`}
+                ></input>
+                {errors.companyAddress && (
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">
+                    {errors.companyAddress}
+                  </p>
                 )}
               </div>
             </div>
