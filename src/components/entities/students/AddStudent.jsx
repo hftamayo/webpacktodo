@@ -133,25 +133,17 @@ function AddStudent() {
     <div className="flex justify-center">
       <form className="w-full max-w-lg">
         <div className="rounded overflow-hidden shadow-lg p-6 bg-white">
-          <div className="font-bold text-xl mb-2">Add a Student</div>
+          <div className="flex items-center justify-center font-bold text-xl mb-2">
+            Add a Student
+          </div>
           <div>
             <div className="flex flex-wrap -mx-3">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                  User Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="street"
-                  name="street"
-                  value={values.street}
-                  onChange={handleChange}
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                ></input>
-              </div>
-              <div className="w-full md:w-1/2 px-3">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                  Password <span className="text-red-500">*</span>
+                <label
+                  htmlFor="name"
+                  className="block text-md font-medium text-gray-700"
+                >
+                  Full Name <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -162,10 +154,16 @@ function AddStudent() {
                   onChange={handleChange}
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 ></input>
+                {errors.name && (
+                  <p className="text-red-500 font-bold">{errors.name}</p>
+                )}
               </div>
-              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                  Full Name <span className="text-red-500">*</span>
+              <div className="w-full md:w-1/2 px-3">
+                <label
+                  htmlFor="username"
+                  className="block text-md font-medium text-gray-700"
+                >
+                  User Name <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -175,9 +173,15 @@ function AddStudent() {
                   onChange={handleChange}
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 ></input>
+                {errors.username && (
+                  <p className="text-red-500 font-bold">{errors.username}</p>
+                )}
               </div>
-              <div className="w-full md:w-1/2 px-3">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                  htmlFor="email"
+                  className="block text-md font-medium text-gray-700"
+                >
                   Email <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -188,19 +192,41 @@ function AddStudent() {
                   onChange={handleChange}
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 ></input>
+                {errors.email && (
+                  <p className="text-red-500 font-bold">{errors.email}</p>
+                )}
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label
+                  htmlFor="street"
+                  className="block text-md font-medium text-gray-700"
+                >
+                  Street <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="street"
+                  name="street"
+                  value={values.street}
+                  onChange={handleChange}
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                ></input>
+                {errors.street && (
+                  <p className="text-red-500 font-bold">{errors.street}</p>
+                )}
               </div>
             </div>
           </div>
-          <div className="flex justify-between mt-4">
+          <div className="flex justify-center mt-4 px-4 space-x-4">
             <button
               onClick={handleSubmit}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="px-4 py-2 text-base font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Register
             </button>
             <button
               onClick={() => navigate("/students")}
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              className="px-4 py-2 text-base font-medium text-white bg-yellow-600 rounded-md hover:bg-yellow-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
             >
               Cancel
             </button>
