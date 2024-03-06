@@ -152,10 +152,10 @@ function AddStudent() {
                   value={values.name}
                   autoFocus={true}
                   onChange={handleChange}
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${errors.username ? 'border-red-500' : ''}`}
                 ></input>
                 {errors.name && (
-                  <p className="text-red-500 font-bold">{errors.name}</p>
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">{errors.name}</p>
                 )}
               </div>
               <div className="w-full md:w-1/2 px-3">
@@ -171,10 +171,10 @@ function AddStudent() {
                   name="username"
                   value={values.username}
                   onChange={handleChange}
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${errors.username ? 'border-red-500' : ''}`}
                 ></input>
                 {errors.username && (
-                  <p className="text-red-500 font-bold">{errors.username}</p>
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">{errors.username}</p>
                 )}
               </div>
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -190,10 +190,10 @@ function AddStudent() {
                   name="email"
                   value={values.email}
                   onChange={handleChange}
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${errors.username ? 'border-red-500' : ''}`}
                 ></input>
                 {errors.email && (
-                  <p className="text-red-500 font-bold">{errors.email}</p>
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">{errors.email}</p>
                 )}
               </div>
               <div className="w-full md:w-1/2 px-3">
@@ -209,10 +209,10 @@ function AddStudent() {
                   name="street"
                   value={values.street}
                   onChange={handleChange}
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  className={`appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white ${errors.username ? 'border-red-500' : ''}`}
                 ></input>
                 {errors.street && (
-                  <p className="text-red-500 font-bold">{errors.street}</p>
+                  <p className="text-red-500 text-sm italic font-bold bottom-0">{errors.street}</p>
                 )}
               </div>
             </div>
