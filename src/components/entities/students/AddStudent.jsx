@@ -130,294 +130,84 @@ function AddStudent() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-    <form className="flex flex-col items-center justify-center w-full max-w-2xl px-4 py-8 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6">Add a Student</h2>
-
-      <div className="grid grid-cols-3 gap-4">
-        <div className="col-span-1 flex items-center justify-center">
-          <label
-            htmlFor="name"
-            className="block text-md font-medium text-gray-700"
-          >
-            Full Name
-          </label>
+    <div className="flex justify-center">
+      <form className="w-full max-w-lg">
+        <div className="rounded overflow-hidden shadow-lg p-6 bg-white">
+          <div className="font-bold text-xl mb-2">Add a Student</div>
+          <div>
+            <div className="flex flex-wrap -mx-3">
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  User Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="street"
+                  name="street"
+                  value={values.street}
+                  onChange={handleChange}
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                ></input>
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Password <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={values.name}
+                  autoFocus={true}
+                  onChange={handleChange}
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                ></input>
+              </div>
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Full Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={values.username}
+                  onChange={handleChange}
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                ></input>
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Email <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                ></input>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-between mt-4">
+            <button
+              onClick={handleSubmit}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Register
+            </button>
+            <button
+              onClick={() => navigate("/students")}
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
-        <div className="col-span-2">
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={values.name}
-            autoFocus={true}
-            onChange={handleChange}
-            className="w-[100%] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
-          />
-          {errors.name && (
-            <p className="text-red-500 font-bold">{errors.name}</p>
-          )}
-        </div>
-
-        <div className="col-span-1 flex items-center justify-center">
-          <label
-            htmlFor="username"
-            className="block text-md font-medium text-gray-700"
-          >
-            User Name
-          </label>
-        </div>
-        <div className="col-span-2">
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={values.username}
-            onChange={handleChange}
-            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
-          />
-          {errors.username && (
-            <p className="text-red-500 font-bold">{errors.username}</p>
-          )}
-        </div>
-
-        <div className="col-span-1 flex items-center justify-center">
-          <label
-            htmlFor="email"
-            className="block text-md font-medium text-gray-700"
-          >
-            Email
-          </label>
-        </div>
-        <div className="col-span-2">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={values.email}
-            onChange={handleChange}
-            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
-          />
-          {errors.email && (
-            <p className="text-red-500 font-bold">{errors.email}</p>
-          )}
-        </div>
-
-        <div className="col-span-1 flex items-center justify-center">
-          <label
-            htmlFor="street"
-            className="block text-md font-medium text-gray-700"
-          >
-            Street
-          </label>
-        </div>
-        <div className="col-span-2">
-          <input
-            type="text"
-            id="street"
-            name="street"
-            value={values.street}
-            onChange={handleChange}
-            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
-          />
-          {errors.street && (
-            <p className="text-red-500 font-bold">{errors.street}</p>
-          )}
-        </div>
-
-        <div className="col-span-1 flex items-center justify-center">
-          <label
-            htmlFor="suite"
-            className="block text-md font-medium text-gray-700"
-          >
-            Suite
-          </label>
-        </div>
-        <div className="col-span-2">
-          <input
-            type="text"
-            id="suite"
-            name="suite"
-            value={values.suite}
-            onChange={handleChange}
-            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
-          />
-          {errors.suite && (
-            <p className="text-red-500 font-bold">{errors.suite}</p>
-          )}
-        </div>
-
-        <div className="col-span-1 flex items-center justify-center">
-          <label
-            htmlFor="city"
-            className="block text-md font-medium text-gray-700"
-          >
-            City
-          </label>
-        </div>
-        <div className="col-span-2">
-          <input
-            type="text"
-            id="city"
-            name="city"
-            value={values.city}
-            onChange={handleChange}
-            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
-          />
-          {errors.city && (
-            <p className="text-red-500 font-bold">{errors.city}</p>
-          )}
-        </div>
-
-        <div className="col-span-1 flex items-center justify-center">
-          <label
-            htmlFor="zipcode"
-            className="block text-md font-medium text-gray-700"
-          >
-            Zip Code
-          </label>
-        </div>
-        <div className="col-span-2">
-          <input
-            type="text"
-            id="zipcode"
-            name="zipcode"
-            value={values.zipcode}
-            onChange={handleChange}
-            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
-          />
-          {errors.zipcode && (
-            <p className="text-red-500 font-bold">{errors.zipcode}</p>
-          )}
-        </div>
-
-        <div className="col-span-1 flex items-center justify-center">
-          <label
-            htmlFor="latitude"
-            className="block text-md font-medium text-gray-700"
-          >
-            Latitude
-          </label>
-        </div>
-        <div className="col-span-2">
-          <input
-            type="text"
-            id="latitude"
-            name="latitude"
-            value={values.latitude}
-            onChange={handleChange}
-            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
-          />
-          {errors.latitude && (
-            <p className="text-red-500 font-bold">{errors.latitude}</p>
-          )}
-        </div>
-
-        <div className="col-span-1 flex items-center justify-center">
-          <label
-            htmlFor="longitude"
-            className="block text-md font-medium text-gray-700"
-          >
-            Longitude
-          </label>
-        </div>
-        <div className="col-span-2">
-          <input
-            type="text"
-            id="longitude"
-            name="longitude"
-            value={values.longitude}
-            onChange={handleChange}
-            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
-          />
-          {errors.longitude && (
-            <p className="text-red-500 font-bold">{errors.longitude}</p>
-          )}
-        </div>
-
-        <div className="col-span-1 flex items-center justify-center">
-          <label
-            htmlFor="phoneNumber"
-            className="block text-md font-medium text-gray-700"
-          >
-            Phone Number
-          </label>
-        </div>
-        <div className="col-span-2">
-          <input
-            type="phone"
-            id="phoneNumber"
-            name="phoneNumber"
-            value={values.phoneNumber}
-            onChange={handleChange}
-            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
-          />
-          {errors.phoneNumber && (
-            <p className="text-red-500 font-bold">{errors.phoneNumber}</p>
-          )}
-        </div>
-
-        <div className="col-span-1 flex items-center justify-center">
-          <label
-            htmlFor="companyName"
-            className="block text-md font-medium text-gray-700"
-          >
-            Company Name
-          </label>
-        </div>
-        <div className="col-span-2">
-          <input
-            type="text"
-            id="companyName"
-            name="companyName"
-            value={values.companyName}
-            onChange={handleChange}
-            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
-          />
-          {errors.companyName && (
-            <p className="text-red-500 font-bold">{errors.companyName}</p>
-          )}
-        </div>
-
-        <div className="col-span-1 flex items-center justify-center">
-          <label
-            htmlFor="companyAddress"
-            className="block text-md font-medium text-gray-700"
-          >
-            Company Address
-          </label>
-        </div>
-        <div className="col-span-2">
-          <input
-            type="text"
-            id="companyAddress"
-            name="companyAddress"
-            value={values.companyAddress}
-            onChange={handleChange}
-            className="w-[100] text-lg px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
-          />
-          {errors.companyAddress && (
-            <p className="text-red-500 font-bold">{errors.companyAddress}</p>
-          )}
-        </div>
-      </div>
-
-      <div className="space-x-4 mt-6">
-        <button
-          onClick={handleSubmit}
-          className="px-4 py-2 text-base font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Save
-        </button>
-        <button
-          onClick={() => navigate("/students")}
-          className="px-4 py-2 text-base font-medium text-white bg-yellow-600 rounded-md hover:bg-yellow-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
-        >
-          Cancel
-        </button>
-      </div>
-    </form>
-  </div>
-    
+      </form>
+    </div>
   );
 }
 
