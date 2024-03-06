@@ -167,11 +167,35 @@ function DisplayDataTable() {
   };
 
   const exportToExcel = () => {
-    console.log("Export to Excel");
+    // Convert the data to JSON
+    const jsonData = JSON.stringify(currentPageRecords, null, 2);
+    console.log("data to the PDF report: ", jsonData);
+
+    // Send the data to the backend
+    // fetch("/api/exportToPdf", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: jsonData,
+    // })
+    //   .then((response) => response.blob())
+    //   .then((blob) => {
+    //     // Create a link element and trigger a download
+    //     const url = window.URL.createObjectURL(blob);
+    //     const link = document.createElement("a");
+    //     link.href = url;
+    //     link.setAttribute("download", "students.pdf");
+    //     document.body.appendChild(link);
+    //     link.click();
+    //     link.remove();
+    //   })
+    //   .catch((error) => console.error("Error:", error));
   };
 
   const exportToPdf = () => {
-    console.log("Export to PDF");
+    const jsonData = JSON.stringify(currentPageRecords, null, 2);
+    console.log("data to the PDF report: ", jsonData);
   };
 
   return (
@@ -224,10 +248,10 @@ function DisplayDataTable() {
 
         <div className="flex flex-grow">
           Export to:{" "}
-          <button onClick={() => dispatch(exportToPdf())} className="px-1">
+          <button onClick={() => exportToPdf()} className="px-1">
             <FaFilePdf size={24} color="red" />
           </button>
-          <button onClick={() => dispatch(exportToExcel())} className="px-1">
+          <button onClick={() => exportToExcel()} className="px-1">
             <FaFileExcel size={24} color="green" />
           </button>
         </div>
@@ -240,7 +264,7 @@ function DisplayDataTable() {
               scope="col"
               className={`${ENTITY_HEADER_CLASSNAME} flex items-center`}
             >
-              ID
+              ID{" "}
               <button
                 onClick={() => handleSort("id")}
                 className="px-2"
@@ -250,7 +274,7 @@ function DisplayDataTable() {
               </button>
             </th>
             <th scope="col" className={ENTITY_HEADER_CLASSNAME}>
-              Name
+              Name{" "}
               <button
                 onClick={() => handleSort("name")}
                 className="px-2"
