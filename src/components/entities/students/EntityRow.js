@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 import { FaTrash, FaEye, FaEdit } from "react-icons/fa";
 import ConfirmDialogBox from "../../ui/ConfirmDialogBox";
 import PropTypes from "prop-types";
-
-const ENTITY_ROW_CLASSNAME = "bg-white border-b";
-const ENTITY_CELL_CLASSNAME =
-  "text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap";
+import { entityRow } from "../../ui/crud/rowClasses";
 
 const EntityRow = ({
   entity,
@@ -16,32 +13,32 @@ const EntityRow = ({
   handleOpenConfirmDialogBox,
   handleCloseConfirmDialogBox,
 }) => (
-  <tr className={ENTITY_ROW_CLASSNAME}>
-    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+  <tr className={entityRow.row}>
+    <td className={entityRow.dataCellID}>
       {entity.id}
     </td>
-    <td className={ENTITY_CELL_CLASSNAME}>{entity.name}</td>
-    <td className={ENTITY_CELL_CLASSNAME}>{entity.email}</td>
-    <td className={ENTITY_CELL_CLASSNAME}>{entity.phoneNumber}</td>
-    <td className={ENTITY_CELL_CLASSNAME}>{entity.address.city}</td>
-    <td className="flex justify-center items-center space-x-4 mt-1">
+    <td className={entityRow.dataCell}>{entity.name}</td>
+    <td className={entityRow.dataCell}>{entity.email}</td>
+    <td className={entityRow.dataCell}>{entity.phoneNumber}</td>
+    <td className={entityRow.dataCell}>{entity.address.city}</td>
+    <td className={entityRow.actionButtonsGroup}>
       <Link
         to={`/student/${entity.id}`}
-        className="flex items-center px-6 py-2 font-normal text-white bg-black rounded-lg w-30"
+        className={entityRow.actionButtonView}
         title="View details"
       >
         <FaEye />
       </Link>
       <Link
         to={`/editstudent/${entity.id}`}
-        className="flex items-center px-6 py-2 font-normal text-white bg-blue-600 rounded-lg w-30"
+        className={entityRow.actionButtonEdit}
         title="Edit information"
       >
         <FaEdit />
       </Link>
       <Link
         onClick={() => handleOpenConfirmDialogBox(entity.id, entity.name)}
-        className="flex items-center px-6 py-2 font-normal text-white bg-red-600 rounded-lg w-30"
+        className={entityRow.actionButtonDelete}
         title="Delete this record"
       >
         <FaTrash />
