@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Input() {
+function TextBox() {
   return (
     <div>Input</div>
   )
 }
 
-export default Input
+export default TextBox

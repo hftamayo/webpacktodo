@@ -1,9 +1,9 @@
 import React from 'react'
 
-function OptionButton() {
+function RadioButton() {
   return (
     <div>OptionButton</div>
   )
 }
 
-export default OptionButton
+export default RadioButton
