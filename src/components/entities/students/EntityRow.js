@@ -7,9 +7,9 @@ import { entityRow } from "../../ui/crud/rowClasses";
 
 const EntityRow = ({
   entity,
-  selectedStudentName,
+  selectedEntityName,
   confirmDialogBoxOpen,
-  handleDeleteStudent,
+  handleDeleteEntity,
   handleOpenConfirmDialogBox,
   handleCloseConfirmDialogBox,
 }) => (
@@ -46,8 +46,8 @@ const EntityRow = ({
       <ConfirmDialogBox
         isOpen={confirmDialogBoxOpen}
         onClose={handleCloseConfirmDialogBox}
-        selectedEntityName={selectedStudentName}
-        onDelete={handleDeleteStudent}
+        selectedEntityName={selectedEntityName}
+        onDelete={handleDeleteEntity}
       />
     </td>
   </tr>
@@ -63,9 +63,9 @@ EntityRow.propTypes = {
       city: PropTypes.string,
     }),
   }).isRequired,
-  selectedStudentName: PropTypes.string.isRequired,
+  selectedEntityName: PropTypes.string.isRequired,
   confirmDialogBoxOpen: PropTypes.bool.isRequired,
-  handleDeleteStudent: PropTypes.func.isRequired,
+  handleDeleteEntity: PropTypes.func.isRequired,
   handleOpenConfirmDialogBox: PropTypes.func.isRequired,
   handleCloseConfirmDialogBox: PropTypes.func.isRequired,
 };
