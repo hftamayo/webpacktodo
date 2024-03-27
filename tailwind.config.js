@@ -9,8 +9,8 @@ module.exports = {
         sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
       },
       crudTable: {
-        "crud-row": "bg-white border-b",
-        "crud-cell":
+        "row": "bg-white border-b",
+        "cell":
           "text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap",
       },
     },
