@@ -13,7 +13,6 @@ import {
 } from "react-icons/fa";
 
 import EntityRow from "./EntityRow";
-import { Link } from "react-router-dom";
 
 function DisplayDataTable() {
   const dispatch = useDispatch();
@@ -27,7 +26,7 @@ function DisplayDataTable() {
   const pageNumbers = Array.from({ length: numberOfPages }, (_, i) => i + 1);
 
   const [selectedId, setSelectedId] = useState(null);
-  const [selectedStudentName, setSelectedStudentName] = useState(null);
+  const [selectedEntityName, setSelectedEntityName] = useState(null);
   const [confirmDialogBoxOpen, setConfirmDialogBoxOpen] = useState(false);
 
   const [sortField, setSortField] = useState("id");
@@ -40,7 +39,7 @@ function DisplayDataTable() {
       : ""
   }`;
 
-  const loadStudents = useCallback(() => {
+  const loadData = useCallback(() => {
     try {
       dispatch(getStudents()).then((action) => {
         if (getStudents.fulfilled.match(action)) {
@@ -57,8 +56,8 @@ function DisplayDataTable() {
   }, [dispatch]);
 
   useEffect(() => {
-    loadStudents();
-  }, [loadStudents]);
+    loadData();
+  }, [loadData]);
 
   useEffect(() => {
     let pages;
@@ -78,19 +77,19 @@ function DisplayDataTable() {
     setCurrentPageRecords(pages === 0 ? [] : currentPageRecords);
   }, [students, currentPage, recordsPerPage]);
 
-  const handleDeleteStudent = (event) => {
+  const handleDeleteEntity = (event) => {
     event.stopPropagation();
-    handleDeleteSelectedStudent(selectedId);
+    handleDeleteSelectedEntity(selectedId);
     handleResetEntitySelection();
     setConfirmDialogBoxOpen(false);
   };
 
   const handleResetEntitySelection = () => {
     setSelectedId(null);
-    setSelectedStudentName(null);
+    setSelectedEntityName(null);
   };
 
-  const handleDeleteSelectedStudent = (id) => {
+  const handleDeleteSelectedEntity = (id) => {
     dispatch(deleteStudent(id))
       .then((action) => {
         if (deleteStudent.fulfilled.match(action)) {
@@ -98,7 +97,7 @@ function DisplayDataTable() {
             className: "bg-black text-yellow-500",
             progressClassName: "bg-blue-600",
           });
-          loadStudents();
+          loadData();
         } else if (deleteStudent.rejected.match(action)) {
           console.log("deleteStudent action rejected");
         }
@@ -113,7 +112,7 @@ function DisplayDataTable() {
 
   const handleOpenConfirmDialogBox = (id, name) => {
     setSelectedId(id);
-    setSelectedStudentName(name);
+    setSelectedEntityName(name);
     setConfirmDialogBoxOpen(true);
   };
 
@@ -295,9 +294,9 @@ function DisplayDataTable() {
               <EntityRow
                 key={data.id}
                 entity={data}
-                selectedStudentName={selectedStudentName}
+                selectedEntityName={selectedEntityName}
                 confirmDialogBoxOpen={confirmDialogBoxOpen}
-                handleDeleteStudent={handleDeleteStudent}
+                handleDeleteEntity={handleDeleteEntity}
                 handleOpenConfirmDialogBox={handleOpenConfirmDialogBox}
                 handleCloseConfirmDialogBox={handleCloseConfirmDialogBox}
               />
