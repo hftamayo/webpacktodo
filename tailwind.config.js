@@ -6,7 +6,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ["Montserrat", ...defaultTheme.fontFamily.sans],
+        sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
+      },
+      crudTable: {
+        "crud-row": "bg-white border-b",
+        "crud-cell":
+          "text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap",
       },
     },
   },
