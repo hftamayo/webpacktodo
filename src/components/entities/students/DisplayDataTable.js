@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 
 import EntityRow from "./EntityRow";
+import dataTableClasses from "../../ui/crud/dataTableclasses";
 
 function DisplayDataTable() {
   const dispatch = useDispatch();
@@ -32,8 +33,7 @@ function DisplayDataTable() {
   const [sortField, setSortField] = useState("id");
   const [sortDirection, setSortDirection] = useState("asc");
 
-  const ENTITY_HEADER_CLASSNAME = "text-sm font-medium text-white px-6 py-4";
-  const NAVIGATION_BUTTON_CLASSNAME = `p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md ${
+  const NAVIGATION_BUTTON_CLASSNAME = `${dataTableClasses.navButton} ${
     students.length === 0 || currentPage === 1 || recordsPerPage === -1
       ? "cursor-not-allowed"
       : ""
@@ -261,7 +261,7 @@ function DisplayDataTable() {
           <tr>
             <th
               scope="col"
-              className={`${ENTITY_HEADER_CLASSNAME} flex items-center`}
+              className={`${dataTableClasses.columnHeader} flex items-center`}
             >
               ID{" "}
               <button
@@ -272,7 +272,7 @@ function DisplayDataTable() {
                 <FaSort />
               </button>
             </th>
-            <th scope="col" className={ENTITY_HEADER_CLASSNAME}>
+            <th scope="col" className={dataTableClasses.columnHeader}>
               Name{" "}
               <button
                 onClick={() => handleSort("name")}
@@ -282,10 +282,10 @@ function DisplayDataTable() {
                 <FaSort />
               </button>
             </th>
-            <th className={ENTITY_HEADER_CLASSNAME}>Email</th>
-            <th className={ENTITY_HEADER_CLASSNAME}>Phone</th>
-            <th className={ENTITY_HEADER_CLASSNAME}>Address</th>
-            <th className={ENTITY_HEADER_CLASSNAME}>Actions</th>
+            <th className={dataTableClasses.columnHeader}>Email</th>
+            <th className={dataTableClasses.columnHeader}>Phone</th>
+            <th className={dataTableClasses.columnHeader}>Address</th>
+            <th className={dataTableClasses.columnHeader}>Actions</th>
           </tr>
         </thead>
         <tbody>
