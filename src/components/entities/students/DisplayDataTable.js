@@ -18,20 +18,22 @@ import dataTableClasses from "../../ui/crud/dataTableclasses";
 function DisplayDataTable() {
   const dispatch = useDispatch();
   const students = useSelector((state) => state.students.students);
+ 
+  const [selectedId, setSelectedId] = useState(null);
+  const [selectedEntityName, setSelectedEntityName] = useState(null);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
   const [currentPageRecords, setCurrentPageRecords] = useState([]);
+ 
   const [numberOfPages, setNumberOfPages] = useState([]); // [1, 2, 3, 4, 5]
-
   const totalPages = Math.ceil(students.length / recordsPerPage);
   const pageNumbers = Array.from({ length: numberOfPages }, (_, i) => i + 1);
 
-  const [selectedId, setSelectedId] = useState(null);
-  const [selectedEntityName, setSelectedEntityName] = useState(null);
-  const [confirmDialogBoxOpen, setConfirmDialogBoxOpen] = useState(false);
-
   const [sortField, setSortField] = useState("id");
   const [sortDirection, setSortDirection] = useState("asc");
+
+  const [confirmDialogBoxOpen, setConfirmDialogBoxOpen] = useState(false);
 
   const NAVIGATION_BUTTON_CLASSNAME = `${dataTableClasses.navButton} ${
     students.length === 0 || currentPage === 1 || recordsPerPage === -1
