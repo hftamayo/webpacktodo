@@ -5,14 +5,15 @@ import {
   FaAngleDoubleRight,
 } from "react-icons/fa";
 import dataTableClasses from "./dataTableclasses";
+import PropTypes from "prop-types";
 
 function NavButtons(
-  students,
+{  students,
   currentPage,
   setCurrentPage,
   recordsPerPage,
   totalPages,
-  pageNumbers
+  pageNumbers}
 ) {
   const NAVIGATION_BUTTON_CLASSNAME = `${dataTableClasses.navButton} ${
     students.length === 0 || currentPage === 1 || recordsPerPage === -1
@@ -92,13 +93,13 @@ function NavButtons(
   );
 }
 
-NavButtons.defaultProps = {
-  students: [],
-  currentPage: 1,
-  setCurrentPage: () => {},
-  recordsPerPage: 10,
-  totalPages: 1,
-  pageNumbers: [],
+NavButtons.propTypes = {
+  students: PropTypes.array.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+  recordsPerPage: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  pageNumbers: PropTypes.array.isRequired,
 };
 
 export default NavButtons;
