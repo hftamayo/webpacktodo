@@ -214,7 +214,7 @@ function DisplayDataTable() {
           Displaying:{" "}
           <span className="font-semibold">
             {currentPageRecords.length} of {records.length}
-          </span>
+          </span>{" records"}
         </div>
         <div className="border-gray-100 my-4 px-24"></div>
 
