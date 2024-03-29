@@ -8,7 +8,7 @@ import dataTableClasses from "./dataTableclasses";
 import PropTypes from "prop-types";
 
 function NavButtons({
-  students,
+  records,
   currentPage,
   setCurrentPage,
   recordsPerPage,
@@ -16,7 +16,7 @@ function NavButtons({
   pageNumbers,
 }) {
   const NAVIGATION_BUTTON_CLASSNAME = `${dataTableClasses.navButton} ${
-    students.length === 0 || currentPage === 1 || recordsPerPage === -1
+    records.length === 0 || currentPage === 1 || recordsPerPage === -1
       ? "bg-gray-500 hover:bg-gray-500 cursor-not-allowed"
       : ""
   }`;
@@ -26,12 +26,12 @@ function NavButtons({
       <div className="flex items-center justify-center">
         <button
           className={`${NAVIGATION_BUTTON_CLASSNAME} ${
-            students.length === 0 || currentPage === 1 || recordsPerPage === -1
+            records.length === 0 || currentPage === 1 || recordsPerPage === -1
               ? "bg-gray-500 cursor-not-allowed"
               : "bg-blue-500 hover:bg-blue-700"
           }`}
           disabled={
-            students.length === 0 || currentPage === 1 || recordsPerPage === -1
+            records.length === 0 || currentPage === 1 || recordsPerPage === -1
           }
           onClick={() => setCurrentPage(1)}
         >
@@ -40,12 +40,12 @@ function NavButtons({
         <div className="border-t border-gray-200 my-4 px-1"></div>
         <button
           className={`${NAVIGATION_BUTTON_CLASSNAME} ${
-            students.length === 0 || currentPage === 1 || recordsPerPage === -1
+            records.length === 0 || currentPage === 1 || recordsPerPage === -1
               ? "bg-gray-500 cursor-not-allowed"
               : "bg-blue-500 hover:bg-blue-700"
           }`}
           disabled={
-            students.length === 0 || currentPage === 1 || recordsPerPage === -1
+            records.length === 0 || currentPage === 1 || recordsPerPage === -1
           }
           onClick={() => setCurrentPage((old) => Math.max(old - 1, 1))}
         >
@@ -54,14 +54,14 @@ function NavButtons({
         <div className="border-gray-200 my-4 px-1"></div>
         <button
           className={`${NAVIGATION_BUTTON_CLASSNAME} ${
-            students.length === 0 ||
+            records.length === 0 ||
             currentPage === totalPages ||
             recordsPerPage === -1
               ? "bg-gray-500 cursor-not-allowed"
               : "bg-blue-500 hover:bg-blue-700"
           }`}
           disabled={
-            students.length === 0 ||
+            records.length === 0 ||
             currentPage === totalPages ||
             recordsPerPage === -1
           }
@@ -72,14 +72,14 @@ function NavButtons({
         <div className="border-t border-gray-200 my-4 px-1"></div>
         <button
           className={`${NAVIGATION_BUTTON_CLASSNAME} ${
-            students.length === 0 ||
+            records.length === 0 ||
             currentPage === totalPages ||
             recordsPerPage === -1
               ? "bg-gray-500 cursor-not-allowed"
               : "bg-blue-500 hover:bg-blue-700"
           }`}
           disabled={
-            students.length === 0 ||
+            records.length === 0 ||
             currentPage === totalPages ||
             recordsPerPage === -1
           }
@@ -114,7 +114,7 @@ function NavButtons({
 }
 
 NavButtons.propTypes = {
-  students: PropTypes.array.isRequired,
+  records: PropTypes.array.isRequired,
   currentPage: PropTypes.number.isRequired,
   setCurrentPage: PropTypes.func.isRequired,
   recordsPerPage: PropTypes.number.isRequired,

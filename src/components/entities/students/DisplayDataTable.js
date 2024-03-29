@@ -10,7 +10,7 @@ import NavButtons from "../../ui/crud/NavButtons";
 
 function DisplayDataTable() {
   const dispatch = useDispatch();
-  const students = useSelector((state) => state.students.students);
+  const records = useSelector((state) => state.students.students);
 
   const [selectedId, setSelectedId] = useState(null);
   const [selectedEntityName, setSelectedEntityName] = useState(null);
@@ -20,7 +20,7 @@ function DisplayDataTable() {
   const [currentPageRecords, setCurrentPageRecords] = useState([]);
 
   const [numberOfPages, setNumberOfPages] = useState([]); // [1, 2, 3, 4, 5]
-  const totalPages = Math.ceil(students.length / recordsPerPage);
+  const totalPages = Math.ceil(records.length / recordsPerPage);
   const pageNumbers = Array.from({ length: numberOfPages }, (_, i) => i + 1);
 
   const [sortField, setSortField] = useState("id");
@@ -54,17 +54,17 @@ function DisplayDataTable() {
 
     if (recordsPerPage === -1) {
       pages = 1;
-      currentPageRecords = students;
+      currentPageRecords = records;
     } else {
-      pages = Math.ceil(students.length / recordsPerPage);
-      currentPageRecords = students.slice(
+      pages = Math.ceil(records.length / recordsPerPage);
+      currentPageRecords = records.slice(
         (currentPage - 1) * recordsPerPage,
         currentPage * recordsPerPage
       );
     }
     setNumberOfPages(pages);
     setCurrentPageRecords(pages === 0 ? [] : currentPageRecords);
-  }, [students, currentPage, recordsPerPage]);
+  }, [records, currentPage, recordsPerPage]);
 
   const handleDeleteEntity = (event) => {
     event.stopPropagation();
@@ -119,7 +119,7 @@ function DisplayDataTable() {
     setSortField(field);
     setSortDirection(direction);
 
-    const sortedStudents = [...students].sort((a, b) => {
+    const sortedStudents = [...records].sort((a, b) => {
       if (a[field] < b[field]) {
         return direction === "asc" ? -1 : 1;
       }
@@ -140,7 +140,7 @@ function DisplayDataTable() {
   const handleSearch = (searchCriteria) => {
     const lowerCaseSearchCriteria = searchCriteria.toLowerCase();
 
-    const filteredStudents = students.filter((student) =>
+    const filteredStudents = records.filter((student) =>
       Object.values(student).some((value) =>
         value.toString().toLowerCase().includes(lowerCaseSearchCriteria)
       )
@@ -205,7 +205,7 @@ function DisplayDataTable() {
             id="searchCriteria"
             name="searchCriteria"
             onChange={(event) => handleSearch(event.target.value)}
-            disabled={students.length === 0}
+            disabled={records.length === 0}
             className="flex-grow text-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-500"
           />
         </div>
@@ -213,7 +213,7 @@ function DisplayDataTable() {
         <div className="flex-grow text-center">
           Displaying:{" "}
           <span className="font-semibold">
-            {currentPageRecords.length} of {students.length}
+            {currentPageRecords.length} of {records.length}
           </span>
         </div>
         <div className="border-gray-100 my-4 px-24"></div>
@@ -224,7 +224,7 @@ function DisplayDataTable() {
             className="px-3 py-1 bg-gray-800 text-white rounded-md"
             value={recordsPerPage}
             onChange={(event) => setRecordsPerPage(event.target.value)}
-            disabled={students.length === 0}
+            disabled={records.length === 0}
           >
             <option value="5">5</option>
             <option value="10">10</option>
@@ -298,7 +298,7 @@ function DisplayDataTable() {
         </tbody>
       </table>
       <NavButtons
-        students={students}
+        records={records}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         recordsPerPage={recordsPerPage}
