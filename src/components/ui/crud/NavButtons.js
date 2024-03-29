@@ -25,7 +25,11 @@ function NavButtons({
     <nav className="flex items-center justify-between pt-4">
       <div className="flex items-center justify-center">
         <button
-          className={NAVIGATION_BUTTON_CLASSNAME}
+          className={`${NAVIGATION_BUTTON_CLASSNAME} ${
+            students.length === 0 || currentPage === 1 || recordsPerPage === -1
+              ? "bg-gray-500 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-700"
+          }`}
           disabled={
             students.length === 0 || currentPage === 1 || recordsPerPage === -1
           }
@@ -35,7 +39,11 @@ function NavButtons({
         </button>
         <div className="border-t border-gray-200 my-4 px-1"></div>
         <button
-          className={NAVIGATION_BUTTON_CLASSNAME}
+          className={`${NAVIGATION_BUTTON_CLASSNAME} ${
+            students.length === 0 || currentPage === 1 || recordsPerPage === -1
+              ? "bg-gray-500 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-700"
+          }`}
           disabled={
             students.length === 0 || currentPage === 1 || recordsPerPage === -1
           }
@@ -45,7 +53,13 @@ function NavButtons({
         </button>
         <div className="border-gray-200 my-4 px-1"></div>
         <button
-          className={NAVIGATION_BUTTON_CLASSNAME}
+          className={`${NAVIGATION_BUTTON_CLASSNAME} ${
+            students.length === 0 ||
+            currentPage === totalPages ||
+            recordsPerPage === -1
+              ? "bg-gray-500 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-700"
+          }`}
           disabled={
             students.length === 0 ||
             currentPage === totalPages ||
@@ -57,7 +71,13 @@ function NavButtons({
         </button>
         <div className="border-t border-gray-200 my-4 px-1"></div>
         <button
-          className={NAVIGATION_BUTTON_CLASSNAME}
+          className={`${NAVIGATION_BUTTON_CLASSNAME} ${
+            students.length === 0 ||
+            currentPage === totalPages ||
+            recordsPerPage === -1
+              ? "bg-gray-500 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-700"
+          }`}
           disabled={
             students.length === 0 ||
             currentPage === totalPages ||
