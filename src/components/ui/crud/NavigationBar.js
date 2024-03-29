@@ -76,7 +76,7 @@ function PaginationBar(
           onChange={(e) => setCurrentPage(Number(e.target.value))}
           className="px-3 py-0 bg-gray-800 text-white rounded-md"
         >
-          {pageNumbers.map((number) => (
+          {pageNumbers?.map((number) => (
             <option
               key={number}
               value={number}
@@ -91,5 +91,14 @@ function PaginationBar(
     </nav>
   );
 }
+
+PaginationBar.defaultProps = {
+  students: [],
+  currentPage: 1,
+  setCurrentPage: () => {},
+  recordsPerPage: 10,
+  totalPages: 1,
+  pageNumbers: [],
+};
 
 export default PaginationBar;
