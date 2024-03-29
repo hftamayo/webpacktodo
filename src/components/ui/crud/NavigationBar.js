@@ -4,8 +4,16 @@ import {
   FaAngleDoubleLeft,
   FaAngleDoubleRight,
 } from "react-icons/fa";
+import dataTableClasses from "../../ui/crud/dataTableclasses";
 
-function PaginationBar() {
+function PaginationBar(
+  students,
+  currentPage,
+  setCurrentPage,
+  recordsPerPage,
+  totalPages,
+  pageNumbers
+) {
   const NAVIGATION_BUTTON_CLASSNAME = `${dataTableClasses.navButton} ${
     students.length === 0 || currentPage === 1 || recordsPerPage === -1
       ? "cursor-not-allowed"
