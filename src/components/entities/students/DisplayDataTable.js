@@ -2,11 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudents, deleteStudent } from "../../store/studentSlice";
 import { toast } from "react-toastify";
-import {
-  FaSort,
-  FaFilePdf,
-  FaFileExcel,
-} from "react-icons/fa";
+import { FaSort, FaFilePdf, FaFileExcel } from "react-icons/fa";
 
 import EntityRow from "./EntityRow";
 import dataTableClasses from "../../ui/crud/dataTableclasses";
@@ -15,14 +11,14 @@ import PaginationBar from "../../ui/crud/NavigationBar";
 function DisplayDataTable() {
   const dispatch = useDispatch();
   const students = useSelector((state) => state.students.students);
- 
+
   const [selectedId, setSelectedId] = useState(null);
   const [selectedEntityName, setSelectedEntityName] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
   const [currentPageRecords, setCurrentPageRecords] = useState([]);
- 
+
   const [numberOfPages, setNumberOfPages] = useState([]); // [1, 2, 3, 4, 5]
   const totalPages = Math.ceil(students.length / recordsPerPage);
   const pageNumbers = Array.from({ length: numberOfPages }, (_, i) => i + 1);
@@ -302,14 +298,13 @@ function DisplayDataTable() {
         </tbody>
       </table>
       <PaginationBar
-      students={students}
-      currentPage={currentPage}
-      setCurrentPage={setCurrentPage}
-      recordsPerPage={recordsPerPage}
-      totalPages={totalPages}
-      pageNumbers={pageNumbers}
-       />
-
+        students={students}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        recordsPerPage={recordsPerPage}
+        totalPages={totalPages}
+        pageNumbers={pageNumbers}
+      />
     </div>
   );
 }
