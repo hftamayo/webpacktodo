@@ -6,7 +6,7 @@ import { FaSort, FaFilePdf, FaFileExcel } from "react-icons/fa";
 
 import EntityRow from "./EntityRow";
 import dataTableClasses from "../../ui/crud/dataTableclasses";
-import PaginationBar from "../../ui/crud/NavigationBar";
+import NavButtons from "../../ui/crud/NavButtons";
 
 function DisplayDataTable() {
   const dispatch = useDispatch();
@@ -297,7 +297,7 @@ function DisplayDataTable() {
           )}
         </tbody>
       </table>
-      <PaginationBar
+      <NavButtons
         students={students}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

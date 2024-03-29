@@ -4,9 +4,9 @@ import {
   FaAngleDoubleLeft,
   FaAngleDoubleRight,
 } from "react-icons/fa";
-import dataTableClasses from "../../ui/crud/dataTableclasses";
+import dataTableClasses from "./dataTableclasses";
 
-function PaginationBar(
+function NavButtons(
   students,
   currentPage,
   setCurrentPage,
@@ -92,7 +92,7 @@ function PaginationBar(
   );
 }
 
-PaginationBar.defaultProps = {
+NavButtons.defaultProps = {
   students: [],
   currentPage: 1,
   setCurrentPage: () => {},
@@ -101,4 +101,4 @@ PaginationBar.defaultProps = {
   pageNumbers: [],
 };
 
-export default PaginationBar;
+export default NavButtons;
