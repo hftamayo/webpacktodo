@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { openDialog, closeDialog } from "../../store/dialogSlice";
 import { getStudents, deleteStudent } from "../../store/studentSlice";
 import { toast } from "react-toastify";
 import { FaSort } from "react-icons/fa";
@@ -12,6 +13,7 @@ import CrudHeader from "../../ui/crud/CrudHeader";
 function DisplayDataTable() {
   const dispatch = useDispatch();
   const records = useSelector((state) => state.students.students);
+  const dialogOpen = useSelector((state) => state.dialog.isOpen);
 
   const [selectedId, setSelectedId] = useState(null);
   const [selectedEntityName, setSelectedEntityName] = useState(null);
@@ -98,6 +100,14 @@ function DisplayDataTable() {
           "An error occurred while trying to delete the selected data, the event was reported. Please try again later. "
         );
       });
+  };
+
+  const handleOpenDialog = (title, message) => {
+    dispatch(openDialog({ title, message }));
+  };
+
+  const handleCloseDialog = () => {
+    dispatch(closeDialog());
   };
 
   const handleOpenConfirmDialogBox = (id, name) => {
