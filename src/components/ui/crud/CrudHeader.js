@@ -1,53 +1,5 @@
 import { FaFilePdf, FaFileExcel } from "react-icons/fa";
-
-const handleSearch = (searchCriteria) => {
-  const lowerCaseSearchCriteria = searchCriteria.toLowerCase();
-
-  const filteredData = records.filter((entity) =>
-    Object.values(entity).some((value) =>
-      value.toString().toLowerCase().includes(lowerCaseSearchCriteria)
-    )
-  );
-
-  setCurrentPageRecords(
-    filteredData.slice(
-      (currentPage - 1) * recordsPerPage,
-      currentPage * recordsPerPage
-    )
-  );
-};
-
-const exportToExcel = () => {
-  // Convert the data to JSON
-  const jsonData = JSON.stringify(currentPageRecords, null, 2);
-  console.log("data to the PDF report: ", jsonData);
-
-  // Send the data to the backend
-  // fetch("/api/exportToPdf", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: jsonData,
-  // })
-  //   .then((response) => response.blob())
-  //   .then((blob) => {
-  //     // Create a link element and trigger a download
-  //     const url = window.URL.createObjectURL(blob);
-  //     const link = document.createElement("a");
-  //     link.href = url;
-  //     link.setAttribute("download", "students.pdf");
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     link.remove();
-  //   })
-  //   .catch((error) => console.error("Error:", error));
-};
-
-const exportToPdf = () => {
-  const jsonData = JSON.stringify(currentPageRecords, null, 2);
-  console.log("data to the PDF report: ", jsonData);
-};
+import PropTypes from "prop-types";
 
 function CrudHeader({
   records,
@@ -55,7 +7,58 @@ function CrudHeader({
   setCurrentPageRecords,
   recordsPerPage,
   setRecordsPerPage,
+  currentPage,
+
 }) {
+  const handleSearch = (searchCriteria) => {
+    const lowerCaseSearchCriteria = searchCriteria.toLowerCase();
+
+    const filteredData = records.filter((entity) =>
+      Object.values(entity).some((value) =>
+        value.toString().toLowerCase().includes(lowerCaseSearchCriteria)
+      )
+    );
+
+    setCurrentPageRecords(
+      filteredData.slice(
+        (currentPage - 1) * recordsPerPage,
+        currentPage * recordsPerPage
+      )
+    );
+  };
+
+  const exportToExcel = () => {
+    // Convert the data to JSON
+    const jsonData = JSON.stringify(currentPageRecords, null, 2);
+    console.log("data to the PDF report: ", jsonData);
+
+    // Send the data to the backend
+    // fetch("/api/exportToPdf", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: jsonData,
+    // })
+    //   .then((response) => response.blob())
+    //   .then((blob) => {
+    //     // Create a link element and trigger a download
+    //     const url = window.URL.createObjectURL(blob);
+    //     const link = document.createElement("a");
+    //     link.href = url;
+    //     link.setAttribute("download", "students.pdf");
+    //     document.body.appendChild(link);
+    //     link.click();
+    //     link.remove();
+    //   })
+    //   .catch((error) => console.error("Error:", error));
+  };
+
+  const exportToPdf = () => {
+    const jsonData = JSON.stringify(currentPageRecords, null, 2);
+    console.log("data to the PDF report: ", jsonData);
+  };
+
   return (
     <div className="flex items-center justify-between p-4">
       <div className="flex items-center">
@@ -120,6 +123,7 @@ CrudHeader.propTypes = {
   setCurrentPageRecords: PropTypes.func.isRequired,
   recordsPerPage: PropTypes.number.isRequired,
   setRecordsPerPage: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };
 
 export default CrudHeader;
