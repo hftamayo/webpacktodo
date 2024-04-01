@@ -1,15 +1,23 @@
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { closeDialog } from "../../store/dialogSlice";
 
-function DialogBox({ isOpen, onClose, children }) {
+function DialogBox({ children }) {
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state) => state.dialog.isOpen);
+
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      onClose();
+      dispatch(closeDialog());
     }
+  };
+
+  const handleClose = () => {
+    dispatch(closeDialog());
   };
 
   return (
     <div
-      onClick={onClose}
+      onClick={handleClose}
       onKeyDown={handleKeyDown}
       className={`fixed inset-0 flex justify-center items-center transition-colors ${
         isOpen ? "visible bg-black bg-opacity-20" : "invisible"
@@ -23,7 +31,7 @@ function DialogBox({ isOpen, onClose, children }) {
       >
         {children}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-2 right-2 p-1 rounded-lg text-gray-400 bg-white hover:bg-gray-50 hover:text-gray-600"
         >
           X
