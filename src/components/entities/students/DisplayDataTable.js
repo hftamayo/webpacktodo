@@ -12,7 +12,6 @@ import CrudHeader from "../../ui/crud/CrudHeader";
 function DisplayDataTable() {
   const dispatch = useDispatch();
   const records = useSelector((state) => state.students.students);
-  const dialogOpen = useSelector((state) => state.dialog.isOpen);
 
   const [selectedId, setSelectedId] = useState(null);
   const [selectedEntityName, setSelectedEntityName] = useState(null);
@@ -101,18 +100,6 @@ function DisplayDataTable() {
       });
   };
 
-  const handleOpenConfirmDialogBox = (id, name) => {
-    setSelectedId(id);
-    setSelectedEntityName(name);
-    setConfirmDialogBoxOpen(true);
-  };
-
-  const handleCloseConfirmDialogBox = (event) => {
-    event.stopPropagation();
-    handleResetEntitySelection();
-    setConfirmDialogBoxOpen(false);
-  };
-
   const handleSort = (field) => {
     let direction = "asc";
     if (field === sortField) {
@@ -192,7 +179,6 @@ function DisplayDataTable() {
                 key={data.id}
                 entity={data}
                 selectedEntityName={selectedEntityName}
-                confirmDialogBoxOpen={confirmDialogBoxOpen}
                 handleDeleteEntity={handleDeleteEntity}
               />
             ))
