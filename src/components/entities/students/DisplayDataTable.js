@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { openDialog, closeDialog } from "../../store/dialogSlice";
 import { getStudents, deleteStudent } from "../../store/studentSlice";
 import { toast } from "react-toastify";
 import { FaSort } from "react-icons/fa";
@@ -102,14 +101,6 @@ function DisplayDataTable() {
       });
   };
 
-  const handleOpenDialog = (title, message) => {
-    dispatch(openDialog({ title, message }));
-  };
-
-  const handleCloseDialog = () => {
-    dispatch(closeDialog());
-  };
-
   const handleOpenConfirmDialogBox = (id, name) => {
     setSelectedId(id);
     setSelectedEntityName(name);
@@ -203,8 +194,6 @@ function DisplayDataTable() {
                 selectedEntityName={selectedEntityName}
                 confirmDialogBoxOpen={confirmDialogBoxOpen}
                 handleDeleteEntity={handleDeleteEntity}
-                handleOpenConfirmDialogBox={handleOpenConfirmDialogBox}
-                handleCloseConfirmDialogBox={handleCloseConfirmDialogBox}
               />
             ))
           ) : (
