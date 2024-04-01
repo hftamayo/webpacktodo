@@ -5,7 +5,7 @@ import { FaTrash, FaEye, FaEdit } from "react-icons/fa";
 import PropTypes from "prop-types";
 import { entityRow } from "../../ui/crud/rowClasses";
 
-const EntityRow = ({ entity, selectedEntityName, handleDeleteEntity }) => {
+const EntityRow = ({ entity }) => {
   const dispatch = useDispatch();
   return (
     <tr className={entityRow.row}>
@@ -53,8 +53,6 @@ EntityRow.propTypes = {
       city: PropTypes.string,
     }),
   }).isRequired,
-  selectedEntityName: PropTypes.string.isRequired,
-  handleDeleteEntity: PropTypes.func.isRequired,
 };
 
 export default EntityRow;
