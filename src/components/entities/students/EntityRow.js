@@ -39,8 +39,6 @@ const EntityRow = ({
           <FaTrash />
         </Link>
         <ConfirmDialogBox
-          isOpen={confirmDialogBoxOpen}
-          onClose={handleCloseConfirmDialogBox}
           selectedEntityName={selectedEntityName}
           onDelete={handleDeleteEntity}
         />
