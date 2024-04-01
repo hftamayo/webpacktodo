@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudents, deleteStudent } from "../../store/studentSlice";
+import {closeDialog} from "../../store/dialogSlice";
 import { toast } from "react-toastify";
 import { FaSort } from "react-icons/fa";
 
@@ -26,8 +27,6 @@ function DisplayDataTable() {
 
   const [sortField, setSortField] = useState("id");
   const [sortDirection, setSortDirection] = useState("asc");
-
-  const [confirmDialogBoxOpen, setConfirmDialogBoxOpen] = useState(false);
 
   const loadData = useCallback(() => {
     try {
@@ -71,7 +70,7 @@ function DisplayDataTable() {
     event.stopPropagation();
     handleDeleteSelectedEntity(selectedId);
     handleResetEntitySelection();
-    setConfirmDialogBoxOpen(false);
+    dispatch(closeDialog());
   };
 
   const handleResetEntitySelection = () => {
