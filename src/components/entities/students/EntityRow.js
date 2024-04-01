@@ -1,6 +1,3 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { openDialog, closeDialog } from "../../store/dialogSlice";
 import { Link } from "react-router-dom";
 import { FaTrash, FaEye, FaEdit } from "react-icons/fa";
 import ConfirmDialogBox from "../../ui/ConfirmDialogBox";
@@ -10,21 +7,8 @@ import { entityRow } from "../../ui/crud/rowClasses";
 const EntityRow = ({
   entity,
   selectedEntityName,
-  confirmDialogBoxOpen,
   handleDeleteEntity,
-  handleOpenConfirmDialogBox,
-  handleCloseConfirmDialogBox,
 }) => {
-  const dispatch = useDispatch();
-
-  const handleOpenConfirmDialogBox = (title, message) => {
-    dispatch(openDialog({ title, message }));
-  };
-
-  const handleCloseDialog = () => {
-    dispatch(closeDialog());
-  };
-
   return (
     <tr className={entityRow.row}>
       <td className={entityRow.dataCellID}>{entity.id}</td>
@@ -76,10 +60,7 @@ EntityRow.propTypes = {
     }),
   }).isRequired,
   selectedEntityName: PropTypes.string.isRequired,
-  confirmDialogBoxOpen: PropTypes.bool.isRequired,
   handleDeleteEntity: PropTypes.func.isRequired,
-  handleOpenConfirmDialogBox: PropTypes.func.isRequired,
-  handleCloseConfirmDialogBox: PropTypes.func.isRequired,
 };
 
 export default EntityRow;
