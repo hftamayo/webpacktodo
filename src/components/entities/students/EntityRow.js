@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { openDialog } from "../../store/dialogSlice";
 import { FaTrash, FaEye, FaEdit } from "react-icons/fa";
-import ConfirmDialogBox from "../../ui/ConfirmDialogBox";
 import PropTypes from "prop-types";
 import { entityRow } from "../../ui/crud/rowClasses";
 
-const EntityRow = ({
-  entity,
-  selectedEntityName,
-  handleDeleteEntity,
-}) => {
+const EntityRow = ({ entity, selectedEntityName, handleDeleteEntity }) => {
+  const dispatch = useDispatch();
   return (
     <tr className={entityRow.row}>
       <td className={entityRow.dataCellID}>{entity.id}</td>
@@ -32,16 +30,14 @@ const EntityRow = ({
           <FaEdit />
         </Link>
         <Link
-          onClick={() => handleOpenConfirmDialogBox(entity.id, entity.name)}
+          onClick={() =>
+            dispatch(openDialog({ id: entity.id, name: entity.name }))
+          }
           className={entityRow.actionButtonDelete}
           title="Delete this record"
         >
           <FaTrash />
         </Link>
-        <ConfirmDialogBox
-          selectedEntityName={selectedEntityName}
-          onDelete={handleDeleteEntity}
-        />
       </td>
     </tr>
   );
