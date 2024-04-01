@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { closeDialog } from "../../store/dialogSlice";
+import PropTypes from "prop-types";
 
 function DialogBox({ children }) {
   const dispatch = useDispatch();
@@ -40,5 +41,9 @@ function DialogBox({ children }) {
     </div>
   );
 }
+
+DialogBox.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default DialogBox;
