@@ -1,6 +1,15 @@
+import { openDialog, closeDialog } from "../store/dialogSlice";
+import { useSelector } from "react-redux";
 import DialogBox from "./DialogBox";
+import { useDispatch } from "react-redux";
 
-function ConfirmDialogBox({ selectedEntityName, onDelete }) {
+function ConfirmDialogBox({ onDelete }) {
+  const dispatch = useDispatch();
+
+  const { isOpen, activeLanguage, entityName } = useSelector(
+    (state) => state.dialog
+  );
+
   return (
     <DialogBox>
       <div className="p-8">
