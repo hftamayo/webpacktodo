@@ -177,7 +177,6 @@ function DisplayDataTable() {
               <EntityRow
                 key={data.id}
                 entity={data}
-                selectedEntityName={selectedEntityName}
                 handleDeleteEntity={handleDeleteEntity}
               />
             ))
