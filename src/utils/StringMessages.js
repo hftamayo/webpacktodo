@@ -1,4 +1,4 @@
-const stringMessages = {
+const StringMessages = {
   confirmDialog: {
     en: {
       title: "Delete Selected Record",
@@ -10,3 +10,5 @@ const stringMessages = {
     },
   },
 };
+
+export default StringMessages;
