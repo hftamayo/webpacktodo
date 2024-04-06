@@ -1,7 +1,6 @@
 import { openDialog, closeDialog } from "../store/dialogSlice";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import DialogBox from "./DialogBox";
-import { useDispatch } from "react-redux";
 
 function ConfirmDialogBox({ onDelete }) {
   const dispatch = useDispatch();
