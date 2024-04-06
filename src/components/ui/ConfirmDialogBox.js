@@ -9,6 +9,8 @@ function ConfirmDialogBox({ onDelete }) {
     (state) => state.dialog
   );
 
+  if (!isOpen) return null;
+
   return (
     <DialogBox>
       <div className="p-8">
@@ -16,7 +18,7 @@ function ConfirmDialogBox({ onDelete }) {
         <div className="mt-4">
           <p>
             Are you sure you want to delete the record{" "}
-            <span className="font-semibold">{selectedEntityName}</span>?
+            <span className="font-semibold">{entityName}</span>?
           </p>
         </div>
         <div className="flex gap-4 mt-6 justify-center">
