@@ -1,6 +1,7 @@
 import { openDialog, closeDialog } from "../store/dialogSlice";
 import { useSelector, useDispatch } from "react-redux";
 import DialogBox from "./DialogBox";
+import StringMessages from "../../utils/StringMessages";
 
 function ConfirmDialogBox({ onDelete }) {
   const dispatch = useDispatch();
@@ -11,13 +12,15 @@ function ConfirmDialogBox({ onDelete }) {
 
   if (!isOpen) return null;
 
+  const { title, message } = StringMessages.confirmDialog[activeLanguage];
+
   return (
     <DialogBox>
       <div className="p-8">
-        <h2 className="text-2xl font-semibold">Delete Selected Record</h2>
+        <h2 className="text-2xl font-semibold">{title}</h2>
         <div className="mt-4">
           <p>
-            Are you sure you want to delete the record{" "}
+            {message}
             <span className="font-semibold">{entityName}</span>?
           </p>
         </div>
