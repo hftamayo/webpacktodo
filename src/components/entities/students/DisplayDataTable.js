@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudents, deleteStudent } from "../../store/studentSlice";
-import {closeDialog} from "../../store/dialogSlice";
+import { closeDialog } from "../../store/dialogSlice";
 import { toast } from "react-toastify";
 import { FaSort } from "react-icons/fa";
 
@@ -174,11 +174,7 @@ function DisplayDataTable() {
         <tbody>
           {currentPageRecords.length > 0 ? (
             currentPageRecords.map((data) => (
-              <EntityRow
-                key={data.id}
-                entity={data}
-                handleDeleteEntity={handleDeleteEntity}
-              />
+              <EntityRow key={data.id} entity={data} />
             ))
           ) : (
             <tr>
