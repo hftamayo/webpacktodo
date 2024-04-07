@@ -8,17 +8,17 @@ function DialogBox({ children }) {
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      dispatch(closeDialog());
+      handleCloseDialogBox();
     }
   };
 
-  const handleClose = () => {
+  const handleCloseDialogBox = () => {
     dispatch(closeDialog());
   };
 
   return (
     <div
-      onClick={handleClose}
+      onClick={handleCloseDialogBox}
       onKeyDown={handleKeyDown}
       className={`fixed inset-0 flex justify-center items-center transition-colors ${
         isOpen ? "visible bg-black bg-opacity-20" : "invisible"
@@ -32,7 +32,7 @@ function DialogBox({ children }) {
       >
         {children}
         <button
-          onClick={handleClose}
+          onClick={handleCloseDialogBox}
           className="absolute top-2 right-2 p-1 rounded-lg text-gray-400 bg-white hover:bg-gray-50 hover:text-gray-600"
         >
           X
