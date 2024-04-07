@@ -17,7 +17,7 @@ function DialogBox({ children }) {
   };
 
   return (
-    <div
+    <button
       onClick={handleCloseDialogBox}
       onKeyDown={handleKeyDown}
       className={`fixed inset-0 flex justify-center items-center transition-colors ${
@@ -38,7 +38,7 @@ function DialogBox({ children }) {
           X
         </button>
       </div>
-    </div>
+    </button>
   );
 }
 
