@@ -1,8 +1,8 @@
-import dotenv from "dotenv";
 import { createSlice } from "@reduxjs/toolkit";
 import StringMessages from "../../utils/StringMessages";
 
 const dialogSlice = createSlice({
+  
   name: "dialog",
   initialState: {
     isOpen: false,
