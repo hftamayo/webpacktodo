@@ -2,18 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 import StringMessages from "../../utils/StringMessages";
 
 const dialogSlice = createSlice({
-  
   name: "dialog",
   initialState: {
     isOpen: false,
     activeLanguage: process.env.ACTIVE_LANGUAGE || "en",
     title: "",
     message: "",
+    entityId: null,
     entityName: "",
   },
   reducers: {
     openDialog(state, action) {
       state.isOpen = true;
+      state.entityId = action.payload.id;
       state.entityName = action.payload.entityName;
       const { title, message } =
         StringMessages.confirmDialog[state.activeLanguage];
@@ -24,6 +25,7 @@ const dialogSlice = createSlice({
       state.isOpen = false;
       state.title = "";
       state.message = "";
+      state.entityId = null;
       state.entityName = "";
     },
     setActiveLanguage(state, action) {
