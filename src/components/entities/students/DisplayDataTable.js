@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getStudents, deleteStudent } from "../../store/studentSlice";
-import { closeDialog, deleteEntity } from "../../store/dialogSlice";
+import { getStudents } from "../../store/studentSlice";
 import { toast } from "react-toastify";
 import { FaSort } from "react-icons/fa";
 
@@ -13,9 +12,6 @@ import CrudHeader from "../../ui/crud/CrudHeader";
 function DisplayDataTable() {
   const dispatch = useDispatch();
   const records = useSelector((state) => state.students.students);
-
-  const [selectedId, setSelectedId] = useState(null);
-  const [selectedEntityName, setSelectedEntityName] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
