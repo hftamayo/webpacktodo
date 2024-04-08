@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudents, deleteStudent } from "../../store/studentSlice";
-import { closeDialog } from "../../store/dialogSlice";
+import { closeDialog, deleteEntity } from "../../store/dialogSlice";
 import { toast } from "react-toastify";
 import { FaSort } from "react-icons/fa";
 
@@ -65,39 +65,6 @@ function DisplayDataTable() {
     setNumberOfPages(pages);
     setCurrentPageRecords(pages === 0 ? [] : currentPageRecords);
   }, [records, currentPage, recordsPerPage]);
-
-  const handleDeleteEntity = (event) => {
-    event.stopPropagation();
-    handleDeleteSelectedEntity(selectedId);
-    handleResetEntitySelection();
-    dispatch(closeDialog());
-  };
-
-  const handleResetEntitySelection = () => {
-    setSelectedId(null);
-    setSelectedEntityName(null);
-  };
-
-  const handleDeleteSelectedEntity = (id) => {
-    dispatch(deleteStudent(id))
-      .then((action) => {
-        if (deleteStudent.fulfilled.match(action)) {
-          toast.success("Data deleted permanently", {
-            className: "bg-black text-yellow-500",
-            progressClassName: "bg-blue-600",
-          });
-          loadData();
-        } else if (deleteStudent.rejected.match(action)) {
-          console.log("deleteStudent action rejected");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(
-          "An error occurred while trying to delete the selected data, the event was reported. Please try again later. "
-        );
-      });
-  };
 
   const handleSort = (field) => {
     let direction = "asc";
