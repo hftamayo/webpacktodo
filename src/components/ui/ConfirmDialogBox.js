@@ -1,15 +1,12 @@
 import { useSelector } from "react-redux";
 import DialogBox from "./DialogBox";
-import StringMessages from "../../utils/StringMessages";
 
 function ConfirmDialogBox({ onDelete }) {
-  const { isOpen, activeLanguage, entityName } = useSelector(
+  const { isOpen, title, message, entityName } = useSelector(
     (state) => state.dialog
   );
 
   if (!isOpen) return null;
-
-  const { title, message } = StringMessages.confirmDialog[activeLanguage];
 
   return (
     <DialogBox>
