@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { deleteStudent, getStudents } from "./studentsSlice";
+import { deleteStudent, getStudents } from "./studentSlice";
 import StringMessages from "../../utils/StringMessages";
 import { toast } from "react-toastify";
 
@@ -7,7 +7,7 @@ const deleteEntity = createAsyncThunk(
   "dialog/deleteEntity",
   async (id, { dispatch, rejectWithValue }) => {
     try {
-      const response = await deleteStudent(id);
+      const response = deleteStudent(id);
       dispatch(getStudents());
       return response;
     } catch (error) {
@@ -68,7 +68,7 @@ const dialogSlice = createSlice({
           progressClassName: "bg-blue-600",
         });
       })
-      .addCase(deleteEntity.rejected, (state) => {
+      .addCase(deleteEntity.rejected, (state, action) => {
         state.isOpen = false;
         state.title = "";
         state.message = "";
