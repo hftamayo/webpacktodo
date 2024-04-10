@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { deleteEntity } from "../../store/dialogSlice";
+import { deleteEntity } from "../store/dialogSlice";
 import DialogBox from "./DialogBox";
 
 function ConfirmDialogBox() {

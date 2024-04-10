@@ -29,7 +29,6 @@ const dialogSlice = createSlice({
   },
   reducers: {
     openDialog: (state, action) => {
-      console.log("openDialog action:", action);
       state.isOpen = true;
       state.entityId = action.payload.id;
       state.entityName = action.payload.name;
