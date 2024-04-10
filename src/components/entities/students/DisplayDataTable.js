@@ -8,6 +8,7 @@ import EntityRow from "./EntityRow";
 import dataTableClasses from "../../ui/crud/dataTableclasses";
 import NavButtons from "../../ui/crud/NavButtons";
 import CrudHeader from "../../ui/crud/CrudHeader";
+import ConfirmDialogBox from "../../ui/ConfirmDialogBox";
 
 function DisplayDataTable() {
   const dispatch = useDispatch();
@@ -146,6 +147,7 @@ function DisplayDataTable() {
           )}
         </tbody>
       </table>
+      <ConfirmDialogBox />
       <NavButtons
         records={records}
         currentPage={currentPage}
