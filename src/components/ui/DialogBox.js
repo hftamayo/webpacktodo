@@ -19,7 +19,10 @@ function DialogBox({ children, onClose }) {
       }`}
     >
       <div
+        role="presentation"
+        tabIndex={0}
         onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => e.key === 'Enter' && e.stopPropagation()}
         className={`bg-white rounded-xl shadow p-6 transition-all transform ${
           isOpen ? "scale-100 opacity-100" : "scale-125 opacity-0"
         }`}
