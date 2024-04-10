@@ -31,7 +31,7 @@ const dialogSlice = createSlice({
     openDialog: (state, action) => {
       state.isOpen = true;
       state.entityId = action.payload.id;
-      state.entityName = action.payload.entityName;
+      state.entityName = action.payload.name;
       const { title, message } =
         StringMessages.confirmDialog[state.activeLanguage];
       state.title = title;
