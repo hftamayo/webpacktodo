@@ -23,7 +23,11 @@ function DisplayDataTable() {
   const totalPages = Math.ceil(records.length / recordsPerPage);
   const pageNumbers = Array.from({ length: numberOfPages }, (_, i) => i + 1);
 
-  const { handleSort } = useSort(records, currentPage, recordsPerPage);
+  const { handleSort, sortedRecords } = useSort(
+    records,
+    currentPage,
+    recordsPerPage
+  );
 
   const loadData = useCallback(() => {
     try {
