@@ -11,7 +11,7 @@ import useSort from "../../../ui/crud/useSort";
 import CrudHeader from "../../../ui/crud/CrudHeader";
 import ConfirmDialogBox from "../../../ui/ConfirmDialogBox";
 
-function DisplayDataTable() {
+function DataTable() {
   const dispatch = useDispatch();
   const records = useSelector((state) => state.students.students);
 
@@ -138,4 +138,4 @@ function DisplayDataTable() {
   );
 }
 
-export default DisplayDataTable;
+export default DataTable;
