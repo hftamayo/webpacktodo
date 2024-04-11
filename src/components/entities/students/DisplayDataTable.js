@@ -7,6 +7,7 @@ import { FaSort } from "react-icons/fa";
 import EntityRow from "./EntityRow";
 import dataTableClasses from "../../ui/crud/dataTableclasses";
 import NavButtons from "../../ui/crud/NavButtons";
+import useSort from "../../ui/crud/useSort";
 import CrudHeader from "../../ui/crud/CrudHeader";
 import ConfirmDialogBox from "../../ui/ConfirmDialogBox";
 
@@ -22,8 +23,7 @@ function DisplayDataTable() {
   const totalPages = Math.ceil(records.length / recordsPerPage);
   const pageNumbers = Array.from({ length: numberOfPages }, (_, i) => i + 1);
 
-  const [sortField, setSortField] = useState("id");
-  const [sortDirection, setSortDirection] = useState("asc");
+  const { handleSort } = useSort(records, currentPage, recordsPerPage);
 
   const loadData = useCallback(() => {
     try {
@@ -62,32 +62,6 @@ function DisplayDataTable() {
     setNumberOfPages(pages);
     setCurrentPageRecords(pages === 0 ? [] : currentPageRecords);
   }, [records, currentPage, recordsPerPage]);
-
-  const handleSort = (field) => {
-    let direction = "asc";
-    if (field === sortField) {
-      direction = sortDirection === "asc" ? "desc" : "asc";
-    }
-    setSortField(field);
-    setSortDirection(direction);
-
-    const sortedStudents = [...records].sort((a, b) => {
-      if (a[field] < b[field]) {
-        return direction === "asc" ? -1 : 1;
-      }
-      if (a[field] > b[field]) {
-        return direction === "asc" ? 1 : -1;
-      }
-      return 0;
-    });
-    //dispatch(getStudents(sortedStudents));
-    setCurrentPageRecords(
-      sortedStudents.slice(
-        (currentPage - 1) * recordsPerPage,
-        currentPage * recordsPerPage
-      )
-    );
-  };
 
   return (
     <div className="w-full flex flex-col min-h-[50vh] justify-center items-center">
