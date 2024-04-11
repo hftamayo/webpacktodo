@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getStudents } from "../../../store/studentSlice";
-import { toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { FaSort } from "react-icons/fa";
 
+import useFetchData from "./useFetchData";
 import EntityRow from "./EntityRow";
 import dataTableClasses from "../../../ui/crud/dataTableclasses";
 import NavButtons from "../../../ui/crud/NavButtons";
@@ -12,7 +11,7 @@ import CrudHeader from "../../../ui/crud/CrudHeader";
 import ConfirmDialogBox from "../../../ui/ConfirmDialogBox";
 
 function DataTable() {
-  const dispatch = useDispatch();
+  const loadData = useFetchData();
   const records = useSelector((state) => state.students.students);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,22 +27,6 @@ function DataTable() {
     currentPage,
     recordsPerPage
   );
-
-  const loadData = useCallback(() => {
-    try {
-      dispatch(getStudents()).then((action) => {
-        if (getStudents.fulfilled.match(action)) {
-          console.log("Status: succeeded"); // Log the status
-        } else if (getStudents.rejected.match(action)) {
-          console.log("Status: failed"); // Log the status
-        }
-      });
-    } catch (error) {
-      toast.error(
-        "An error occurred while trying to load the data, the event was reported. Please try again later."
-      );
-    }
-  }, [dispatch]);
 
   useEffect(() => {
     loadData();
