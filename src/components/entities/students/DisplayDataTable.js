@@ -23,7 +23,7 @@ function DisplayDataTable() {
   const totalPages = Math.ceil(records.length / recordsPerPage);
   const pageNumbers = Array.from({ length: numberOfPages }, (_, i) => i + 1);
 
-  const { handleSort, sortedRecords } = useSort(
+  const { handleSort, sortedPageRecords } = useSort(
     records,
     currentPage,
     recordsPerPage
@@ -114,8 +114,8 @@ function DisplayDataTable() {
           </tr>
         </thead>
         <tbody>
-          {currentPageRecords.length > 0 ? (
-            currentPageRecords.map((data) => (
+          {sortedPageRecords.length > 0 ? (
+            sortedPageRecords.map((data) => (
               <EntityRow key={data.id} entity={data} />
             ))
           ) : (
