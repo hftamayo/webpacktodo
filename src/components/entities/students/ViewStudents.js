@@ -1,5 +1,5 @@
 import React from "react";
-import DisplayDataTable from "./DisplayDataTable";
+import DataTable from "./data/DataTable";
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 
@@ -16,7 +16,7 @@ function ViewStudents() {
         </Link>
       </div>
 
-      <DisplayDataTable />
+      <DataTable />
     </div>
   );
 }
