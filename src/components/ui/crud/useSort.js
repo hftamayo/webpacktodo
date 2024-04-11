@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function useSort(records, currentPage, recordsPerPage) {
   const [sortField, setSortField] = useState("id");
   const [sortDirection, setSortDirection] = useState("asc");
+  const [sortedRecords, setSortedRecords] = useState([]);
 
   const handleSort = (field) => {
     let direction = "asc";
@@ -12,7 +13,7 @@ export default function useSort(records, currentPage, recordsPerPage) {
     setSortField(field);
     setSortDirection(direction);
 
-    const sortedRecords = [...records].sort((a, b) => {
+    const sorted = [...records].sort((a, b) => {
       if (a[field] < b[field]) {
         return direction === "asc" ? -1 : 1;
       }
@@ -22,11 +23,11 @@ export default function useSort(records, currentPage, recordsPerPage) {
       return 0;
     });
 
-    return sortedRecords.slice(
+    setSortedRecords(sorted.slice(
       (currentPage - 1) * recordsPerPage,
       currentPage * recordsPerPage
-    );
+    ));
   };
 
-  return { handleSort };
+  return { handleSort, sortedRecords };
 }
