@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { openDialog } from "../../store/dialogSlice";
+import { openDialog } from "../../../store/dialogSlice";
 import { FaTrash, FaEye, FaEdit } from "react-icons/fa";
 import PropTypes from "prop-types";
-import { entityRow } from "../../ui/crud/rowClasses";
+import { entityRow } from "../../../ui/crud/rowClasses";
 
 const EntityRow = ({ entity }) => {
   const dispatch = useDispatch();

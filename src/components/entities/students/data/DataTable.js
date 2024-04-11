@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getStudents } from "../../store/studentSlice";
+import { getStudents } from "../../../store/studentSlice";
 import { toast } from "react-toastify";
 import { FaSort } from "react-icons/fa";
 
 import EntityRow from "./EntityRow";
-import dataTableClasses from "../../ui/crud/dataTableclasses";
-import NavButtons from "../../ui/crud/NavButtons";
-import useSort from "../../ui/crud/useSort";
-import CrudHeader from "../../ui/crud/CrudHeader";
-import ConfirmDialogBox from "../../ui/ConfirmDialogBox";
+import dataTableClasses from "../../../ui/crud/dataTableclasses";
+import NavButtons from "../../../ui/crud/NavButtons";
+import useSort from "../../../ui/crud/useSort";
+import CrudHeader from "../../../ui/crud/CrudHeader";
+import ConfirmDialogBox from "../../../ui/ConfirmDialogBox";
 
 function DisplayDataTable() {
   const dispatch = useDispatch();
