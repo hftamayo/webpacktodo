@@ -35,7 +35,7 @@ function DataTable() {
 
   useEffect(() => {
     loadData();
-  }, [loadData, records]);
+  }, [loadData]);
 
   return (
     <div className="w-full flex flex-col min-h-[50vh] justify-center items-center">
