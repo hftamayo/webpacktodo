@@ -4,14 +4,24 @@ import { toast } from "react-toastify";
 
 export default function useFetchData() {
   const dispatch = useDispatch();
+  const [tries, setTries] = useState(0);
 
   const loadData = async () => {
+    if (tries > 3) {
+      toast.error(
+        "An error occurred while trying to load the data, the event was reported. Please try again later."
+      );
+      return;
+    }
+
     try {
       dispatch(getStudents()).then((action) => {
         if (getStudents.fulfilled.match(action)) {
           console.log("Status: succeeded"); // Log the status
         } else if (getStudents.rejected.match(action)) {
           console.log("Status: failed"); // Log the status
+          setTries(tries + 1);
+          loadData();
         }
       });
     } catch (error) {
