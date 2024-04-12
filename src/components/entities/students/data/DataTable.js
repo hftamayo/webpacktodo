@@ -7,23 +7,28 @@ import EntityRow from "./EntityRow";
 import dataTableClasses from "../../../ui/crud/dataTableclasses";
 import NavButtons from "../../../ui/crud/NavButtons";
 import useSort from "../../../ui/crud/useSort";
+import usePagination from "../../../ui/crud/usePagination";
 import CrudHeader from "../../../ui/crud/CrudHeader";
 import ConfirmDialogBox from "../../../ui/ConfirmDialogBox";
 
 function DataTable() {
   const loadData = useFetchData();
   const records = useSelector((state) => state.students.students);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
+
   const [currentPageRecords, setCurrentPageRecords] = useState([]);
-
-  const [numberOfPages, setNumberOfPages] = useState([]); // [1, 2, 3, 4, 5]
   const totalPages = Math.ceil(records.length / recordsPerPage);
-  const pageNumbers = Array.from({ length: numberOfPages }, (_, i) => i + 1);
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  const { handleSort, sortedPageRecords } = useSort(
-    records,
+  const { sortedRecords, handleSort } = useSort(
+    paginatedRecords,
+    currentPage,
+    recordsPerPage
+  );
+
+  const { paginatedRecords } = usePagination(
+    sortedRecords,
     currentPage,
     recordsPerPage
   );
@@ -31,24 +36,6 @@ function DataTable() {
   useEffect(() => {
     loadData();
   }, [loadData]);
-
-  useEffect(() => {
-    let pages;
-    let currentPageRecords;
-
-    if (recordsPerPage === -1) {
-      pages = 1;
-      currentPageRecords = records;
-    } else {
-      pages = Math.ceil(records.length / recordsPerPage);
-      currentPageRecords = records.slice(
-        (currentPage - 1) * recordsPerPage,
-        currentPage * recordsPerPage
-      );
-    }
-    setNumberOfPages(pages);
-    setCurrentPageRecords(pages === 0 ? [] : currentPageRecords);
-  }, [records, currentPage, recordsPerPage]);
 
   return (
     <div className="w-full flex flex-col min-h-[50vh] justify-center items-center">
@@ -97,8 +84,8 @@ function DataTable() {
           </tr>
         </thead>
         <tbody>
-          {sortedPageRecords.length > 0 ? (
-            sortedPageRecords.map((data) => (
+          {paginatedRecords.length > 0 ? (
+            paginatedRecords.map((data) => (
               <EntityRow key={data.id} entity={data} />
             ))
           ) : (
