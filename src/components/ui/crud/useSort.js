@@ -35,5 +35,5 @@ export default function useSort(paginatedRecords, currentPage, recordsPerPage) {
     currentPage * recordsPerPage
   );
 
-  return { handleSort, sortedPageRecords };
+  return { sortedPageRecords, handleSort  };
 }
