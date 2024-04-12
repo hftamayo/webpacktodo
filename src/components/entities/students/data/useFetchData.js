@@ -1,12 +1,11 @@
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { getStudents } from "../../../store/studentSlice";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 export default function useFetchData() {
   const dispatch = useDispatch();
 
-  const loadData = useCallback(() => {
+  const loadData = async () => {
     try {
       dispatch(getStudents()).then((action) => {
         if (getStudents.fulfilled.match(action)) {
@@ -20,7 +19,7 @@ export default function useFetchData() {
         "An error occurred while trying to load the data, the event was reported. Please try again later."
       );
     }
-  }, [dispatch]);
+  };
 
   return loadData;
 }
