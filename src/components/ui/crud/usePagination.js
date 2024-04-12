@@ -8,12 +8,18 @@ export default function usePagination(records, currentPage, recordsPerPage) {
     let pages;
     let currentPageRecords;
 
+    const indexOfLastRecord = currentPage * recordsPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    const currentRecords = records
+      ? records.slice(indexOfFirstRecord, indexOfLastRecord)
+      : [];
+
     if (recordsPerPage === -1) {
       pages = 1;
-      currentPageRecords = records;
+      currentPageRecords = currentRecords;
     } else {
-      pages = Math.ceil(records.length / recordsPerPage);
-      currentPageRecords = records.slice(
+      pages = Math.ceil(currentRecords.length / recordsPerPage);
+      currentPageRecords = currentRecords.slice(
         (currentPage - 1) * recordsPerPage,
         currentPage * recordsPerPage
       );

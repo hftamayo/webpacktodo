@@ -18,11 +18,11 @@ function DataTable() {
   const [recordsPerPage, setRecordsPerPage] = useState(5);
 
   const [currentPageRecords, setCurrentPageRecords] = useState([]);
-  const totalPages = Math.ceil(records.length / recordsPerPage);
+  const totalPages = records ? Math.ceil(records.length / recordsPerPage) : 0;
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   const { sortedRecords, handleSort } = useSort(
-    paginatedRecords,
+    records,
     currentPage,
     recordsPerPage
   );
@@ -35,7 +35,7 @@ function DataTable() {
 
   useEffect(() => {
     loadData();
-  }, [loadData]);
+  }, [loadData, records]);
 
   return (
     <div className="w-full flex flex-col min-h-[50vh] justify-center items-center">
