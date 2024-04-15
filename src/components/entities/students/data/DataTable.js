@@ -29,7 +29,7 @@ function DataTable() {
 
 
   const { sortedRecords, handleSort } = useSort(
-    paginatedRecords,
+    records || [],
     currentPage,
     recordsPerPage
   );
@@ -87,7 +87,7 @@ function DataTable() {
           </tr>
         </thead>
         <tbody>
-          {paginatedRecords.length > 0 ? (
+          {paginatedRecords && paginatedRecords.length > 0 ? (
             paginatedRecords.map((data) => (
               <EntityRow key={data.id} entity={data} />
             ))
