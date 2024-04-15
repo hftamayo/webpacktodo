@@ -34,6 +34,7 @@ function DataTable() {
   );
 
   useEffect(() => {
+    //console.log("Data loaded: ", records);
     loadData();
   }, [loadData]);
 
