@@ -21,17 +21,19 @@ function DataTable() {
   const totalPages = records ? Math.ceil(records.length / recordsPerPage) : 0;
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  const { sortedRecords, handleSort } = useSort(
+  const { paginatedRecords } = usePagination(
     records,
     currentPage,
     recordsPerPage
   );
 
-  const { paginatedRecords } = usePagination(
-    sortedRecords,
+
+  const { sortedRecords, handleSort } = useSort(
+    paginatedRecords,
     currentPage,
     recordsPerPage
   );
+
 
   useEffect(() => {
     //console.log("Data loaded: ", records);
