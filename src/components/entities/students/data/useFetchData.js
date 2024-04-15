@@ -20,9 +20,17 @@ export default function useFetchData() {
         if (getStudents.fulfilled.match(action)) {
           console.log("Status: succeeded"); // Log the status
         } else if (getStudents.rejected.match(action)) {
-          console.log("Status: failed"); // Log the status
-          setTries(tries + 1);
-          loadData();
+          console.log("Status: failed");
+          setTries((prevTries) => {
+            if (prevTries < 3) {
+              loadData();
+              return prevTries + 1;
+            } else {
+              console.log("Failed to load data afert 3 attempts");
+              toast.error("Failed to load data afert 3 attempts");
+              return prevTries;
+            }
+          }); // Log the status
         }
       });
     } catch (error) {
