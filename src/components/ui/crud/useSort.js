@@ -6,8 +6,9 @@ export default function useSort(paginatedRecords, currentPage, recordsPerPage) {
   const [sortedRecords, setSortedRecords] = useState([]);
 
   useEffect(() => {
-    setSortedRecords([...paginatedRecords]);
-  }, [paginatedRecords]);
+    let sorted = [...paginatedRecords];
+    setSortedRecords(sorted);
+  }, [paginatedRecords, sortField, sortDirection]);
 
   const handleSort = (field) => {
     let direction = "asc";
