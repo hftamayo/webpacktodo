@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
 
-export default function useSort(paginatedRecords, currentPage, recordsPerPage) {
+export default function useSort(records, currentPage, recordsPerPage) {
   const [sortField, setSortField] = useState("id");
   const [sortDirection, setSortDirection] = useState("asc");
   const [sortedRecords, setSortedRecords] = useState([]);
-
-  useEffect(() => {
-    let sorted = [...paginatedRecords];
-    setSortedRecords(sorted);
-  }, [paginatedRecords, sortField, sortDirection]);
 
   const handleSort = (field) => {
     let direction = "asc";
@@ -18,7 +13,7 @@ export default function useSort(paginatedRecords, currentPage, recordsPerPage) {
     setSortField(field);
     setSortDirection(direction);
 
-    const sorted = [...sortedRecords].sort((a, b) => {
+    const sorted = [...records].sort((a, b) => {
       if (a[field] < b[field]) {
         return direction === "asc" ? -1 : 1;
       }
