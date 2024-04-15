@@ -5,6 +5,7 @@ export default function usePagination(records, currentPage, recordsPerPage) {
   const [numberOfPages, setNumberOfPages] = useState(0);
 
   useEffect(() => {
+    if(Array.isArray(records)){
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
     const currentRecords = records
@@ -13,6 +14,10 @@ export default function usePagination(records, currentPage, recordsPerPage) {
 
       setNumberOfPages(Math.ceil(records.length / recordsPerPage));
       setCurrentPageRecords(currentRecords);
+    } else {
+      setNumberOfPages(0);
+      setCurrentPageRecords([]);
+    }
   }, [records, currentPage, recordsPerPage]);
 
   return {
