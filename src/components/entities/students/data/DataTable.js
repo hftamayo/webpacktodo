@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { FaSort } from "react-icons/fa";
 
@@ -12,7 +12,7 @@ import CrudHeader from "../../../ui/crud/CrudHeader";
 import ConfirmDialogBox from "../../../ui/ConfirmDialogBox";
 
 function DataTable() {
-  const loadData = useFetchData();
+  const loadData = useCallback(useFetchData(), []);
   const records = useSelector((state) => state.students.students);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
