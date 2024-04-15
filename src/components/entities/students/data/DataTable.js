@@ -12,6 +12,7 @@ import CrudHeader from "../../../ui/crud/CrudHeader";
 import ConfirmDialogBox from "../../../ui/ConfirmDialogBox";
 
 function DataTable() {
+  const [isLoading, setIsLoading] = useState(true);
   const loadData = useCallback(useFetchData(), []);
   const records = useSelector((state) => state.students.students);
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,12 +22,10 @@ function DataTable() {
   const totalPages = records ? Math.ceil(records.length / recordsPerPage) : 0;
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  const { paginatedRecords } = usePagination(
-    records,
-    currentPage,
-    recordsPerPage
-  );
-
+  useEffect(() => {
+    //console.log("Data loaded: ", records);
+    loadData().then(() => setIsLoading(false));
+  }, [loadData]);
 
   const { sortedRecords, handleSort } = useSort(
     records || [],
@@ -34,11 +33,11 @@ function DataTable() {
     recordsPerPage
   );
 
-
-  useEffect(() => {
-    //console.log("Data loaded: ", records);
-    loadData();
-  }, [loadData]);
+  const { paginatedRecords } = usePagination(
+    sortedRecords || [],
+    currentPage,
+    recordsPerPage
+  );
 
   return (
     <div className="w-full flex flex-col min-h-[50vh] justify-center items-center">
@@ -52,7 +51,7 @@ function DataTable() {
         setCurrentPageRecords={setCurrentPageRecords}
         recordsPerPage={recordsPerPage}
         setRecordsPerPage={setRecordsPerPage}
-      />
+                                                                            />
 
       <table className="w-[95%] text-center overflow-hidden overflow-y-scroll mt-8 border-2 border-b-2 border-black">
         <thead className="border-b bg-gray-800">
