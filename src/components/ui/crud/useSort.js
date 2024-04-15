@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function useSort(records, currentPage, recordsPerPage) {
   const [sortField, setSortField] = useState("id");
-  const [sortDirection, setSortDirection] = useState("asc");
-  const [sortedRecords, setSortedRecords] = useState([]);
+  const [sortDirection, setSortDirection] = useState("desc");
+  const [sortedRecords, setSortedRecords] = useState(records || []);
 
-  const handleSort = (field) => {
+  const handleSort = (field = 'id') => {
     let direction = "asc";
     if (field === sortField) {
       direction = sortDirection === "asc" ? "desc" : "asc";
