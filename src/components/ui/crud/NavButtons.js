@@ -90,7 +90,7 @@ function NavButtons({
       </div>
       <div className="flex items-center">
         <div className="border-gray-200 my-4 px-1"></div>
-        Go To Page:
+        Page Selector:
         <div className="border-gray-200 my-4 px-1"></div>
         <select
           value={currentPage}
