@@ -32,6 +32,10 @@ function DataTable() {
     recordsPerPage
   );
 
+  useEffect(() => {
+    setCurrentPageRecords(sortedPaginatedRecords);
+  }, [sortedPaginatedRecords]);
+
   return (
     <div className="w-full flex flex-col min-h-[50vh] justify-center items-center">
       <h1 className="text-black text-3xl font-semibold font-Montserrat">
@@ -42,7 +46,7 @@ function DataTable() {
         currentPage={currentPage}
         currentPageRecords={currentPageRecords}
         setCurrentPageRecords={setCurrentPageRecords}
-        recordsPerPage={recordsPerPage}
+        recordsPerPage={Number(recordsPerPage)}
         setRecordsPerPage={setRecordsPerPage}
       />
 
@@ -95,7 +99,7 @@ function DataTable() {
         records={records}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-        recordsPerPage={recordsPerPage}
+        recordsPerPage={Number(recordsPerPage)}
         totalPages={totalPages}
         pageNumbers={pageNumbers}
       />
