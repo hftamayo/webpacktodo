@@ -6,8 +6,7 @@ import useFetchData from "./useFetchData";
 import EntityRow from "./EntityRow";
 import dataTableClasses from "../../../ui/crud/dataTableclasses";
 import NavButtons from "../../../ui/crud/NavButtons";
-import useSort from "../../../ui/crud/useSort";
-import usePagination from "../../../ui/crud/usePagination";
+import useSortPagination from "../../../ui/crud/useSortPagination";
 import CrudHeader from "../../../ui/crud/CrudHeader";
 import ConfirmDialogBox from "../../../ui/ConfirmDialogBox";
 
@@ -27,14 +26,8 @@ function DataTable() {
     loadData().then(() => setIsLoading(false));
   }, [loadData]);
 
-  const { sortedRecords, handleSort } = useSort(
+  const { sortedPaginatedRecords, handleSort } = useSortPagination(
     records || [],
-    currentPage,
-    recordsPerPage
-  );
-
-  const { paginatedRecords } = usePagination(
-    sortedRecords || [],
     currentPage,
     recordsPerPage
   );
@@ -51,7 +44,7 @@ function DataTable() {
         setCurrentPageRecords={setCurrentPageRecords}
         recordsPerPage={recordsPerPage}
         setRecordsPerPage={setRecordsPerPage}
-                                                                            />
+      />
 
       <table className="w-[95%] text-center overflow-hidden overflow-y-scroll mt-8 border-2 border-b-2 border-black">
         <thead className="border-b bg-gray-800">
@@ -86,8 +79,8 @@ function DataTable() {
           </tr>
         </thead>
         <tbody>
-          {paginatedRecords && paginatedRecords.length > 0 ? (
-            paginatedRecords.map((data) => (
+          {sortedPaginatedRecords && sortedPaginatedRecords.length > 0 ? (
+            sortedPaginatedRecords.map((data) => (
               <EntityRow key={data.id} entity={data} />
             ))
           ) : (
