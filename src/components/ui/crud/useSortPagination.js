@@ -7,10 +7,11 @@ export default function useSortPagination(
 ) {
   const [sortField, setSortField] = useState("id");
   const [sortDirection, setSortDirection] = useState("desc");
+  const [sortedRecords, setSortedRecords] = useState([]);
   const [sortedPaginatedRecords, setSortedPaginatedRecords] = useState([]);
 
   const handleSort = (field = "id") => {
-    let direction = "asc";
+    let direction = "desc";
     if (field === sortField) {
       direction = sortDirection === "asc" ? "desc" : "asc";
     }
@@ -26,17 +27,19 @@ export default function useSortPagination(
       }
       return 0;
     });
-
-    const startIndex = (currentPage - 1) * recordsPerPage;
-    const endIndex = startIndex + recordsPerPage;
-    const paginated = sorted.slice(startIndex, endIndex);
-
-    setSortedPaginatedRecords(paginated);
+    setSortedRecords(sorted);
   };
 
   useEffect(() => {
     handleSort(sortField);
-  }, [records, currentPage, recordsPerPage, sortField]);
+  }, [records, sortField]);
+
+  useEffect(() => {
+    const startIndex = (currentPage - 1) * recordsPerPage;
+    const endIndex = startIndex + recordsPerPage;
+    const paginated = sortedRecords.slice(startIndex, endIndex);
+    setSortedPaginatedRecords(paginated);
+  }, [sortedRecords, currentPage, recordsPerPage]);
 
   return { sortedPaginatedRecords, handleSort };
 }
