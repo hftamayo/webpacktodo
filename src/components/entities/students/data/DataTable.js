@@ -21,6 +21,8 @@ function DataTable() {
   const totalPages = records ? Math.ceil(records.length / recordsPerPage) : 0;
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
+  const [searchCriteria, setSearchCriteria] = useState("");
+
   useEffect(() => {
     //console.log("Data loaded: ", records);
     loadData().then(() => setIsLoading(false));
