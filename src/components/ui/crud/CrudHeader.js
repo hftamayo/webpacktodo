@@ -8,14 +8,13 @@ function CrudHeader({
   recordsPerPage,
   setRecordsPerPage,
   currentPage,
-
+  setSearchCriteria,
 }) {
   const handleSearch = (searchCriteria) => {
-    const lowerCaseSearchCriteria = searchCriteria.toLowerCase();
-
+    setSearchCriteria(searchCriteria.toLowerCase());
     const filteredData = records.filter((entity) =>
       Object.values(entity).some((value) =>
-        value.toString().toLowerCase().includes(lowerCaseSearchCriteria)
+        value.toString().toLowerCase().includes(searchCriteria)
       )
     );
 
@@ -124,6 +123,7 @@ CrudHeader.propTypes = {
   recordsPerPage: PropTypes.number.isRequired,
   setRecordsPerPage: PropTypes.func.isRequired,
   currentPage: PropTypes.number.isRequired,
+  setSearchCriteria: PropTypes.func.isRequired,
 };
 
 export default CrudHeader;
