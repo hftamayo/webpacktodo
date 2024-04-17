@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function useSortPagination(
   records,
@@ -10,25 +10,36 @@ export default function useSortPagination(
   const [sortedRecords, setSortedRecords] = useState([]);
   const [sortedPaginatedRecords, setSortedPaginatedRecords] = useState([]);
 
-  const handleSort = (field = "id") => {
-    let direction = "desc";
-    if (field === sortField) {
-      direction = sortDirection === "asc" ? "desc" : "asc";
-    }
-    setSortField(field);
-    setSortDirection(direction);
+  const prevRecordsRef = useRef();
+  useEffect(() => {
+    prevRecordsRef.current = records;
+  });
+  const prevRecords = prevRecordsRef.current;
 
-    const sorted = [...records].sort((a, b) => {
-      if (a[field] < b[field]) {
-        return direction === "asc" ? -1 : 1;
+  const handleSort = useCallback(
+    (field = "id") => {
+      if (prevRecordsRef.current !== records) {
+        let direction = "desc";
+        if (field === sortField) {
+          direction = sortDirection === "asc" ? "desc" : "asc";
+        }
+        setSortField(field);
+        setSortDirection(direction);
+
+        const sorted = [...records].sort((a, b) => {
+          if (a[field] < b[field]) {
+            return direction === "asc" ? -1 : 1;
+          }
+          if (a[field] > b[field]) {
+            return direction === "asc" ? 1 : -1;
+          }
+          return 0;
+        });
+        setSortedRecords(sorted);
       }
-      if (a[field] > b[field]) {
-        return direction === "asc" ? 1 : -1;
-      }
-      return 0;
-    });
-    setSortedRecords(sorted);
-  };
+    },
+    [records, sortField, sortDirection]
+  );
 
   useEffect(() => {
     handleSort(sortField);
