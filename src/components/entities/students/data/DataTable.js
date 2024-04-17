@@ -29,13 +29,10 @@ function DataTable() {
   }, [loadData]);
 
   const { sortedPaginatedRecords, handleSort } = useSortPagination(
-    records.filter((entity) =>
-      Object.values(entity).some((value) =>
-        value.toString().toLowerCase().includes(searchCriteria)
-      )
-    ),
+    records,
     currentPage,
-    recordsPerPage
+    recordsPerPage,
+    searchCriteria
   );
 
   useEffect(() => {
