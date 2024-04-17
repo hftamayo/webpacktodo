@@ -43,7 +43,6 @@ function DataTable() {
       </h1>
       <CrudHeader
         records={records}
-        currentPage={currentPage}
         currentPageRecords={currentPageRecords}
         setCurrentPageRecords={setCurrentPageRecords}
         recordsPerPage={Number(recordsPerPage)}
