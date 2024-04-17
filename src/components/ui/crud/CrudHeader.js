@@ -7,7 +7,6 @@ function CrudHeader({
   setCurrentPageRecords,
   recordsPerPage,
   setRecordsPerPage,
-  currentPage,
   setSearchCriteria,
 }) {
   const handleSearch = (searchCriteria) => {
@@ -117,7 +116,6 @@ CrudHeader.propTypes = {
   setCurrentPageRecords: PropTypes.func.isRequired,
   recordsPerPage: PropTypes.number.isRequired,
   setRecordsPerPage: PropTypes.func.isRequired,
-  currentPage: PropTypes.number.isRequired,
   setSearchCriteria: PropTypes.func.isRequired,
 };
 
