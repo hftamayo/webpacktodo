@@ -29,7 +29,11 @@ function DataTable() {
   }, [loadData]);
 
   const { sortedPaginatedRecords, handleSort } = useSortPagination(
-    records || [],
+    records.filter((entity) =>
+      Object.values(entity).some((value) =>
+        value.toString().toLowerCase().includes(searchCriteria)
+      )
+    ),
     currentPage,
     recordsPerPage
   );
@@ -49,6 +53,7 @@ function DataTable() {
         setCurrentPageRecords={setCurrentPageRecords}
         recordsPerPage={Number(recordsPerPage)}
         setRecordsPerPage={setRecordsPerPage}
+        setSearchCriteria={setSearchCriteria}
       />
 
       <table className="w-[95%] text-center overflow-hidden overflow-y-scroll mt-8 border-2 border-b-2 border-black">
