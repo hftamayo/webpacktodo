@@ -12,18 +12,13 @@ function CrudHeader({
 }) {
   const handleSearch = (searchCriteria) => {
     setSearchCriteria(searchCriteria.toLowerCase());
-    const filteredData = records.filter((entity) =>
+    const filteredRecords = records.filter((entity) =>
       Object.values(entity).some((value) =>
         value.toString().toLowerCase().includes(searchCriteria)
       )
     );
 
-    setCurrentPageRecords(
-      filteredData.slice(
-        (currentPage - 1) * recordsPerPage,
-        currentPage * recordsPerPage
-      )
-    );
+    setCurrentPageRecords(filteredRecords);
   };
 
   const exportToExcel = () => {
