@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 export default function useSortPagination(
   records,
@@ -14,7 +14,6 @@ export default function useSortPagination(
   useEffect(() => {
     prevRecordsRef.current = records;
   });
-  const prevRecords = prevRecordsRef.current;
 
   const handleSort = useCallback(
     (field = "id") => {
