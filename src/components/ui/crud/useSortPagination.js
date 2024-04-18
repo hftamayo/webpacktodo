@@ -17,9 +17,9 @@ export default function useSortPagination(
   });
 
   const handleSort = useCallback(
-    (field = "id") => {
-      let direction = "desc";
-      if (field === sortField) {
+    (field = "id", isInitialSort = false) => {
+      let direction = sortDirection;
+      if (!isInitialSort && field === sortField) {
         direction = sortDirection === "asc" ? "desc" : "asc";
       }
       setSortField(field);
@@ -46,7 +46,7 @@ export default function useSortPagination(
   );
 
   useEffect(() => {
-    handleSort(sortField);
+    handleSort(sortField, true);
   }, [records, sortField, searchCriteria]);
 
   useEffect(() => {
