@@ -74,7 +74,7 @@ function CrudHeader({
       <div className="border-gray-100 my-4 px-24"></div>
       <div className="flex-grow text-center">
         Displaying:{" "}
-        <span className="font-semibold">
+        <span className="font-semibold text-red-500">
           {currentPageRecords.length} of {records.length}
         </span>
         {" records"}
