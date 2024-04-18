@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { FaSort } from "react-icons/fa";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 import useFetchData from "./useFetchData";
 import EntityRow from "./EntityRow";
@@ -61,23 +61,41 @@ function DataTable() {
               className={`${dataTableClasses.columnHeader} flex items-center`}
             >
               ID{" "}
-              <button
-                onClick={() => handleSort("id")}
-                className="px-2"
-                title="Sort by ID"
-              >
-                <FaSort />
-              </button>
+              <div className="flex">
+                <button
+                  onClick={() => handleSort("id")}
+                  className="px-1"
+                  title="Sort by ID Asc"
+                >
+                  <FaArrowDown />
+                </button>
+                <button
+                  onClick={() => handleSort("id")}
+                  className="px-0"
+                  title="Sort by ID Desc"
+                >
+                  <FaArrowUp />
+                </button>
+              </div>
             </th>
             <th scope="col" className={dataTableClasses.columnHeader}>
               Name{" "}
-              <button
-                onClick={() => handleSort("name")}
-                className="px-2"
-                title="Sort by Name"
-              >
-                <FaSort />
-              </button>
+              <div className="flex">
+                <button
+                  onClick={() => handleSort("name")}
+                  className="px-1"
+                  title="Sort by ID Asc"
+                >
+                  <FaArrowDown />
+                </button>
+                <button
+                  onClick={() => handleSort("name")}
+                  className="px-0"
+                  title="Sort by ID Desc"
+                >
+                  <FaArrowUp />
+                </button>
+              </div>
             </th>
             <th className={dataTableClasses.columnHeader}>Email</th>
             <th className={dataTableClasses.columnHeader}>Phone</th>
