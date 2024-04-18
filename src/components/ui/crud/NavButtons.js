@@ -15,74 +15,56 @@ function NavButtons({
   totalPages,
   pageNumbers,
 }) {
-  const NAVIGATION_BUTTON_CLASSNAME = `${dataTableClasses.navButton} ${
-    records.length === 0 || currentPage === 1 || recordsPerPage === -1
-      ? "bg-gray-500 hover:bg-gray-500 cursor-not-allowed"
-      : ""
+  const baseClassName = dataTableClasses.navButton;
+  const disabledClassName = "bg-gray-500 hover:bg-gray-500 cursor-not-allowed";
+  const enabledClassName = "bg-blue-500 hover:bg-blue-700";
+
+  const firstButtonClassName = `${baseClassName} ${
+    currentPage === 1 ? disabledClassName : enabledClassName
+  }`;
+
+  const backButtonClassName = `${baseClassName} ${
+    currentPage === 1 ? disabledClassName : enabledClassName
+  }`;
+
+  const forwardButtonClassName = `${baseClassName} ${
+    currentPage >= totalPages ? disabledClassName : enabledClassName
+  }`;
+
+  const endButtonClassName = `${baseClassName} ${
+    currentPage >= totalPages ? disabledClassName : enabledClassName
   }`;
 
   return (
     <nav className="flex items-center justify-between pt-4">
       <div className="flex items-center justify-center">
         <button
-          className={`${NAVIGATION_BUTTON_CLASSNAME} ${
-            records.length === 0 || currentPage === 1 || recordsPerPage === -1
-              ? "bg-gray-500 cursor-not-allowed"
-              : "bg-blue-500 hover:bg-blue-700"
-          }`}
-          disabled={
-            records.length === 0 || currentPage === 1 || recordsPerPage === -1
-          }
+          className={`${firstButtonClassName}`}
+          disabled={currentPage === 1}
           onClick={() => setCurrentPage(1)}
         >
           <FaAngleDoubleLeft className="h-5 w-5" />
         </button>
-        <div className="border-t border-gray-200 my-4 px-1"></div>
+        <div className="border-gray-200 my-4 px-1"></div>
         <button
-          className={`${NAVIGATION_BUTTON_CLASSNAME} ${
-            records.length === 0 || currentPage === 1 || recordsPerPage === -1
-              ? "bg-gray-500 cursor-not-allowed"
-              : "bg-blue-500 hover:bg-blue-700"
-          }`}
-          disabled={
-            records.length === 0 || currentPage === 1 || recordsPerPage === -1
-          }
+          className={`${backButtonClassName}`}
+          disabled={currentPage === 1}
           onClick={() => setCurrentPage((old) => Math.max(old - 1, 1))}
         >
           <FaAngleLeft className="h-5 w-5" />
         </button>
         <div className="border-gray-200 my-4 px-1"></div>
         <button
-          className={`${NAVIGATION_BUTTON_CLASSNAME} ${
-            records.length === 0 ||
-            currentPage === totalPages ||
-            recordsPerPage === -1
-              ? "bg-gray-500 cursor-not-allowed"
-              : "bg-blue-500 hover:bg-blue-700"
-          }`}
-          disabled={
-            records.length === 0 ||
-            currentPage === totalPages ||
-            recordsPerPage === -1
-          }
+          className={`${forwardButtonClassName}`}
+          disabled={currentPage >= totalPages}
           onClick={() => setCurrentPage((old) => Math.min(old + 1, totalPages))}
         >
           <FaAngleRight className="h-5 w-5" />
         </button>
         <div className="border-t border-gray-200 my-4 px-1"></div>
         <button
-          className={`${NAVIGATION_BUTTON_CLASSNAME} ${
-            records.length === 0 ||
-            currentPage === totalPages ||
-            recordsPerPage === -1
-              ? "bg-gray-500 cursor-not-allowed"
-              : "bg-blue-500 hover:bg-blue-700"
-          }`}
-          disabled={
-            records.length === 0 ||
-            currentPage === totalPages ||
-            recordsPerPage === -1
-          }
+          className={`${endButtonClassName}`}
+          disabled={currentPage >= totalPages}
           onClick={() => setCurrentPage(totalPages)}
         >
           <FaAngleDoubleRight className="h-5 w-5" />
