@@ -95,7 +95,7 @@ function NavButtons({
         <select
           value={currentPage}
           onChange={(e) => setCurrentPage(Number(e.target.value))}
-          className="px-3 py-0 bg-gray-800 text-white rounded-md"
+          className="px-3 py-1 bg-gray-800 text-white rounded-md"
         >
           {pageNumbers?.map((number) => (
             <option
