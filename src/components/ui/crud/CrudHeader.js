@@ -98,12 +98,12 @@ function CrudHeader({
       <div className="border-gray-100 my-4 px-24"></div>
 
       <div className="flex flex-grow">
-        Export to:{" "}
+        Export:{" "}
         <button onClick={() => exportToPdf()} className="px-1">
-          <FaFilePdf size={24} color="red" />
+          <FaFilePdf size={28} color="red" />
         </button>
         <button onClick={() => exportToExcel()} className="px-1">
-          <FaFileExcel size={24} color="green" />
+          <FaFileExcel size={28} color="green" />
         </button>
       </div>
     </div>
