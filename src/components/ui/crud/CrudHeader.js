@@ -1,4 +1,5 @@
-import { FaFilePdf, FaFileExcel } from "react-icons/fa";
+import { FaPlus, FaFilePdf, FaFileExcel } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function CrudHeader({
@@ -54,6 +55,18 @@ function CrudHeader({
 
   return (
     <div className="flex items-center justify-between p-4">
+      <div className="flex justify-start">
+        <Link
+          to={`/newstudent`}
+          className="flex items-center px-6 py-2 font-normal text-white bg-green-600 rounded-lg w-30"
+        >
+          <FaPlus />
+          <span className="ml-2">New</span>
+        </Link>
+      </div>
+
+      <div className="border-gray-100 my-4 px-14"></div>
+
       <div className="flex items-center">
         <label
           htmlFor="searchCriteria"
@@ -79,7 +92,7 @@ function CrudHeader({
         </span>
         {" records"}
       </div>
-      <div className="border-gray-100 my-4 px-24"></div>
+      <div className="border-gray-100 my-4 px-14"></div>
 
       <div className="flex-shrink-0">
         Records Per Page:{" "}
