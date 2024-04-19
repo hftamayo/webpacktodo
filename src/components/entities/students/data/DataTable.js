@@ -56,46 +56,39 @@ function DataTable() {
       <table className="w-[95%] text-center overflow-hidden overflow-y-scroll mt-8 border-2 border-b-2 border-black">
         <thead className="border-b bg-gray-800">
           <tr>
-            <th
-              scope="col"
-              className={`${dataTableClasses.columnHeader} flex items-center`}
-            >
+            <th scope="col" className={dataTableClasses.columnHeader}>
               ID{" "}
-              <div className="flex">
-                <button
-                  onClick={() => handleSort("id")}
-                  className="px-1"
-                  title="Sort by ID Asc"
-                >
-                  <FaArrowDown />
-                </button>
-                <button
-                  onClick={() => handleSort("id")}
-                  className="px-0"
-                  title="Sort by ID Desc"
-                >
-                  <FaArrowUp />
-                </button>
-              </div>
+              <button
+                onClick={() => handleSort("id")}
+                className="px-1"
+                title="Sort by ID Asc"
+              >
+                <FaArrowDown />
+              </button>
+              <button
+                onClick={() => handleSort("id")}
+                className="px-0"
+                title="Sort by ID Desc"
+              >
+                <FaArrowUp />
+              </button>
             </th>
             <th scope="col" className={dataTableClasses.columnHeader}>
               Name{" "}
-              <div className="flex">
-                <button
-                  onClick={() => handleSort("name")}
-                  className="px-1"
-                  title="Sort by ID Asc"
-                >
-                  <FaArrowDown />
-                </button>
-                <button
-                  onClick={() => handleSort("name")}
-                  className="px-0"
-                  title="Sort by ID Desc"
-                >
-                  <FaArrowUp />
-                </button>
-              </div>
+              <button
+                onClick={() => handleSort("name")}
+                className="px-1"
+                title="Sort by ID Asc"
+              >
+                <FaArrowDown />
+              </button>
+              <button
+                onClick={() => handleSort("name")}
+                className="px-0"
+                title="Sort by ID Desc"
+              >
+                <FaArrowUp />
+              </button>
             </th>
             <th className={dataTableClasses.columnHeader}>Email</th>
             <th className={dataTableClasses.columnHeader}>Phone</th>
