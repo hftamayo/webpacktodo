@@ -1,4 +1,4 @@
-import Navbar from "./Pages/Navbar";
+import Navbar from "./Pages/HeaderDashboard";
 import Dashboard from "./Pages/Dashboard";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import ViewStudents from "./components/entities/students/ViewStudents";
