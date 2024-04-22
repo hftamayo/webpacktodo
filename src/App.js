@@ -10,7 +10,7 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <div className="app">
+    <div className="app flex flex-col min-h-screen">
       <BrowserRouter>
         <Navbar />
         <ToastContainer position="bottom-left" />
@@ -21,7 +21,7 @@ function App() {
           <Route path="/newstudent/" element={<AddStudent />} />"
           <Route path="/editstudent/:id" element={<EditStudent />} />
         </Routes>
-        <FooterDashboard />
+        <FooterDashboard className="mt-auto"/>
       </BrowserRouter>
     </div>
   );
