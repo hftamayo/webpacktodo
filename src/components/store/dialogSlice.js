@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { deleteStudent, getStudents } from "./studentSlice";
-import StringMessages from "../../utils/StringMessages";
+import StringMessages from "../../utils/language/StringMessages";
 import { toast } from "react-toastify";
 
 const deleteEntity = createAsyncThunk(
