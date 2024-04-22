@@ -1,4 +1,5 @@
 import Navbar from "./components/ui/dashboard/HeaderDashboard";
+import FooterDashboard from "./components/ui/dashboard/FooterDashboard";
 import Dashboard from "./Pages/Dashboard";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import ViewStudents from "./components/entities/students/ViewStudents";
@@ -20,6 +21,7 @@ function App() {
           <Route path="/newstudent/" element={<AddStudent />} />"
           <Route path="/editstudent/:id" element={<EditStudent />} />
         </Routes>
+        <FooterDashboard />
       </BrowserRouter>
     </div>
   );
