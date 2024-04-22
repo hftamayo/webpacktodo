@@ -1,6 +1,9 @@
-import React from "react";
+import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
-function DialogBox({ isOpen, onClose, children }) {
+function DialogBox({ children, onClose }) {
+  const isOpen = useSelector((state) => state.dialog.isOpen);
+
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       onClose();
@@ -8,7 +11,7 @@ function DialogBox({ isOpen, onClose, children }) {
   };
 
   return (
-    <div
+    <button
       onClick={onClose}
       onKeyDown={handleKeyDown}
       className={`fixed inset-0 flex justify-center items-center transition-colors ${
@@ -16,7 +19,10 @@ function DialogBox({ isOpen, onClose, children }) {
       }`}
     >
       <div
+        role="presentation"
+        tabIndex={0}
         onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => e.key === 'Enter' && e.stopPropagation()}
         className={`bg-white rounded-xl shadow p-6 transition-all transform ${
           isOpen ? "scale-100 opacity-100" : "scale-125 opacity-0"
         }`}
@@ -29,8 +35,13 @@ function DialogBox({ isOpen, onClose, children }) {
           X
         </button>
       </div>
-    </div>
+    </button>
   );
 }
+
+DialogBox.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClose: PropTypes.func,
+};
 
 export default DialogBox;
