@@ -8,7 +8,7 @@ import dataTableClasses from "../../../ui/crud/dataTableclasses";
 import NavButtons from "../../../ui/crud/NavButtons";
 import useSortPagination from "../../../ui/crud/useSortPagination";
 import CrudHeader from "../../../ui/crud/CrudHeader";
-import ConfirmDialogBox from "../../../ui/ConfirmDialogBox";
+import ConfirmDialogBox from "../../../ui/dialogs/ConfirmDialogBox";
 
 function DataTable() {
   const [isLoading, setIsLoading] = useState(true);
