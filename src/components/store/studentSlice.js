@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+export const getTotalStudents = (state) => state.students.students.length;
+
 export const getStudents = createAsyncThunk(
   "students/getStudents",
   async () => {
@@ -22,12 +24,16 @@ export const addStudent = createAsyncThunk(
 
 export const updateStudent = createAsyncThunk(
   "students/updateStudent",
-  async (student) => {
-    const response = await axios.put(
-      `http://localhost:3004/students/${student.id}`,
-      student
-    );
-    return response.data;
+  async (student, { rejectWithValue }) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:3004/students/${student.id}`,
+        student
+      );
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
   }
 );
 
