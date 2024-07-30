@@ -7,11 +7,11 @@
 * Backend: json-server
 
 ### Screen shots ###
-- [Display data](./sshots/001_01.png)
-- [Add Record](./sshots/001_02.png)
-- [View Record](./sshots/001_03.png)
-- [Update Record](./sshots/001_04.png)
-- [Delete Record](./sshots/001_05.png)
+- ![Display data](./sshots/001_01.png)
+- ![Add Record](./sshots/001_02.png)
+- ![View Record](./sshots/001_03.png)
+- ![Update Record](./sshots/001_04.png)
+- ![Delete Record](./sshots/001_05.png)
 
 ## Version 0.0.2 ##
 * Clean code (SOLID)
@@ -22,11 +22,11 @@
 * Backend: json-server
 
 ### Screen shots ###
-- [Display data](./sshots/002_01.png)
-- [Add Record](./sshots/002_02.png)
-- [View Record](./sshots/002_03.png)
-- [Update Record](./sshots/002_04.png)
-- [Delete Record](./sshots/002_05.png)
+- ![Display data](./sshots/002_01.png)
+- ![Add Record](./sshots/002_02.png)
+- ![View Record](./sshots/002_03.png)
+- ![Update Record](./sshots/002_04.png)
+- ![Delete Record](./sshots/002_05.png)
 
 ## References ##
 
